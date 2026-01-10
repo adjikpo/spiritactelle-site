@@ -1,0 +1,122 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # Service Web - Application Next.js
+  # ============================================
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: spiritactelle_web
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      supabase-db:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Service Supabase DB - PostgreSQL
+  # ============================================
+  supabase-db:
+    image: supabase/postgres:15.1.0.147
+    container_name: spiritactelle_db
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-spiritactelle}
+    volumes:
+      - supabase_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d spiritactelle"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Service Supabase Studio - Interface Admin
+  # ============================================
+  supabase-studio:
+    image: supabase/studio:latest
+    container_name: spiritactelle_studio
+    ports:
+      - "${STUDIO_PORT:-3001}:3000"
+    environment:
+      STUDIO_PG_META_URL: http://supabase-db:5432
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      SUPABASE_URL: http://localhost:${WEB_PORT:-3000}
+      SUPABASE_REST_URL: http://localhost:${WEB_PORT:-3000}/rest/v1
+    depends_on:
+      supabase-db:
+        condition: service_healthy
+    networks:
+      - app-network
+    profiles:
+      - studio
+
+  # ============================================
+  # Service CLI - Commandes pnpm
+  # ============================================
+  cli:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: spiritactelle_cli
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    networks:
+      - app-network
+    profiles:
+      - tools
+
+  # ============================================
+  # Service Create - Creation de projet (sans volume node_modules)
+  # ============================================
+  create:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: spiritactelle_create
+    working_dir: /app
+    volumes:
+      - .:/app
+      # PAS de volume node_modules pour eviter le conflit "directory not empty"
+    networks:
+      - app-network
+    profiles:
+      - tools
+
+# ============================================
+# Volumes persistants
+# ============================================
+volumes:
+  node_modules:
+    name: spiritactelle_node_modules
+  supabase_data:
+    name: spiritactelle_supabase_data
+
+# ============================================
+# Network
+# ============================================
+networks:
+  app-network:
+    name: spiritactelle_network
+    driver: bridge
