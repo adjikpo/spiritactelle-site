@@ -1,8 +1,6 @@
-version: '3.8'
-
 services:
   # ============================================
-  # Service Web - Application Next.js
+  # Service Web - Application Next.js avec Bun
   # ============================================
   web:
     build:
@@ -67,25 +65,20 @@ services:
         condition: service_healthy
     networks:
       - app-network
-    profiles:
-      - studio
 
   # ============================================
-  # Service CLI - Commandes pnpm
+  # Service CLI - Commandes Bun
   # ============================================
   cli:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: spiritactelle_cli
     working_dir: /app
     volumes:
       - .:/app
       - node_modules:/app/node_modules
     networks:
       - app-network
-    profiles:
-      - tools
 
   # ============================================
   # Service Create - Creation de projet (sans volume node_modules)
@@ -94,15 +87,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: spiritactelle_create
     working_dir: /app
     volumes:
       - .:/app
       # PAS de volume node_modules pour eviter le conflit "directory not empty"
     networks:
       - app-network
-    profiles:
-      - tools
 
 # ============================================
 # Volumes persistants

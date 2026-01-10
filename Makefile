@@ -1,7 +1,7 @@
-# Makefile - Commandes Docker pour Spiritactelle
+# Makefile - Commandes Docker pour Spiritactelle (Bun)
 # ================================================
 
-.PHONY: help build up dev down stop restart logs logs-web logs-db install shell create-project add-package build-prod clean db-shell studio
+.PHONY: help build up dev down stop restart logs logs-web logs-db install shell create-project add build-prod clean db-shell studio
 
 # Couleurs pour l'affichage
 CYAN := \033[36m
@@ -12,7 +12,7 @@ RESET := \033[0m
 
 # Variables
 PROJECT_NAME := spiritactelle
-COMPOSE := docker-compose
+COMPOSE := docker compose
 
 # ================================================
 # AIDE
@@ -20,7 +20,7 @@ COMPOSE := docker-compose
 help: ## Affiche cette aide
 	@echo ""
 	@echo "$(CYAN)╔════════════════════════════════════════════════════════════╗$(RESET)"
-	@echo "$(CYAN)║           SPIRITACTELLE - Commandes Docker                 ║$(RESET)"
+	@echo "$(CYAN)║        SPIRITACTELLE - Commandes Docker (Bun)              ║$(RESET)"
 	@echo "$(CYAN)╚════════════════════════════════════════════════════════════╝$(RESET)"
 	@echo ""
 	@echo "$(GREEN)Commandes disponibles :$(RESET)"
@@ -30,7 +30,7 @@ help: ## Affiche cette aide
 	@echo "$(CYAN)Exemples d'utilisation :$(RESET)"
 	@echo "  make build          # Construire les images"
 	@echo "  make dev            # Demarrer en mode dev avec logs"
-	@echo "  make add-package PKG=@supabase/supabase-js"
+	@echo "  make add PKG=@supabase/supabase-js"
 	@echo ""
 
 # ================================================
@@ -42,19 +42,19 @@ build: ## Construire les images Docker
 
 build-prod: ## Build de production
 	@echo "$(CYAN)Build de production Next.js...$(RESET)"
-	$(COMPOSE) run --rm cli pnpm build
+	$(COMPOSE) run --rm cli bun run build
 
 # ================================================
 # DEMARRAGE & ARRET
 # ================================================
 up: ## Demarrer les services en arriere-plan
 	@echo "$(GREEN)Demarrage des services...$(RESET)"
-	$(COMPOSE) up -d
+	$(COMPOSE) up -d web supabase-db
 	@echo "$(GREEN)Application disponible sur http://localhost:3000$(RESET)"
 
 dev: ## Demarrer en mode dev avec logs en direct
 	@echo "$(GREEN)Demarrage en mode developpement...$(RESET)"
-	$(COMPOSE) up
+	$(COMPOSE) up web supabase-db
 
 down: ## Arreter et supprimer les conteneurs
 	@echo "$(YELLOW)Arret des services...$(RESET)"
@@ -81,27 +81,35 @@ logs-db: ## Logs du service PostgreSQL
 	$(COMPOSE) logs -f supabase-db
 
 # ================================================
-# INSTALLATION & PACKAGES
+# INSTALLATION & PACKAGES (Bun)
 # ================================================
-install: ## Installer les dependances pnpm
-	@echo "$(CYAN)Installation des dependances...$(RESET)"
-	$(COMPOSE) run --rm --profile tools cli pnpm install
+install: ## Installer les dependances avec Bun
+	@echo "$(CYAN)Installation des dependances avec Bun...$(RESET)"
+	$(COMPOSE) run --rm cli bun install
 
-add-package: ## Ajouter un package (usage: make add-package PKG=nom-package)
+add: ## Ajouter un package (usage: make add PKG=nom-package)
 ifndef PKG
 	@echo "$(RED)Erreur: Specifiez le package avec PKG=nom-du-package$(RESET)"
-	@echo "Exemple: make add-package PKG=@supabase/supabase-js"
+	@echo "Exemple: make add PKG=@supabase/supabase-js"
 else
-	@echo "$(CYAN)Ajout du package $(PKG)...$(RESET)"
-	$(COMPOSE) run --rm --profile tools cli pnpm add $(PKG)
+	@echo "$(CYAN)Ajout du package $(PKG) avec Bun...$(RESET)"
+	$(COMPOSE) run --rm cli bun add $(PKG)
 endif
 
-add-dev-package: ## Ajouter un package dev (usage: make add-dev-package PKG=nom-package)
+add-dev: ## Ajouter un package dev (usage: make add-dev PKG=nom-package)
 ifndef PKG
 	@echo "$(RED)Erreur: Specifiez le package avec PKG=nom-du-package$(RESET)"
 else
-	@echo "$(CYAN)Ajout du package dev $(PKG)...$(RESET)"
-	$(COMPOSE) run --rm --profile tools cli pnpm add -D $(PKG)
+	@echo "$(CYAN)Ajout du package dev $(PKG) avec Bun...$(RESET)"
+	$(COMPOSE) run --rm cli bun add -d $(PKG)
+endif
+
+remove: ## Supprimer un package (usage: make remove PKG=nom-package)
+ifndef PKG
+	@echo "$(RED)Erreur: Specifiez le package avec PKG=nom-du-package$(RESET)"
+else
+	@echo "$(CYAN)Suppression du package $(PKG)...$(RESET)"
+	$(COMPOSE) run --rm cli bun remove $(PKG)
 endif
 
 # ================================================
@@ -109,21 +117,31 @@ endif
 # ================================================
 shell: ## Ouvrir un shell dans le conteneur
 	@echo "$(CYAN)Ouverture du shell...$(RESET)"
-	$(COMPOSE) run --rm --profile tools cli sh
+	$(COMPOSE) run --rm cli sh
+
+bun: ## Executer une commande Bun (usage: make bun CMD="run test")
+ifndef CMD
+	@echo "$(RED)Erreur: Specifiez la commande avec CMD=\"...\"$(RESET)"
+	@echo "Exemple: make bun CMD=\"run test\""
+else
+	@echo "$(CYAN)Execution: bun $(CMD)$(RESET)"
+	$(COMPOSE) run --rm cli bun $(CMD)
+endif
 
 # ================================================
 # CREATION DE PROJET
 # ================================================
-create-project: ## Creer un nouveau projet Next.js
-	@echo "$(CYAN)Creation du projet Next.js...$(RESET)"
-	@echo "$(YELLOW)Note: Les fichiers seront crees dans le dossier courant$(RESET)"
-	$(COMPOSE) run --rm --profile tools create npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --use-pnpm --no-git
+create-project: ## Creer un nouveau projet Next.js avec Bun
+	@echo "$(CYAN)Creation du projet Next.js avec Bun...$(RESET)"
+	@echo "$(YELLOW)Creation dans un dossier temporaire puis fusion...$(RESET)"
+	$(COMPOSE) run --rm create sh -c "bunx create-next-app@latest /tmp/nextapp --typescript --tailwind --eslint --app --src-dir --use-bun --no-git && cp -r /tmp/nextapp/* /tmp/nextapp/.[!.]* /app/ 2>/dev/null; ls -la /app"
+	@echo "$(GREEN)Projet Next.js cree avec succes!$(RESET)"
 
 init-project: ## Initialiser un projet existant (si package.json existe)
 	@echo "$(CYAN)Initialisation du projet...$(RESET)"
 	@if [ -f "package.json" ]; then \
 		echo "$(GREEN)package.json trouve, installation des dependances...$(RESET)"; \
-		$(COMPOSE) run --rm --profile tools cli pnpm install; \
+		$(COMPOSE) run --rm cli bun install; \
 	else \
 		echo "$(YELLOW)Pas de package.json, creation d'un nouveau projet...$(RESET)"; \
 		$(MAKE) create-project; \
@@ -147,11 +165,11 @@ db-reset: ## Reinitialiser la base de donnees
 # ================================================
 studio: ## Demarrer Supabase Studio
 	@echo "$(CYAN)Demarrage de Supabase Studio...$(RESET)"
-	$(COMPOSE) --profile studio up -d supabase-studio
+	$(COMPOSE) up -d supabase-studio
 	@echo "$(GREEN)Supabase Studio disponible sur http://localhost:3001$(RESET)"
 
 studio-stop: ## Arreter Supabase Studio
-	$(COMPOSE) --profile studio stop supabase-studio
+	$(COMPOSE) stop supabase-studio
 
 # ================================================
 # NETTOYAGE
@@ -166,8 +184,15 @@ clean-all: ## Nettoyage total incluant les images
 	$(COMPOSE) down -v --remove-orphans --rmi local
 	@echo "$(GREEN)Nettoyage total termine$(RESET)"
 
-prune: ## Nettoyer les ressources Docker inutilisees
-	@echo "$(YELLOW)Nettoyage des ressources Docker inutilisees...$(RESET)"
+prune: ## Nettoyer les ressources Docker du projet uniquement
+	@echo "$(YELLOW)Nettoyage des ressources Docker du projet Spiritactelle...$(RESET)"
+	@docker images --filter "reference=*spiritactelle*" -q | xargs -r docker rmi -f 2>/dev/null || true
+	@docker volume ls --filter "name=spiritactelle" -q | xargs -r docker volume rm 2>/dev/null || true
+	@docker network ls --filter "name=spiritactelle" -q | xargs -r docker network rm 2>/dev/null || true
+	@echo "$(GREEN)Nettoyage du projet termine$(RESET)"
+
+prune-all: ## Nettoyer TOUTES les ressources Docker inutilisees (attention!)
+	@echo "$(RED)Nettoyage de TOUTES les ressources Docker inutilisees...$(RESET)"
 	docker system prune -f
 
 # ================================================
@@ -179,7 +204,7 @@ status: ## Afficher le status des services
 
 health: ## Verifier la sante des services
 	@echo "$(CYAN)Verification de la sante des services...$(RESET)"
-	@$(COMPOSE) ps --format "table {{.Name}}\t{{.Status}}\t{{.Ports}}"
+	@$(COMPOSE) ps
 
 # ================================================
 # PRODUCTION
@@ -191,3 +216,18 @@ prod-build: ## Construire l'image de production
 prod-run: ## Lancer le conteneur de production
 	@echo "$(GREEN)Demarrage en mode production...$(RESET)"
 	docker run -p 3000:3000 --env-file .env.local $(PROJECT_NAME):latest
+
+# ================================================
+# TESTS & QUALITE
+# ================================================
+test: ## Lancer les tests
+	@echo "$(CYAN)Lancement des tests...$(RESET)"
+	$(COMPOSE) run --rm cli bun test
+
+lint: ## Lancer le linter
+	@echo "$(CYAN)Lancement du linter...$(RESET)"
+	$(COMPOSE) run --rm cli bun run lint
+
+format: ## Formater le code
+	@echo "$(CYAN)Formatage du code...$(RESET)"
+	$(COMPOSE) run --rm cli bun run format

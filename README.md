@@ -1,162 +1,36 @@
-# Spiritactelle
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Plateforme holistique de spiritualite, mythologies et bien-etre.
+## Getting Started
 
-## Stack Technique
-
-- **Frontend** : Next.js 14 (App Router) + React + TypeScript
-- **Styling** : Tailwind CSS
-- **Backend** : Supabase (PostgreSQL + Auth + Storage)
-- **Containerisation** : Docker + Docker Compose
-- **Package Manager** : pnpm
-
-## Demarrage Rapide
-
-### Prerequis
-
-- Docker Desktop installe et demarre
-- Make (optionnel mais recommande)
-
-### Installation
+First, run the development server:
 
 ```bash
-# 1. Construire les images Docker
-make build
-
-# 2. Creer le projet Next.js (si nouveau projet)
-make create-project
-
-# 3. Configurer les variables d'environnement
-cp .env.local.example .env.local
-# Editer .env.local avec vos valeurs
-
-# 4. Installer les dependances
-make install
-
-# 5. Demarrer le serveur de developpement
-make dev
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### Commandes Utiles
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-# Demarrer en arriere-plan
-make up
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-# Demarrer avec logs
-make dev
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-# Voir les logs
-make logs
+## Learn More
 
-# Arreter les services
-make down
+To learn more about Next.js, take a look at the following resources:
 
-# Installer un package
-make add-package PKG=@supabase/supabase-js
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-# Acceder au shell
-make shell
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-# Acceder a PostgreSQL
-make db-shell
+## Deploy on Vercel
 
-# Ouvrir Supabase Studio
-make studio
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-# Voir toutes les commandes
-make help
-```
-
-## Structure du Projet
-
-```
-site/
-├── src/
-│   ├── app/              # App Router Next.js
-│   ├── components/       # Composants React
-│   ├── lib/              # Utilitaires (supabase client, etc.)
-│   └── styles/           # Styles CSS/Tailwind
-├── public/               # Assets statiques
-├── Dockerfile            # Image production
-├── Dockerfile.dev        # Image developpement
-├── docker-compose.yml    # Orchestration services
-├── Makefile              # Commandes raccourcis
-└── .env.local            # Variables d'environnement
-```
-
-## Services Docker
-
-| Service | Description | Port |
-|---------|-------------|------|
-| web | Application Next.js | 3000 |
-| supabase-db | PostgreSQL | 5432 |
-| supabase-studio | Interface admin Supabase | 3001 |
-
-## Acces
-
-- **Application** : http://localhost:3000
-- **Supabase Studio** : http://localhost:3001
-- **PostgreSQL** : localhost:5432
-
-## Deploiement
-
-### Vercel (Recommande)
-
-```bash
-# Build de production
-make build-prod
-
-# Ou deployer directement via Vercel CLI
-vercel
-```
-
-### Docker Production
-
-```bash
-# Construire l'image de production
-make prod-build
-
-# Lancer en production
-make prod-run
-```
-
-## Configuration Supabase
-
-1. Installer le client :
-```bash
-make add-package PKG=@supabase/supabase-js
-```
-
-2. Creer `src/lib/supabase.ts` :
-```typescript
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
-```
-
-## Troubleshooting
-
-**"Directory not empty"**
-```bash
-make clean
-make create-project
-```
-
-**"Module not found"**
-```bash
-make install
-```
-
-**"Cannot connect to database"**
-```bash
-make logs-db
-make restart
-```
-
----
-
-*Spiritactelle - Une boutique spirituelle avec une ame*
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

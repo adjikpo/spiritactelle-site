@@ -1,26 +1,22 @@
-# Dockerfile - Image de production Next.js (multi-stage)
+# Dockerfile - Image de production Next.js avec Bun (multi-stage)
 
 # ============================================
 # Stage 1: Dependencies
 # ============================================
-FROM node:20-alpine AS deps
-
-RUN corepack enable && corepack prepare pnpm@latest --activate
+FROM oven/bun:1-alpine AS deps
 
 WORKDIR /app
 
 # Copier les fichiers de dependances
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json bun.lockb* ./
 
-# Installer uniquement les dependances de production
-RUN pnpm install --frozen-lockfile
+# Installer les dependances
+RUN bun install --frozen-lockfile
 
 # ============================================
 # Stage 2: Builder
 # ============================================
-FROM node:20-alpine AS builder
-
-RUN corepack enable && corepack prepare pnpm@latest --activate
+FROM oven/bun:1-alpine AS builder
 
 WORKDIR /app
 
@@ -33,12 +29,12 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
 # Build de l'application Next.js
-RUN pnpm build
+RUN bun run build
 
 # ============================================
 # Stage 3: Runner (Production)
 # ============================================
-FROM node:20-alpine AS runner
+FROM oven/bun:1-alpine AS runner
 
 WORKDIR /app
 
@@ -68,5 +64,5 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Demarrer le serveur Next.js
-CMD ["node", "server.js"]
+# Demarrer le serveur Next.js avec Bun
+CMD ["bun", "server.js"]

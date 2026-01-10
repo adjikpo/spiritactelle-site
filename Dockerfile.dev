@@ -1,17 +1,17 @@
-# Dockerfile.dev - Image de developpement Next.js
-FROM node:20-alpine
+# Dockerfile.dev - Image de developpement Next.js avec Bun
+FROM oven/bun:1-alpine
 
-# Activer corepack pour pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Installer les outils necessaires
+RUN apk add --no-cache git
 
 # Definir le repertoire de travail
 WORKDIR /app
 
-# Copier les fichiers de dependances
-COPY package.json pnpm-lock.yaml* ./
+# Copier les fichiers de dependances (si existants)
+COPY package.json* bun.lockb* ./
 
-# Installer les dependances
-RUN pnpm install --frozen-lockfile || pnpm install
+# Installer les dependances si package.json existe
+RUN if [ -f "package.json" ]; then bun install; fi
 
 # Copier le reste du code source
 COPY . .
@@ -24,4 +24,4 @@ ENV WATCHPACK_POLLING=true
 ENV CHOKIDAR_USEPOLLING=true
 
 # Commande de demarrage
-CMD ["pnpm", "dev"]
+CMD ["bun", "run", "dev"]
