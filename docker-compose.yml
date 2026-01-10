@@ -17,6 +17,8 @@ services:
       - NODE_ENV=development
       - WATCHPACK_POLLING=true
       - CHOKIDAR_USEPOLLING=true
+      - NEXT_PUBLIC_SUPABASE_URL=http://localhost:54321
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${ANON_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0}
     depends_on:
       supabase-db:
         condition: service_healthy
@@ -25,21 +27,24 @@ services:
     restart: unless-stopped
 
   # ============================================
-  # Service Supabase DB - PostgreSQL
+  # Supabase - PostgreSQL Database
   # ============================================
   supabase-db:
-    image: supabase/postgres:15.1.0.147
+    image: supabase/postgres:15.1.1.78
     container_name: spiritactelle_db
     ports:
       - "${DB_PORT:-5432}:5432"
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: ${POSTGRES_DB:-spiritactelle}
+      POSTGRES_DB: postgres
+      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-at-least-32-characters-long}
+      JWT_EXP: 3600
     volumes:
       - supabase_data:/var/lib/postgresql/data
+      - ./supabase/init:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d spiritactelle"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -48,21 +53,137 @@ services:
     restart: unless-stopped
 
   # ============================================
-  # Service Supabase Studio - Interface Admin
+  # Supabase - Kong API Gateway
+  # ============================================
+  supabase-kong:
+    image: kong:2.8.1
+    container_name: spiritactelle_kong
+    ports:
+      - "54321:8000"
+      - "54322:8443"
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /var/lib/kong/kong.yml
+      KONG_DNS_ORDER: LAST,A,CNAME
+      KONG_PLUGINS: request-transformer,cors,key-auth,acl,basic-auth
+      KONG_NGINX_PROXY_PROXY_BUFFER_SIZE: 160k
+      KONG_NGINX_PROXY_PROXY_BUFFERS: 64 160k
+    volumes:
+      - ./supabase/kong.yml:/var/lib/kong/kong.yml:ro
+    depends_on:
+      supabase-auth:
+        condition: service_healthy
+      supabase-rest:
+        condition: service_started
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Supabase - GoTrue Auth
+  # ============================================
+  supabase-auth:
+    image: supabase/gotrue:v2.143.0
+    container_name: spiritactelle_auth
+    environment:
+      GOTRUE_API_HOST: 0.0.0.0
+      GOTRUE_API_PORT: 9999
+      API_EXTERNAL_URL: http://localhost:54321
+
+      GOTRUE_DB_DRIVER: postgres
+      GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:postgres@supabase-db:5432/postgres
+
+      GOTRUE_SITE_URL: http://localhost:3000
+      GOTRUE_URI_ALLOW_LIST: ""
+      GOTRUE_DISABLE_SIGNUP: "false"
+
+      GOTRUE_JWT_ADMIN_ROLES: service_role
+      GOTRUE_JWT_AUD: authenticated
+      GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
+      GOTRUE_JWT_EXP: 3600
+      GOTRUE_JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-at-least-32-characters-long}
+
+      GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
+      GOTRUE_EXTERNAL_ANONYMOUS_USERS_ENABLED: "false"
+      GOTRUE_MAILER_AUTOCONFIRM: "true"
+
+      # OAuth providers (configurer si besoin)
+      GOTRUE_EXTERNAL_GOOGLE_ENABLED: "false"
+      GOTRUE_EXTERNAL_FACEBOOK_ENABLED: "false"
+      GOTRUE_EXTERNAL_APPLE_ENABLED: "false"
+    depends_on:
+      supabase-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:9999/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Supabase - PostgREST API
+  # ============================================
+  supabase-rest:
+    image: postgrest/postgrest:v12.0.1
+    container_name: spiritactelle_rest
+    environment:
+      PGRST_DB_URI: postgres://authenticator:postgres@supabase-db:5432/postgres
+      PGRST_DB_SCHEMAS: public,storage,graphql_public
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-at-least-32-characters-long}
+      PGRST_DB_USE_LEGACY_GUCS: "false"
+      PGRST_APP_SETTINGS_JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-at-least-32-characters-long}
+      PGRST_APP_SETTINGS_JWT_EXP: 3600
+    depends_on:
+      supabase-db:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Supabase - Meta (pour Studio)
+  # ============================================
+  supabase-meta:
+    image: supabase/postgres-meta:v0.80.0
+    container_name: spiritactelle_meta
+    environment:
+      PG_META_PORT: 8080
+      PG_META_DB_HOST: supabase-db
+      PG_META_DB_PORT: 5432
+      PG_META_DB_NAME: postgres
+      PG_META_DB_USER: supabase_admin
+      PG_META_DB_PASSWORD: postgres
+    depends_on:
+      supabase-db:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Supabase Studio - Interface Admin
   # ============================================
   supabase-studio:
-    image: supabase/studio:latest
+    image: supabase/studio:20240101-8e4a094
     container_name: spiritactelle_studio
     ports:
       - "${STUDIO_PORT:-3001}:3000"
     environment:
-      STUDIO_PG_META_URL: http://supabase-db:5432
+      STUDIO_PG_META_URL: http://supabase-meta:8080
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      SUPABASE_URL: http://localhost:${WEB_PORT:-3000}
-      SUPABASE_REST_URL: http://localhost:${WEB_PORT:-3000}/rest/v1
+      DEFAULT_ORGANIZATION_NAME: Spiritactelle
+      DEFAULT_PROJECT_NAME: spiritactelle
+      SUPABASE_URL: http://localhost:54321
+      SUPABASE_PUBLIC_URL: http://localhost:54321
+      SUPABASE_ANON_KEY: ${ANON_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0}
+      SUPABASE_SERVICE_KEY: ${SERVICE_ROLE_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU}
     depends_on:
-      supabase-db:
-        condition: service_healthy
+      supabase-meta:
+        condition: service_started
     networks:
       - app-network
 
@@ -77,11 +198,14 @@ services:
     volumes:
       - .:/app
       - node_modules:/app/node_modules
+    environment:
+      - NEXT_PUBLIC_SUPABASE_URL=http://localhost:54321
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${ANON_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0}
     networks:
       - app-network
 
   # ============================================
-  # Service Create - Creation de projet (sans volume node_modules)
+  # Service Create - Creation de projet
   # ============================================
   create:
     build:
@@ -90,7 +214,6 @@ services:
     working_dir: /app
     volumes:
       - .:/app
-      # PAS de volume node_modules pour eviter le conflit "directory not empty"
     networks:
       - app-network
 
