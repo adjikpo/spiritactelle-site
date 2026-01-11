@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { getMostCompatible, getLeastCompatible, getHoroscope, PERIOD_LABELS } from '@/lib/api';
@@ -23,6 +23,7 @@ export default function SigneDetailPage() {
   const [period, setPeriod] = useState<HoroscopePeriod>('today');
   const [horoscope, setHoroscope] = useState<HoroscopeResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const horoscopeRef = useRef<HTMLDivElement>(null);
 
   // Vérifier que le signe est valide
   const isValidSign = ZODIAC_SIGNS_ARRAY.includes(sign);
@@ -92,7 +93,7 @@ export default function SigneDetailPage() {
             </div>
             <div className="text-center sm:text-left">
               <h1 className="text-3xl sm:text-4xl font-bold mb-2">{signInfo.nameFr}</h1>
-              <p className="text-white/80 text-lg mb-3">{signInfo.dateRangeFr}</p>
+              <p className="text-white text-lg mb-3 font-medium">{signInfo.dateRangeFr}</p>
               <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                 <span className="px-3 py-1 bg-white/20 rounded-full text-sm">
                   {signInfo.elementFr}
@@ -129,12 +130,12 @@ export default function SigneDetailPage() {
         </div>
 
         {/* Sélecteur de période */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <div ref={horoscopeRef} className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+          <div className="flex flex-col items-center gap-4 mb-6">
             <h2 className="text-xl font-bold text-[var(--color-text-primary)]">
               Horoscope
             </h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               {[
                 { key: 'today', label: 'Quotidien', icon: periodIcons.today },
                 { key: 'week', label: 'Hebdo', icon: periodIcons.week },
@@ -145,7 +146,12 @@ export default function SigneDetailPage() {
                 return (
                   <button
                     key={p.key}
-                    onClick={() => setPeriod(p.key as HoroscopePeriod)}
+                    onClick={() => {
+                      setPeriod(p.key as HoroscopePeriod);
+                      setTimeout(() => {
+                        horoscopeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 100);
+                    }}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                       period === p.key
                         ? 'bg-[var(--color-primary)] text-white'

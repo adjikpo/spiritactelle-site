@@ -71,11 +71,11 @@ export default function CompatibilitePage() {
             <CompatibilityMeter compatibility={compatibility} />
 
             {/* Conseil */}
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100">
-              <h3 className="font-bold text-purple-800 mb-2">
+            <div className="bg-gradient-to-r from-rose-50 to-amber-50 rounded-2xl p-6 border border-rose-100">
+              <h3 className="font-bold text-rose-800 mb-2">
                 Conseil des astres
               </h3>
-              <p className="text-purple-700">
+              <p className="text-rose-700">
                 {getCompatibilityAdvice(compatibility.level)}
               </p>
             </div>
@@ -84,34 +84,44 @@ export default function CompatibilitePage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href={`/horoscope/${sign1}`}
-                className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow"
+                className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
               >
-                <span className="text-3xl" style={{ color: ZODIAC_SIGNS[sign1].color }}>
-                  {ZODIAC_SIGNS[sign1].emoji}
-                </span>
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: `${ZODIAC_SIGNS[sign1].color}15` }}
+                >
+                  <span className="text-xl" style={{ color: ZODIAC_SIGNS[sign1].color }}>
+                    {ZODIAC_SIGNS[sign1].symbol}
+                  </span>
+                </div>
                 <div>
                   <p className="font-medium text-[var(--color-text-primary)]">
                     {ZODIAC_SIGNS[sign1].nameFr}
                   </p>
                   <p className="text-sm text-[var(--color-text-muted)]">
-                    Voir l'horoscope →
+                    Voir l&apos;horoscope
                   </p>
                 </div>
               </Link>
 
               <Link
                 href={`/horoscope/${sign2}`}
-                className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow"
+                className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
               >
-                <span className="text-3xl" style={{ color: ZODIAC_SIGNS[sign2].color }}>
-                  {ZODIAC_SIGNS[sign2].emoji}
-                </span>
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: `${ZODIAC_SIGNS[sign2].color}15` }}
+                >
+                  <span className="text-xl" style={{ color: ZODIAC_SIGNS[sign2].color }}>
+                    {ZODIAC_SIGNS[sign2].symbol}
+                  </span>
+                </div>
                 <div>
                   <p className="font-medium text-[var(--color-text-primary)]">
                     {ZODIAC_SIGNS[sign2].nameFr}
                   </p>
                   <p className="text-sm text-[var(--color-text-muted)]">
-                    Voir l'horoscope →
+                    Voir l&apos;horoscope
                   </p>
                 </div>
               </Link>
