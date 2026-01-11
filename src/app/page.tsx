@@ -26,18 +26,18 @@ import {
 } from '@/components/icons';
 
 const signes = [
-  { nom: 'Bélier', slug: 'belier', Icon: AriesIcon, dates: '21 mars - 19 avril' },
-  { nom: 'Taureau', slug: 'taureau', Icon: TaurusIcon, dates: '20 avril - 20 mai' },
-  { nom: 'Gémeaux', slug: 'gemeaux', Icon: GeminiIcon, dates: '21 mai - 20 juin' },
+  { nom: 'Bélier', slug: 'aries', Icon: AriesIcon, dates: '21 mars - 19 avril' },
+  { nom: 'Taureau', slug: 'taurus', Icon: TaurusIcon, dates: '20 avril - 20 mai' },
+  { nom: 'Gémeaux', slug: 'gemini', Icon: GeminiIcon, dates: '21 mai - 20 juin' },
   { nom: 'Cancer', slug: 'cancer', Icon: CancerIcon, dates: '21 juin - 22 juillet' },
-  { nom: 'Lion', slug: 'lion', Icon: LeoIcon, dates: '23 juillet - 22 août' },
-  { nom: 'Vierge', slug: 'vierge', Icon: VirgoIcon, dates: '23 août - 22 sept.' },
-  { nom: 'Balance', slug: 'balance', Icon: LibraIcon, dates: '23 sept. - 22 oct.' },
-  { nom: 'Scorpion', slug: 'scorpion', Icon: ScorpioIcon, dates: '23 oct. - 21 nov.' },
-  { nom: 'Sagittaire', slug: 'sagittaire', Icon: SagittariusIcon, dates: '22 nov. - 21 déc.' },
-  { nom: 'Capricorne', slug: 'capricorne', Icon: CapricornIcon, dates: '22 déc. - 19 jan.' },
-  { nom: 'Verseau', slug: 'verseau', Icon: AquariusIcon, dates: '20 jan. - 18 fév.' },
-  { nom: 'Poissons', slug: 'poissons', Icon: PiscesIcon, dates: '19 fév. - 20 mars' },
+  { nom: 'Lion', slug: 'leo', Icon: LeoIcon, dates: '23 juillet - 22 août' },
+  { nom: 'Vierge', slug: 'virgo', Icon: VirgoIcon, dates: '23 août - 22 sept.' },
+  { nom: 'Balance', slug: 'libra', Icon: LibraIcon, dates: '23 sept. - 22 oct.' },
+  { nom: 'Scorpion', slug: 'scorpio', Icon: ScorpioIcon, dates: '23 oct. - 21 nov.' },
+  { nom: 'Sagittaire', slug: 'sagittarius', Icon: SagittariusIcon, dates: '22 nov. - 21 déc.' },
+  { nom: 'Capricorne', slug: 'capricorn', Icon: CapricornIcon, dates: '22 déc. - 19 jan.' },
+  { nom: 'Verseau', slug: 'aquarius', Icon: AquariusIcon, dates: '20 jan. - 18 fév.' },
+  { nom: 'Poissons', slug: 'pisces', Icon: PiscesIcon, dates: '19 fév. - 20 mars' },
 ];
 
 const horoscopes = [

@@ -7,6 +7,7 @@ import { ZodiacCard } from '@/components/horoscope';
 import { fetchHoroscope, getMostCompatible, getLeastCompatible } from '@/lib/api';
 import { HoroscopeData, ZodiacSignKey, HoroscopePeriod } from '@/lib/api/types';
 import { ZODIAC_SIGNS, ZODIAC_SIGNS_ARRAY } from '@/lib/api/constants';
+import { zodiacIconsByKey } from '@/components/icons';
 
 export default function SigneDetailPage() {
   const params = useParams();
@@ -80,7 +81,12 @@ export default function SigneDetailPage() {
           }}
         >
           <div className="flex flex-col sm:flex-row items-center gap-6">
-            <span className="text-7xl">{signInfo.emoji}</span>
+            <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center">
+              {(() => {
+                const IconComponent = zodiacIconsByKey[sign];
+                return <IconComponent size={48} className="text-white" />;
+              })()}
+            </div>
             <div className="text-center sm:text-left">
               <h1 className="text-3xl sm:text-4xl font-bold mb-2">{signInfo.nameFr}</h1>
               <p className="text-white/80 text-lg mb-3">{signInfo.dateRangeFr}</p>
@@ -192,37 +198,53 @@ export default function SigneDetailPage() {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
-              <span>💚</span> Meilleure compatibilité
+              <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              Meilleure compatibilité
             </h3>
             <div className="space-y-3">
-              {mostCompatible.map((s) => (
-                <Link
-                  key={s}
-                  href={`/horoscope/${s}`}
-                  className="flex items-center gap-3 p-3 bg-green-50 rounded-xl hover:bg-green-100 transition-colors"
-                >
-                  <span className="text-2xl">{ZODIAC_SIGNS[s].emoji}</span>
-                  <span className="font-medium text-green-800">{ZODIAC_SIGNS[s].nameFr}</span>
-                </Link>
-              ))}
+              {mostCompatible.map((s) => {
+                const CompatIcon = zodiacIconsByKey[s];
+                return (
+                  <Link
+                    key={s}
+                    href={`/horoscope/${s}`}
+                    className="flex items-center gap-3 p-3 bg-green-50 rounded-xl hover:bg-green-100 transition-colors"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
+                      <CompatIcon size={24} className="text-green-700" />
+                    </div>
+                    <span className="font-medium text-green-800">{ZODIAC_SIGNS[s].nameFr}</span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
-              <span>⚡</span> Défis potentiels
+              <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+              Défis potentiels
             </h3>
             <div className="space-y-3">
-              {leastCompatible.map((s) => (
-                <Link
-                  key={s}
-                  href={`/horoscope/${s}`}
-                  className="flex items-center gap-3 p-3 bg-amber-50 rounded-xl hover:bg-amber-100 transition-colors"
-                >
-                  <span className="text-2xl">{ZODIAC_SIGNS[s].emoji}</span>
-                  <span className="font-medium text-amber-800">{ZODIAC_SIGNS[s].nameFr}</span>
-                </Link>
-              ))}
+              {leastCompatible.map((s) => {
+                const ChallengeIcon = zodiacIconsByKey[s];
+                return (
+                  <Link
+                    key={s}
+                    href={`/horoscope/${s}`}
+                    className="flex items-center gap-3 p-3 bg-amber-50 rounded-xl hover:bg-amber-100 transition-colors"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center">
+                      <ChallengeIcon size={24} className="text-amber-700" />
+                    </div>
+                    <span className="font-medium text-amber-800">{ZODIAC_SIGNS[s].nameFr}</span>
+                  </Link>
+                );
+              })}
             </div>
             <Link
               href="/horoscope/compatibilite"
@@ -239,18 +261,23 @@ export default function SigneDetailPage() {
             Découvrir les autres signes
           </h3>
           <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
-            {ZODIAC_SIGNS_ARRAY.filter((s) => s !== sign).map((s) => (
-              <Link
-                key={s}
-                href={`/horoscope/${s}`}
-                className="p-3 text-center bg-[var(--color-bg-tertiary)] rounded-xl hover:bg-[var(--color-border)] transition-colors"
-              >
-                <span className="text-2xl block mb-1">{ZODIAC_SIGNS[s].emoji}</span>
-                <span className="text-xs text-[var(--color-text-muted)]">
-                  {ZODIAC_SIGNS[s].nameFr}
-                </span>
-              </Link>
-            ))}
+            {ZODIAC_SIGNS_ARRAY.filter((s) => s !== sign).map((s) => {
+              const OtherSignIcon = zodiacIconsByKey[s];
+              return (
+                <Link
+                  key={s}
+                  href={`/horoscope/${s}`}
+                  className="p-3 text-center bg-[var(--color-bg-tertiary)] rounded-xl hover:bg-[var(--color-border)] transition-colors"
+                >
+                  <div className="w-10 h-10 mx-auto mb-1 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center">
+                    <OtherSignIcon size={24} className="text-[var(--color-primary)]" />
+                  </div>
+                  <span className="text-xs text-[var(--color-text-muted)]">
+                    {ZODIAC_SIGNS[s].nameFr}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -15,9 +15,15 @@ const ADVICE_SLIP_URL = 'https://api.adviceslip.com/advice';
  */
 export async function fetchRandomQuote(): Promise<Quote> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
     const response = await fetch(`${ZEN_QUOTES_URL}/random`, {
       next: { revalidate: 3600 }, // Cache 1 heure
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -33,9 +39,8 @@ export async function fetchRandomQuote(): Promise<Quote> {
     }
 
     throw new Error('Invalid response format');
-  } catch (error) {
-    console.error('Error fetching quote:', error);
-    // Retourner une citation de fallback
+  } catch {
+    // Retourner une citation de fallback silencieusement
     return FALLBACK_QUOTES[Math.floor(Math.random() * FALLBACK_QUOTES.length)];
   }
 }
@@ -45,9 +50,15 @@ export async function fetchRandomQuote(): Promise<Quote> {
  */
 export async function fetchQuoteOfTheDay(): Promise<Quote> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
     const response = await fetch(`${ZEN_QUOTES_URL}/today`, {
       next: { revalidate: 86400 }, // Cache 24 heures
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -63,8 +74,7 @@ export async function fetchQuoteOfTheDay(): Promise<Quote> {
     }
 
     throw new Error('Invalid response format');
-  } catch (error) {
-    console.error('Error fetching quote of the day:', error);
+  } catch {
     // Utiliser la date pour avoir une citation "stable" pour la journée
     const dayOfYear = Math.floor(
       (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000
@@ -78,9 +88,15 @@ export async function fetchQuoteOfTheDay(): Promise<Quote> {
  */
 export async function fetchMultipleQuotes(count: number = 5): Promise<Quote[]> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
     const response = await fetch(`${ZEN_QUOTES_URL}/quotes`, {
       next: { revalidate: 3600 },
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -96,8 +112,7 @@ export async function fetchMultipleQuotes(count: number = 5): Promise<Quote[]> {
     }
 
     throw new Error('Invalid response format');
-  } catch (error) {
-    console.error('Error fetching multiple quotes:', error);
+  } catch {
     // Retourner des citations de fallback
     return FALLBACK_QUOTES.slice(0, count);
   }
@@ -108,9 +123,15 @@ export async function fetchMultipleQuotes(count: number = 5): Promise<Quote[]> {
  */
 export async function fetchAffirmation(): Promise<Affirmation> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
     const response = await fetch(AFFIRMATIONS_URL, {
       next: { revalidate: 300 }, // Cache 5 minutes
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -125,8 +146,7 @@ export async function fetchAffirmation(): Promise<Affirmation> {
     }
 
     throw new Error('Invalid response format');
-  } catch (error) {
-    console.error('Error fetching affirmation:', error);
+  } catch {
     // Retourner une affirmation de fallback en français
     return {
       text: FALLBACK_AFFIRMATIONS[Math.floor(Math.random() * FALLBACK_AFFIRMATIONS.length)],
@@ -139,10 +159,16 @@ export async function fetchAffirmation(): Promise<Affirmation> {
  */
 export async function fetchAdvice(): Promise<Advice> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
     // Ajouter un timestamp pour éviter le cache
     const response = await fetch(`${ADVICE_SLIP_URL}?timestamp=${Date.now()}`, {
       cache: 'no-store',
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -158,8 +184,7 @@ export async function fetchAdvice(): Promise<Advice> {
     }
 
     throw new Error('Invalid response format');
-  } catch (error) {
-    console.error('Error fetching advice:', error);
+  } catch {
     return {
       id: 0,
       text: "Prenez le temps d'apprécier les petites choses de la vie.",
@@ -172,9 +197,15 @@ export async function fetchAdvice(): Promise<Advice> {
  */
 export async function searchAdvice(query: string): Promise<Advice[]> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
     const response = await fetch(`${ADVICE_SLIP_URL}/search/${encodeURIComponent(query)}`, {
       cache: 'no-store',
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       if (response.status === 404) {
@@ -193,8 +224,7 @@ export async function searchAdvice(query: string): Promise<Advice[]> {
     }
 
     return [];
-  } catch (error) {
-    console.error('Error searching advice:', error);
+  } catch {
     return [];
   }
 }

@@ -15,13 +15,13 @@ export function MoonPhaseWidget({
 }: MoonPhaseWidgetProps) {
   if (variant === 'compact') {
     return (
-      <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-4 text-white">
-        <div className="flex items-center gap-3">
-          <span className="text-4xl">{moonPhase.emoji}</span>
-          <div>
-            <p className="text-xs text-white/60">Phase lunaire</p>
-            <p className="font-medium">{moonPhase.phaseFr}</p>
-            <p className="text-xs text-white/80">{moonPhase.illumination}% illuminée</p>
+      <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-6 h-full flex flex-col justify-center">
+        <div className="flex items-center gap-4">
+          <span className="text-6xl">{moonPhase.emoji}</span>
+          <div className="flex-1">
+            <p className="text-sm mb-1" style={{ color: '#fef9c3' }}>Phase lunaire</p>
+            <p className="text-xl font-bold mb-1" style={{ color: '#fef08a' }}>{moonPhase.phaseFr}</p>
+            <p className="text-sm" style={{ color: '#fef9c3' }}>{moonPhase.illumination}% illuminée</p>
           </div>
         </div>
       </div>
@@ -50,9 +50,9 @@ export function MoonPhaseWidget({
         {/* Lune */}
         <div className="text-center mb-6">
           <span className="text-7xl block mb-2">{moonPhase.emoji}</span>
-          <h3 className="text-2xl font-bold mb-1">{moonPhase.phaseFr}</h3>
-          <p className="text-white/70">Illumination : {moonPhase.illumination}%</p>
-          <p className="text-white/50 text-sm">Âge : {moonPhase.age} jours</p>
+          <h3 className="text-2xl font-bold mb-1" style={{ color: '#fef08a' }}>{moonPhase.phaseFr}</h3>
+          <p className="font-medium" style={{ color: '#fef9c3' }}>Illumination : {moonPhase.illumination}%</p>
+          <p className="text-sm" style={{ color: '#fef08a' }}>Âge : {moonPhase.age} jours</p>
         </div>
 
         {/* Barre d'illumination */}
@@ -66,19 +66,19 @@ export function MoonPhaseWidget({
         </div>
 
         {/* Description */}
-        <p className="text-white/80 text-center mb-6 leading-relaxed">
+        <p className="text-center mb-6 leading-relaxed" style={{ color: '#fef9c3' }}>
           {moonPhase.descriptionFr}
         </p>
 
         {/* Rituels */}
         {showRituals && (
-          <div className="bg-white/10 rounded-xl p-4">
-            <h4 className="font-medium mb-3 flex items-center gap-2">
-              <span>✨</span> Rituels recommandés
+          <div className="bg-yellow-100/20 rounded-xl p-4">
+            <h4 className="font-medium mb-3 text-yellow-200">
+              Rituels recommandés
             </h4>
             <ul className="space-y-2">
               {moonPhase.ritualsFr.map((ritual, index) => (
-                <li key={index} className="flex items-start gap-2 text-sm text-white/80">
+                <li key={index} className="flex items-start gap-2 text-sm text-yellow-100">
                   <span className="text-yellow-300">•</span>
                   {ritual}
                 </li>
