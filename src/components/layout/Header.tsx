@@ -8,9 +8,10 @@ import { createBrowserClient } from '@/lib/supabase';
 import type { User } from '@supabase/supabase-js';
 
 const navigation = [
-  { name: 'Horoscopes', href: '/horoscope' },
-  { name: 'Astrologie', href: '/astrologie' },
-  { name: 'Livre d\'Or', href: '/livre-dor' },
+  { name: 'Horoscopes', href: '/horoscope', emoji: '☀️' },
+  { name: 'Astrologie', href: '/astrologie', emoji: '🌟' },
+  { name: 'Bien-être', href: '/bien-etre', emoji: '🌿' },
+  { name: 'Livre d\'Or', href: '/livre-dor', emoji: '📚' },
 ];
 
 export function Header() {
@@ -253,11 +254,7 @@ export function Header() {
                       : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] active:bg-[var(--color-bg-tertiary)]'
                   }`}
                 >
-                  <span className="text-xl">
-                    {item.name === 'Horoscopes' && '☀️'}
-                    {item.name === 'Astrologie' && '🌟'}
-                    {item.name === 'Livre d\'Or' && '📚'}
-                  </span>
+                  <span className="text-xl">{item.emoji}</span>
                   {item.name}
                 </Link>
               ))}
