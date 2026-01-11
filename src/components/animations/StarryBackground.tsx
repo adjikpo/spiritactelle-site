@@ -26,8 +26,6 @@ interface ConstellationPoint {
 }
 
 interface ZodiacConstellation {
-  name: string;
-  symbol: string;
   points: ConstellationPoint[];
   connections: [number, number][];
   centerX: number;
@@ -38,103 +36,91 @@ interface ZodiacConstellation {
 
 // Les 12 constellations du zodiaque avec leurs formes réalistes
 const createZodiacConstellations = (): ZodiacConstellation[] => [
-  // Bélier (Aries) - forme en V renversé
+  // Bélier (Aries)
   {
-    name: 'Bélier',
-    symbol: '♈',
     points: [
-      { x: 0, y: 0, brightness: 1 },      // Hamal (alpha)
-      { x: 0.03, y: 0.02, brightness: 0.8 }, // Sheratan (beta)
-      { x: 0.05, y: 0.01, brightness: 0.6 }, // Mesarthim (gamma)
+      { x: 0, y: 0, brightness: 1 },
+      { x: 0.03, y: 0.02, brightness: 0.8 },
+      { x: 0.05, y: 0.01, brightness: 0.6 },
       { x: 0.07, y: 0.03, brightness: 0.5 },
     ],
     connections: [[0, 1], [1, 2], [2, 3]],
-    centerX: 0.08,
-    centerY: 0.15,
-    scale: 1.2,
+    centerX: 0.06,
+    centerY: 0.12,
+    scale: 0.8,
     opacity: 1,
   },
-  // Taureau (Taurus) - forme en V avec les Hyades
+  // Taureau (Taurus)
   {
-    name: 'Taureau',
-    symbol: '♉',
     points: [
-      { x: 0, y: 0, brightness: 1 },       // Aldebaran (alpha)
+      { x: 0, y: 0, brightness: 1 },
       { x: -0.02, y: -0.02, brightness: 0.7 },
       { x: -0.04, y: -0.01, brightness: 0.6 },
-      { x: 0.03, y: -0.02, brightness: 0.8 }, // Corne gauche
-      { x: 0.06, y: -0.04, brightness: 0.7 }, // El Nath (beta)
-      { x: 0.04, y: 0.02, brightness: 0.6 },  // Corne droite
+      { x: 0.03, y: -0.02, brightness: 0.8 },
+      { x: 0.06, y: -0.04, brightness: 0.7 },
+      { x: 0.04, y: 0.02, brightness: 0.6 },
       { x: 0.07, y: 0.03, brightness: 0.5 },
     ],
     connections: [[0, 1], [1, 2], [0, 3], [3, 4], [0, 5], [5, 6]],
-    centerX: 0.22,
-    centerY: 0.12,
-    scale: 1.4,
+    centerX: 0.2,
+    centerY: 0.08,
+    scale: 0.9,
     opacity: 1,
   },
-  // Gémeaux (Gemini) - deux lignes parallèles
+  // Gémeaux (Gemini)
   {
-    name: 'Gémeaux',
-    symbol: '♊',
     points: [
-      { x: 0, y: 0, brightness: 1 },       // Castor
+      { x: 0, y: 0, brightness: 1 },
       { x: 0.02, y: 0.03, brightness: 0.7 },
       { x: 0.01, y: 0.06, brightness: 0.6 },
       { x: 0, y: 0.09, brightness: 0.5 },
-      { x: 0.04, y: 0, brightness: 1 },    // Pollux
+      { x: 0.04, y: 0, brightness: 1 },
       { x: 0.05, y: 0.03, brightness: 0.7 },
       { x: 0.045, y: 0.06, brightness: 0.6 },
       { x: 0.04, y: 0.09, brightness: 0.5 },
     ],
     connections: [[0, 1], [1, 2], [2, 3], [4, 5], [5, 6], [6, 7], [0, 4], [3, 7]],
-    centerX: 0.38,
-    centerY: 0.08,
-    scale: 1.3,
+    centerX: 0.35,
+    centerY: 0.15,
+    scale: 0.85,
     opacity: 1,
   },
-  // Cancer - forme en Y inversé
+  // Cancer
   {
-    name: 'Cancer',
-    symbol: '♋',
     points: [
       { x: 0, y: 0, brightness: 0.8 },
       { x: 0.02, y: 0.02, brightness: 0.7 },
       { x: 0.04, y: 0.01, brightness: 0.6 },
-      { x: 0.03, y: 0.04, brightness: 0.9 }, // Amas de la Crèche
+      { x: 0.03, y: 0.04, brightness: 0.9 },
       { x: 0.05, y: 0.03, brightness: 0.5 },
     ],
     connections: [[0, 1], [1, 2], [1, 3], [3, 4]],
-    centerX: 0.52,
-    centerY: 0.18,
-    scale: 1.1,
+    centerX: 0.5,
+    centerY: 0.1,
+    scale: 0.75,
     opacity: 1,
   },
-  // Lion (Leo) - forme de faucille
+  // Lion (Leo)
   {
-    name: 'Lion',
-    symbol: '♌',
     points: [
-      { x: 0, y: 0, brightness: 1 },       // Regulus
+      { x: 0, y: 0, brightness: 1 },
       { x: 0.02, y: -0.02, brightness: 0.8 },
       { x: 0.04, y: -0.03, brightness: 0.7 },
       { x: 0.06, y: -0.02, brightness: 0.6 },
       { x: 0.07, y: 0, brightness: 0.7 },
-      { x: 0.05, y: 0.02, brightness: 0.8 }, // Denebola
+      { x: 0.05, y: 0.02, brightness: 0.8 },
       { x: 0.03, y: 0.01, brightness: 0.6 },
     ],
     connections: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 0]],
-    centerX: 0.68,
-    centerY: 0.1,
-    scale: 1.5,
+    centerX: 0.65,
+    centerY: 0.08,
+    scale: 1.0,
     opacity: 1,
   },
-  // Vierge (Virgo) - forme en Y
+  // Vierge (Virgo)
   {
-    name: 'Vierge',
-    symbol: '♍',
     points: [
-      { x: 0, y: 0, brightness: 1 },       // Spica
+      { x: 0, y: 0, brightness: 1 },
       { x: 0.02, y: -0.03, brightness: 0.7 },
       { x: 0.04, y: -0.05, brightness: 0.6 },
       { x: 0.06, y: -0.04, brightness: 0.8 },
@@ -144,69 +130,61 @@ const createZodiacConstellations = (): ZodiacConstellation[] => [
     ],
     connections: [[0, 1], [1, 2], [2, 3], [3, 4], [1, 5], [5, 6]],
     centerX: 0.82,
-    centerY: 0.2,
-    scale: 1.4,
+    centerY: 0.12,
+    scale: 0.9,
     opacity: 1,
   },
-  // Balance (Libra) - forme de balance
+  // Balance (Libra)
   {
-    name: 'Balance',
-    symbol: '♎',
     points: [
-      { x: 0, y: 0, brightness: 0.9 },     // Zubenelgenubi
-      { x: 0.04, y: 0, brightness: 0.9 },  // Zubeneschamali
+      { x: 0, y: 0, brightness: 0.9 },
+      { x: 0.04, y: 0, brightness: 0.9 },
       { x: 0.02, y: -0.03, brightness: 0.7 },
       { x: 0.02, y: 0.02, brightness: 0.6 },
     ],
     connections: [[0, 2], [2, 1], [0, 3], [3, 1]],
-    centerX: 0.12,
-    centerY: 0.45,
-    scale: 1.2,
+    centerX: 0.92,
+    centerY: 0.25,
+    scale: 0.8,
     opacity: 1,
   },
-  // Scorpion (Scorpio) - forme de scorpion avec queue
+  // Scorpion (Scorpio)
   {
-    name: 'Scorpion',
-    symbol: '♏',
     points: [
-      { x: 0, y: 0, brightness: 1 },       // Antarès
+      { x: 0, y: 0, brightness: 1 },
       { x: -0.02, y: -0.01, brightness: 0.7 },
       { x: -0.04, y: -0.02, brightness: 0.6 },
       { x: 0.02, y: 0.01, brightness: 0.8 },
       { x: 0.04, y: 0.03, brightness: 0.7 },
       { x: 0.05, y: 0.05, brightness: 0.6 },
-      { x: 0.04, y: 0.07, brightness: 0.8 }, // Shaula (dard)
+      { x: 0.04, y: 0.07, brightness: 0.8 },
       { x: 0.03, y: 0.08, brightness: 0.7 },
     ],
     connections: [[0, 1], [1, 2], [0, 3], [3, 4], [4, 5], [5, 6], [6, 7]],
-    centerX: 0.28,
+    centerX: 0.08,
     centerY: 0.55,
-    scale: 1.6,
+    scale: 1.0,
     opacity: 1,
   },
-  // Sagittaire (Sagittarius) - forme de théière/arc
+  // Sagittaire (Sagittarius)
   {
-    name: 'Sagittaire',
-    symbol: '♐',
     points: [
       { x: 0, y: 0, brightness: 0.9 },
       { x: 0.02, y: -0.02, brightness: 0.8 },
       { x: 0.04, y: -0.01, brightness: 0.7 },
       { x: 0.03, y: 0.02, brightness: 0.8 },
       { x: 0.01, y: 0.03, brightness: 0.6 },
-      { x: 0.05, y: 0.01, brightness: 0.9 }, // Flèche
+      { x: 0.05, y: 0.01, brightness: 0.9 },
       { x: 0.07, y: -0.02, brightness: 0.7 },
     ],
     connections: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0], [2, 5], [5, 6]],
-    centerX: 0.45,
-    centerY: 0.6,
-    scale: 1.3,
+    centerX: 0.25,
+    centerY: 0.65,
+    scale: 0.85,
     opacity: 1,
   },
-  // Capricorne (Capricornus) - forme triangulaire
+  // Capricorne (Capricornus)
   {
-    name: 'Capricorne',
-    symbol: '♑',
     points: [
       { x: 0, y: 0, brightness: 0.8 },
       { x: 0.03, y: -0.02, brightness: 0.7 },
@@ -215,15 +193,13 @@ const createZodiacConstellations = (): ZodiacConstellation[] => [
       { x: 0.02, y: 0.03, brightness: 0.7 },
     ],
     connections: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0]],
-    centerX: 0.62,
-    centerY: 0.52,
-    scale: 1.2,
+    centerX: 0.45,
+    centerY: 0.72,
+    scale: 0.8,
     opacity: 1,
   },
-  // Verseau (Aquarius) - forme de vague/eau
+  // Verseau (Aquarius)
   {
-    name: 'Verseau',
-    symbol: '♒',
     points: [
       { x: 0, y: 0, brightness: 0.9 },
       { x: 0.02, y: 0.01, brightness: 0.7 },
@@ -233,28 +209,26 @@ const createZodiacConstellations = (): ZodiacConstellation[] => [
       { x: 0.05, y: 0.05, brightness: 0.5 },
     ],
     connections: [[0, 1], [1, 2], [2, 3], [2, 4], [4, 5]],
-    centerX: 0.78,
-    centerY: 0.48,
-    scale: 1.3,
+    centerX: 0.65,
+    centerY: 0.68,
+    scale: 0.85,
     opacity: 1,
   },
-  // Poissons (Pisces) - deux poissons reliés
+  // Poissons (Pisces)
   {
-    name: 'Poissons',
-    symbol: '♓',
     points: [
-      { x: 0, y: 0, brightness: 0.8 },     // Poisson 1
+      { x: 0, y: 0, brightness: 0.8 },
       { x: 0.02, y: 0.01, brightness: 0.6 },
       { x: 0.04, y: 0, brightness: 0.7 },
-      { x: 0.06, y: 0.03, brightness: 0.5 }, // Noeud
+      { x: 0.06, y: 0.03, brightness: 0.5 },
       { x: 0.08, y: 0.05, brightness: 0.6 },
-      { x: 0.1, y: 0.04, brightness: 0.7 }, // Poisson 2
+      { x: 0.1, y: 0.04, brightness: 0.7 },
       { x: 0.12, y: 0.05, brightness: 0.8 },
     ],
     connections: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]],
-    centerX: 0.88,
-    centerY: 0.38,
-    scale: 1.1,
+    centerX: 0.85,
+    centerY: 0.58,
+    scale: 0.75,
     opacity: 1,
   },
 ];

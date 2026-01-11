@@ -5,6 +5,12 @@
    Thème Élégant & Professionnel
    ============================================ */
 
+/* Prevent layout shift from scrollbar */
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
 :root {
   /* Couleurs de fond - Plus lumineuses et chaleureuses */
   --color-bg-primary: #faf8f5;
