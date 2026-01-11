@@ -263,6 +263,29 @@ export function NumerologyIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
+// Icones Blog
+
+// Livre ouvert
+export function BookOpenIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2V3z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7V3z" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Plume / Ecriture
+export function FeatherIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5l6.74-6.76z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 8L2 22" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M17.5 15H9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 // Icones Mythologies
 
 // Dragon Chinois

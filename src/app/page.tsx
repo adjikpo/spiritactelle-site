@@ -25,6 +25,7 @@ import {
   NumerologyIcon,
   DragonIcon,
   AnkhIcon,
+  BookOpenIcon,
 } from '@/components/icons';
 
 const signes = [
@@ -66,6 +67,13 @@ const bienEtre = [
 const mythologies = [
   { title: 'Chinoise', Icon: DragonIcon, href: '/mythologies/chinoise' },
   { title: 'Egyptienne', Icon: AnkhIcon, href: '/mythologies/egyptienne' },
+];
+
+const blogArticles = [
+  { title: 'Astrologie Chinoise', Icon: DragonIcon, href: '/blog/astrologie-chinoise-guide-complet' },
+  { title: 'Phases de la Lune', Icon: MoonIcon, href: '/blog/phases-lune-rituels-spirituels' },
+  { title: 'Chakras', Icon: MeditationIcon, href: '/blog/equilibrer-chakras-guide-pratique' },
+  { title: 'Tous les articles', Icon: BookOpenIcon, href: '/blog' },
 ];
 
 const temoignagesRecents = [
@@ -322,62 +330,23 @@ export default function HomePage() {
       {/* Section Blog */}
       <section className="py-12 sm:py-16 bg-[var(--color-bg-primary)]">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold">Blog</h2>
-              <p className="text-sm text-[var(--color-text-secondary)] mt-1">Articles et guides spirituels</p>
-            </div>
-            <Link href="/blog">
-              <Button variant="outline" size="sm">Voir tout</Button>
-            </Link>
+          <div className="text-center mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold mb-2">Blog</h2>
+            <p className="text-sm text-[var(--color-text-secondary)]">Articles et guides spirituels</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            <Link href="/blog/astrologie-chinoise-guide-complet" className="group">
-              <Card variant="default" hover className="h-full">
-                <CardContent className="p-5">
-                  <span className="inline-block px-2.5 py-1 bg-red-100 text-red-600 text-xs font-medium rounded-full mb-3">
-                    Mythologies
-                  </span>
-                  <h3 className="font-semibold text-base sm:text-lg text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
-                    Astrologie Chinoise : Guide Complet
-                  </h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
-                    Les 12 animaux et les 5 elements...
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
-            <Link href="/blog/phases-lune-rituels-spirituels" className="group">
-              <Card variant="default" hover className="h-full">
-                <CardContent className="p-5">
-                  <span className="inline-block px-2.5 py-1 bg-purple-100 text-purple-600 text-xs font-medium rounded-full mb-3">
-                    Spiritualite
-                  </span>
-                  <h3 className="font-semibold text-base sm:text-lg text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
-                    Les Phases de la Lune et leurs Rituels
-                  </h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
-                    Harmonisez votre vie avec les cycles lunaires...
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
-            <Link href="/blog/equilibrer-chakras-guide-pratique" className="group">
-              <Card variant="default" hover className="h-full">
-                <CardContent className="p-5">
-                  <span className="inline-block px-2.5 py-1 bg-teal-100 text-teal-600 text-xs font-medium rounded-full mb-3">
-                    Bien-etre
-                  </span>
-                  <h3 className="font-semibold text-base sm:text-lg text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
-                    Equilibrer ses Chakras
-                  </h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
-                    Guide pratique pour harmoniser vos centres...
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            {blogArticles.map((item) => (
+              <Link key={item.title} href={item.href}>
+                <div className="service-card p-4 h-full text-center">
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-3">
+                    <item.Icon size={24} />
+                  </div>
+                  <h3 className="font-semibold text-sm">{item.title}</h3>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">Article</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
