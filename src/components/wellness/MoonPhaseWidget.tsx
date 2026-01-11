@@ -1,6 +1,7 @@
 'use client';
 
 import { MoonPhase } from '@/lib/api/types';
+import { moonPhaseIcons } from '@/components/icons';
 
 interface MoonPhaseWidgetProps {
   moonPhase: MoonPhase;
@@ -13,11 +14,13 @@ export function MoonPhaseWidget({
   variant = 'compact',
   showRituals = false,
 }: MoonPhaseWidgetProps) {
+  const PhaseIcon = moonPhaseIcons[moonPhase.phase as keyof typeof moonPhaseIcons];
+
   if (variant === 'compact') {
     return (
       <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-6 h-full flex flex-col justify-center">
         <div className="flex items-center gap-4">
-          <span className="text-6xl">{moonPhase.emoji}</span>
+          {PhaseIcon ? <PhaseIcon size={60} className="text-yellow-200" /> : null}
           <div className="flex-1">
             <p className="text-sm mb-1" style={{ color: '#fef9c3' }}>Phase lunaire</p>
             <p className="text-xl font-bold mb-1" style={{ color: '#fef08a' }}>{moonPhase.phaseFr}</p>
@@ -49,7 +52,9 @@ export function MoonPhaseWidget({
       <div className="relative">
         {/* Lune */}
         <div className="text-center mb-6">
-          <span className="text-7xl block mb-2">{moonPhase.emoji}</span>
+          <div className="flex justify-center mb-2">
+            {PhaseIcon ? <PhaseIcon size={70} className="text-yellow-200" /> : null}
+          </div>
           <h3 className="text-2xl font-bold mb-1" style={{ color: '#fef08a' }}>{moonPhase.phaseFr}</h3>
           <p className="font-medium" style={{ color: '#fef9c3' }}>Illumination : {moonPhase.illumination}%</p>
           <p className="text-sm" style={{ color: '#fef08a' }}>Âge : {moonPhase.age} jours</p>
@@ -97,15 +102,17 @@ export function MoonPhaseWidget({
 export function UpcomingPhasesWidget({
   phases,
 }: {
-  phases: { phase: string; phaseFr: string; emoji: string; date: Date }[];
+  phases: { phase: string; phaseFr: string; date: Date }[];
 }) {
   return (
     <div className="bg-white rounded-xl shadow-md p-4 border border-[var(--color-border)]">
       <h3 className="font-medium text-[var(--color-text-primary)] mb-4">Prochaines phases</h3>
       <div className="space-y-3">
-        {phases.map((phase, index) => (
+        {phases.map((phase, index) => {
+          const PhaseIcon = moonPhaseIcons[phase.phase as keyof typeof moonPhaseIcons];
+          return (
           <div key={index} className="flex items-center gap-3">
-            <span className="text-2xl">{phase.emoji}</span>
+            {PhaseIcon ? <PhaseIcon size={28} className="text-indigo-600" /> : null}
             <div className="flex-1">
               <p className="text-sm font-medium text-[var(--color-text-primary)]">
                 {phase.phaseFr}
@@ -119,7 +126,8 @@ export function UpcomingPhasesWidget({
               </p>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

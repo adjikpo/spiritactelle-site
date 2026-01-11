@@ -7,6 +7,7 @@ import { BackButton } from '@/components/layout';
 import { calculateMoonPhase, getUpcomingPhases } from '@/lib/api';
 import { MoonPhase, UpcomingMoonPhase } from '@/lib/api/types';
 import { ZODIAC_SIGNS } from '@/lib/api/constants';
+import { moonPhaseIcons } from '@/components/icons';
 
 // Données des planètes et leurs significations
 const PLANETS = {
@@ -194,7 +195,7 @@ export default function TransitsPage() {
                         </div>
                         <div className="flex items-center gap-1 text-sm text-[var(--color-text-secondary)]">
                           <span>en</span>
-                          <span style={{ color: sign?.color }}>{sign?.emoji}</span>
+                          <span style={{ color: sign?.color }}>{sign?.symbol}</span>
                           <span>{sign?.nameFr}</span>
                         </div>
                       </div>
@@ -250,12 +251,14 @@ export default function TransitsPage() {
                 Prochaines Phases Lunaires
               </h3>
               <div className="space-y-3">
-                {upcomingPhases.map((phase, index) => (
+                {upcomingPhases.map((phase, index) => {
+                  const PhaseIcon = moonPhaseIcons[phase.phase as keyof typeof moonPhaseIcons];
+                  return (
                   <div
                     key={index}
                     className="flex items-center gap-3 p-2 rounded-lg hover:bg-[var(--color-bg-secondary)]"
                   >
-                    <span className="text-2xl">{phase.emoji}</span>
+                    {PhaseIcon ? <PhaseIcon size={28} className="text-indigo-600" /> : null}
                     <div>
                       <p className="font-medium text-sm text-[var(--color-text-primary)]">
                         {phase.phaseFr}
@@ -268,7 +271,8 @@ export default function TransitsPage() {
                       </p>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 

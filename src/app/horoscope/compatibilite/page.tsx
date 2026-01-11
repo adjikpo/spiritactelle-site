@@ -7,6 +7,7 @@ import { BackButton } from '@/components/layout';
 import { calculateCompatibility, getCompatibilityAdvice } from '@/lib/api';
 import { Compatibility, ZodiacSignKey } from '@/lib/api/types';
 import { ZODIAC_SIGNS } from '@/lib/api/constants';
+import { zodiacIconsByKey } from '@/components/icons';
 
 export default function CompatibilitePage() {
   const [sign1, setSign1] = useState<ZodiacSignKey>('aries');
@@ -82,49 +83,55 @@ export default function CompatibilitePage() {
 
             {/* Liens vers les signes */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href={`/horoscope/${sign1}`}
-                className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
-              >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: `${ZODIAC_SIGNS[sign1].color}15` }}
-                >
-                  <span className="text-xl" style={{ color: ZODIAC_SIGNS[sign1].color }}>
-                    {ZODIAC_SIGNS[sign1].symbol}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-medium text-[var(--color-text-primary)]">
-                    {ZODIAC_SIGNS[sign1].nameFr}
-                  </p>
-                  <p className="text-sm text-[var(--color-text-muted)]">
-                    Voir l&apos;horoscope
-                  </p>
-                </div>
-              </Link>
+              {(() => {
+                const Sign1Icon = zodiacIconsByKey[sign1];
+                return (
+                  <Link
+                    href={`/horoscope/${sign1}`}
+                    className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
+                  >
+                    <div
+                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: `${ZODIAC_SIGNS[sign1].color}15` }}
+                    >
+                      {Sign1Icon && <Sign1Icon size={24} style={{ color: ZODIAC_SIGNS[sign1].color }} />}
+                    </div>
+                    <div>
+                      <p className="font-medium text-[var(--color-text-primary)]">
+                        {ZODIAC_SIGNS[sign1].nameFr}
+                      </p>
+                      <p className="text-sm text-[var(--color-text-muted)]">
+                        Voir l&apos;horoscope
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })()}
 
-              <Link
-                href={`/horoscope/${sign2}`}
-                className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
-              >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: `${ZODIAC_SIGNS[sign2].color}15` }}
-                >
-                  <span className="text-xl" style={{ color: ZODIAC_SIGNS[sign2].color }}>
-                    {ZODIAC_SIGNS[sign2].symbol}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-medium text-[var(--color-text-primary)]">
-                    {ZODIAC_SIGNS[sign2].nameFr}
-                  </p>
-                  <p className="text-sm text-[var(--color-text-muted)]">
-                    Voir l&apos;horoscope
-                  </p>
-                </div>
-              </Link>
+              {(() => {
+                const Sign2Icon = zodiacIconsByKey[sign2];
+                return (
+                  <Link
+                    href={`/horoscope/${sign2}`}
+                    className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
+                  >
+                    <div
+                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: `${ZODIAC_SIGNS[sign2].color}15` }}
+                    >
+                      {Sign2Icon && <Sign2Icon size={24} style={{ color: ZODIAC_SIGNS[sign2].color }} />}
+                    </div>
+                    <div>
+                      <p className="font-medium text-[var(--color-text-primary)]">
+                        {ZODIAC_SIGNS[sign2].nameFr}
+                      </p>
+                      <p className="text-sm text-[var(--color-text-muted)]">
+                        Voir l&apos;horoscope
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })()}
             </div>
           </div>
         )}

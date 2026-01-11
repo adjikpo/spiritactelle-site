@@ -166,11 +166,92 @@ export function SunIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
-// Lune
+// Lune (croissant)
 export function MoonIcon({ size = 24, ...props }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Phases lunaires avec remplissage visuel
+
+// Nouvelle Lune
+export function NewMoonIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.9" />
+    </svg>
+  );
+}
+
+// Premier Croissant
+export function WaxingCrescentIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 2a10 10 0 0 1 0 20c3-2 5-6 5-10s-2-8-5-10z" fill="currentColor" opacity="0.3" />
+    </svg>
+  );
+}
+
+// Premier Quartier
+export function FirstQuarterIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 2a10 10 0 0 1 0 20V2z" fill="currentColor" opacity="0.3" />
+    </svg>
+  );
+}
+
+// Lune Gibbeuse Croissante
+export function WaxingGibbousIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 2a10 10 0 0 1 0 20c-3-2-5-6-5-10s2-8 5-10z" fill="currentColor" opacity="0.3" />
+    </svg>
+  );
+}
+
+// Pleine Lune
+export function FullMoonIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.2" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+// Lune Gibbeuse Decroissante
+export function WaningGibbousIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 2a10 10 0 0 0 0 20c3-2 5-6 5-10s-2-8-5-10z" fill="currentColor" opacity="0.3" />
+    </svg>
+  );
+}
+
+// Dernier Quartier
+export function LastQuarterIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 2a10 10 0 0 0 0 20V2z" fill="currentColor" opacity="0.3" />
+    </svg>
+  );
+}
+
+// Dernier Croissant
+export function WaningCrescentIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 2a10 10 0 0 0 0 20c-3-2-5-6-5-10s2-8 5-10z" fill="currentColor" opacity="0.3" />
     </svg>
   );
 }
@@ -445,3 +526,17 @@ export const zodiacIconsByKey = {
 } as const;
 
 export type ZodiacSign = keyof typeof zodiacIcons;
+
+// Export map pour les phases lunaires
+export const moonPhaseIcons = {
+  'New Moon': NewMoonIcon,
+  'Waxing Crescent': WaxingCrescentIcon,
+  'First Quarter': FirstQuarterIcon,
+  'Waxing Gibbous': WaxingGibbousIcon,
+  'Full Moon': FullMoonIcon,
+  'Waning Gibbous': WaningGibbousIcon,
+  'Last Quarter': LastQuarterIcon,
+  'Waning Crescent': WaningCrescentIcon,
+} as const;
+
+export type MoonPhaseName = keyof typeof moonPhaseIcons;

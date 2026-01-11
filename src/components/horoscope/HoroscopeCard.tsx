@@ -21,10 +21,12 @@ export function HoroscopeCard({ horoscope, showDetails = true }: HoroscopeCardPr
         }}
       >
         <div className="flex items-center gap-4">
-          <span className="text-5xl">{signInfo.emoji}</span>
+          <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center">
+            <span className="text-3xl font-medium text-white">{signInfo.symbol}</span>
+          </div>
           <div>
             <h2 className="text-2xl font-bold">{signInfo.nameFr}</h2>
-            <p className="text-white/80 text-sm">{signInfo.dateRangeFr}</p>
+            <p className="text-white text-sm font-medium">{signInfo.dateRangeFr}</p>
           </div>
         </div>
       </div>
@@ -92,9 +94,14 @@ export function HoroscopeCardCompact({
       onClick={onClick}
     >
       <div className="flex items-start gap-3">
-        <span className="text-3xl" style={{ color: signInfo.color }}>
-          {signInfo.emoji}
-        </span>
+        <div
+          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+          style={{ backgroundColor: `${signInfo.color}15` }}
+        >
+          <span className="text-xl font-medium" style={{ color: signInfo.color }}>
+            {signInfo.symbol}
+          </span>
+        </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-bold text-[var(--color-text-primary)]">{signInfo.nameFr}</h3>
           <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2 mt-1">

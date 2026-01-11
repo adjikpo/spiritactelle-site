@@ -152,7 +152,7 @@ export default function HoroscopePage() {
                   </div>
 
                   {/* Liens */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 justify-center">
                     <Link
                       href={`/horoscope/${selectedSign}`}
                       className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"

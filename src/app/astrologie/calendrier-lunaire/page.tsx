@@ -6,6 +6,7 @@ import { BackButton } from '@/components/layout';
 import { calculateMoonPhase, getMoonGuidance, getUpcomingPhases } from '@/lib/api';
 import { MoonPhase, MoonPhaseName } from '@/lib/api/types';
 import { MOON_PHASES } from '@/lib/api/constants';
+import { moonPhaseIcons } from '@/components/icons';
 
 export default function CalendrierLunairePage() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -149,7 +150,9 @@ export default function CalendrierLunairePage() {
 
               {/* Grille du calendrier */}
               <div className="grid grid-cols-7 gap-1">
-                {calendar.map((day, index) => (
+                {calendar.map((day, index) => {
+                  const PhaseIcon = moonPhaseIcons[day.moonPhase.phase as keyof typeof moonPhaseIcons];
+                  return (
                   <button
                     key={index}
                     onClick={() => setSelectedDate(day.date)}
@@ -162,9 +165,12 @@ export default function CalendrierLunairePage() {
                     `}
                   >
                     <span className="text-sm font-medium block">{day.date.getDate()}</span>
-                    <span className="text-lg block mt-1">{day.moonPhase.emoji}</span>
+                    <span className="flex justify-center mt-1">
+                      {PhaseIcon ? <PhaseIcon size={20} className={isToday(day.date) ? 'text-white' : 'text-indigo-600'} /> : null}
+                    </span>
                   </button>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Légende */}
@@ -173,12 +179,15 @@ export default function CalendrierLunairePage() {
                   Légende des phases
                 </h3>
                 <div className="grid grid-cols-4 gap-2 text-xs">
-                  {(['New Moon', 'First Quarter', 'Full Moon', 'Last Quarter'] as MoonPhaseName[]).map((phase) => (
+                  {(['New Moon', 'First Quarter', 'Full Moon', 'Last Quarter'] as MoonPhaseName[]).map((phase) => {
+                    const PhaseIcon = moonPhaseIcons[phase];
+                    return (
                     <div key={phase} className="flex items-center gap-2">
-                      <span className="text-lg">{MOON_PHASES[phase].emoji}</span>
+                      {PhaseIcon ? <PhaseIcon size={20} className="text-indigo-600" /> : null}
                       <span className="text-[var(--color-text-muted)]">{MOON_PHASES[phase].phaseFr}</span>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>

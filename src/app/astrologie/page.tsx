@@ -6,6 +6,7 @@ import { MoonPhaseWidget } from '@/components/wellness';
 import { calculateMoonPhase, getUpcomingPhases } from '@/lib/api';
 import { MoonPhase, MoonPhaseName } from '@/lib/api/types';
 import { MOON_PHASES } from '@/lib/api/constants';
+import { moonPhaseIcons } from '@/components/icons';
 
 export default function AstrologiePage() {
   const [moonPhase, setMoonPhase] = useState<MoonPhase | null>(null);
@@ -65,9 +66,13 @@ export default function AstrologiePage() {
               Prochaines phases lunaires
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {upcomingPhases.map((phase, index) => (
+              {upcomingPhases.map((phase, index) => {
+                const PhaseIcon = moonPhaseIcons[phase.phase];
+                return (
                 <div key={index} className="text-center">
-                  <span className="text-3xl block mb-2">{MOON_PHASES[phase.phase].emoji}</span>
+                  <span className="flex justify-center mb-2">
+                    {PhaseIcon ? <PhaseIcon size={36} className="text-indigo-600" /> : null}
+                  </span>
                   <p className="font-medium text-sm text-[var(--color-text-primary)]">
                     {MOON_PHASES[phase.phase].phaseFr}
                   </p>
@@ -78,7 +83,8 @@ export default function AstrologiePage() {
                     })}
                   </p>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -155,7 +161,7 @@ export default function AstrologiePage() {
           <div className="mt-8 text-center">
             <Link
               href="/astrologie/theme-natal"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-medium hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-800 to-indigo-900 text-white rounded-xl font-medium hover:opacity-90 transition-opacity"
             >
               <span>Calculer mon thème natal</span>
               <span>→</span>
