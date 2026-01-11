@@ -263,6 +263,72 @@ export function NumerologyIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
+// Icones Mythologies
+
+// Dragon Chinois
+export function DragonIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M4 8C4 8 6 6 9 6C12 6 14 8 14 11C14 14 12 16 9 16" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 16C9 16 11 18 14 18C17 18 20 16 20 12" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M20 12C20 9 18 7 16 7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4 8L2 6M4 8L2 10" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M20 12L22 10M20 12L22 14" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="7" cy="9" r="1" fill="currentColor" />
+      <path d="M10 11C10 11 11 12 12 11" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Oeil d'Horus / Egyptien
+export function EgyptianEyeIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <ellipse cx="12" cy="10" rx="8" ry="5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="10" r="2" fill="currentColor" />
+      <path d="M4 10C4 10 2 12 2 14C2 16 4 18 4 18" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 15V20" strokeLinecap="round" />
+      <path d="M9 17L12 20L15 17" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Yin Yang (Chinois)
+export function YinYangIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <circle cx="12" cy="12" r="9" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 3C12 3 12 7.5 12 12C12 16.5 8.5 21 12 21" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 3C15.5 3 12 7.5 12 12" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="7.5" r="1.5" fill="currentColor" />
+      <circle cx="12" cy="16.5" r="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Ankh (Egyptien)
+export function AnkhIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M12 9C14.5 9 16 7 16 5C16 3 14.5 2 12 2C9.5 2 8 3 8 5C8 7 9.5 9 12 9Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 9V22" strokeLinecap="round" />
+      <path d="M7 14H17" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Globe / Monde (pour Multi-mythologies)
+export function GlobeIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <circle cx="12" cy="12" r="9" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M3 12H21" strokeLinecap="round" />
+      <path d="M12 3C14.5 5.5 16 8.5 16 12C16 15.5 14.5 18.5 12 21" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 3C9.5 5.5 8 8.5 8 12C8 15.5 9.5 18.5 12 21" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 // Export map pour accès dynamique (noms français)
 export const zodiacIcons = {
   belier: AriesIcon,

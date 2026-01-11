@@ -10,8 +10,10 @@ import type { User } from '@supabase/supabase-js';
 const navigation = [
   { name: 'Horoscopes', href: '/horoscope' },
   { name: 'Astrologie', href: '/astrologie' },
-  { name: 'Bien-être', href: '/bien-etre' },
+  { name: 'Mythologies', href: '/mythologies' },
+  { name: 'Bien-etre', href: '/bien-etre' },
   { name: 'Livre d\'Or', href: '/livre-dor' },
+  { name: 'Blog', href: '/blog' },
 ];
 
 export function Header() {

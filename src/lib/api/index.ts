@@ -71,3 +71,13 @@ export {
   getChineseZodiacById,
   getEgyptianZodiacById,
 } from './mythologies';
+
+export {
+  TESTIMONIALS,
+  TESTIMONIAL_SERVICES,
+  getFeaturedTestimonials,
+  getRecentTestimonials,
+  getTestimonialsByService,
+  getAverageRating,
+  getTotalTestimonials,
+} from './livre-dor';

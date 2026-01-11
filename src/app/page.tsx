@@ -23,6 +23,8 @@ import {
   SparklesIcon,
   MeditationIcon,
   NumerologyIcon,
+  DragonIcon,
+  AnkhIcon,
 } from '@/components/icons';
 
 const signes = [
@@ -61,24 +63,29 @@ const bienEtre = [
   { title: 'Numérologie', Icon: NumerologyIcon, href: '/bien-etre/numerologie' },
 ];
 
-const articlesRecents = [
+const mythologies = [
+  { title: 'Chinoise', Icon: DragonIcon, href: '/mythologies/chinoise' },
+  { title: 'Egyptienne', Icon: AnkhIcon, href: '/mythologies/egyptienne' },
+];
+
+const temoignagesRecents = [
   {
-    titre: 'Nouvelle Lune en Capricorne',
-    extrait: 'Un nouveau départ pour l\'année...',
-    date: '10 jan.',
-    categorie: 'Astrologie',
+    auteur: 'Marie L.',
+    extrait: 'Mon theme natal etait incroyablement precis !',
+    service: 'Theme Natal',
+    rating: 5,
   },
   {
-    titre: 'Mercure rétrograde',
-    extrait: 'Guide de survie pour cette période...',
-    date: '8 jan.',
-    categorie: 'Conseils',
+    auteur: 'Thomas D.',
+    extrait: 'Les previsions sont etonnamment justes...',
+    service: 'Horoscope',
+    rating: 5,
   },
   {
-    titre: 'Les 12 signes et leur élément',
-    extrait: 'Feu, Terre, Air, Eau...',
-    date: '5 jan.',
-    categorie: 'Découverte',
+    auteur: 'Sophie M.',
+    extrait: 'Nous communiquons beaucoup mieux maintenant.',
+    service: 'Compatibilite',
+    rating: 5,
   },
 ];
 
@@ -217,7 +224,7 @@ export default function HomePage() {
       <section className="py-12 sm:py-16 bg-[var(--color-bg-primary)]">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-xl sm:text-2xl font-bold mb-2">Bien-être & Développement</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-2">Bien-etre et Developpement</h2>
             <p className="text-sm text-[var(--color-text-secondary)]">Nourrissez votre esprit au quotidien</p>
           </div>
 
@@ -229,7 +236,7 @@ export default function HomePage() {
                     <item.Icon size={24} />
                   </div>
                   <h3 className="font-semibold text-sm">{item.title}</h3>
-                  <p className="text-xs text-[var(--color-text-muted)] mt-1">Bien-être</p>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">Bien-etre</p>
                 </div>
               </Link>
             ))}
@@ -237,38 +244,140 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Livre d'Or / Articles */}
+      {/* Section Multi-Mythologies */}
+      <section className="py-12 sm:py-16 bg-[var(--color-bg-secondary)]">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold mb-2">Multi-Mythologies</h2>
+            <p className="text-sm text-[var(--color-text-secondary)]">Explorez les astrologies du monde entier</p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4">
+            {mythologies.map((item) => (
+              <Link key={item.title} href={item.href}>
+                <div className="service-card p-4 h-full text-center">
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-accent-coral)]/10 flex items-center justify-center text-[var(--color-accent-coral)] mb-3">
+                    <item.Icon size={24} />
+                  </div>
+                  <h3 className="font-semibold text-sm">{item.title}</h3>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">Mythologie</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-6">
+            <Link href="/mythologies">
+              <Button variant="outline" size="sm">Voir toutes les mythologies</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Livre d'Or - Temoignages */}
       <section className="py-12 sm:py-16 bg-[var(--color-bg-tertiary)]">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-xl sm:text-2xl font-bold">Livre d&apos;Or</h2>
-              <p className="text-sm text-[var(--color-text-secondary)] mt-1">Articles et guides astrologiques</p>
+              <p className="text-sm text-[var(--color-text-secondary)] mt-1">Ce que notre communaute en dit</p>
             </div>
             <Link href="/livre-dor">
               <Button variant="outline" size="sm">Voir tout</Button>
             </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {articlesRecents.map((article, index) => (
-              <Link key={index} href={`/livre-dor/${index + 1}`}>
-                <Card variant="default" hover className="h-full">
-                  <CardContent className="p-5">
-                    <span className="inline-block px-2.5 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-medium rounded-full mb-3">
-                      {article.categorie}
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
+            {temoignagesRecents.map((temoignage, index) => (
+              <Card key={index} variant="default" hover className="h-full">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-1 mb-3">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <svg
+                        key={star}
+                        className={`w-4 h-4 ${star <= temoignage.rating ? 'text-amber-400' : 'text-gray-300'}`}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-sm text-[var(--color-text-secondary)] mb-3 italic">
+                    &quot;{temoignage.extrait}&quot;
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-medium text-[var(--color-text-primary)]">{temoignage.auteur}</p>
+                    <span className="px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-medium rounded-full">
+                      {temoignage.service}
                     </span>
-                    <h3 className="font-semibold text-base sm:text-lg text-[var(--color-text-primary)] mb-2">
-                      {article.titre}
-                    </h3>
-                    <p className="text-sm text-[var(--color-text-secondary)] mb-3">
-                      {article.extrait}
-                    </p>
-                    <p className="text-xs text-[var(--color-text-muted)]">{article.date}</p>
-                  </CardContent>
-                </Card>
-              </Link>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section Blog */}
+      <section className="py-12 sm:py-16 bg-[var(--color-bg-primary)]">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold">Blog</h2>
+              <p className="text-sm text-[var(--color-text-secondary)] mt-1">Articles et guides spirituels</p>
+            </div>
+            <Link href="/blog">
+              <Button variant="outline" size="sm">Voir tout</Button>
+            </Link>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <Link href="/blog/astrologie-chinoise-guide-complet" className="group">
+              <Card variant="default" hover className="h-full">
+                <CardContent className="p-5">
+                  <span className="inline-block px-2.5 py-1 bg-red-100 text-red-600 text-xs font-medium rounded-full mb-3">
+                    Mythologies
+                  </span>
+                  <h3 className="font-semibold text-base sm:text-lg text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+                    Astrologie Chinoise : Guide Complet
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">
+                    Les 12 animaux et les 5 elements...
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link href="/blog/phases-lune-rituels-spirituels" className="group">
+              <Card variant="default" hover className="h-full">
+                <CardContent className="p-5">
+                  <span className="inline-block px-2.5 py-1 bg-purple-100 text-purple-600 text-xs font-medium rounded-full mb-3">
+                    Spiritualite
+                  </span>
+                  <h3 className="font-semibold text-base sm:text-lg text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+                    Les Phases de la Lune et leurs Rituels
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">
+                    Harmonisez votre vie avec les cycles lunaires...
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link href="/blog/equilibrer-chakras-guide-pratique" className="group">
+              <Card variant="default" hover className="h-full">
+                <CardContent className="p-5">
+                  <span className="inline-block px-2.5 py-1 bg-teal-100 text-teal-600 text-xs font-medium rounded-full mb-3">
+                    Bien-etre
+                  </span>
+                  <h3 className="font-semibold text-base sm:text-lg text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+                    Equilibrer ses Chakras
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">
+                    Guide pratique pour harmoniser vos centres...
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>
@@ -280,11 +389,11 @@ export default function HomePage() {
             Recevez votre horoscope chaque matin
           </h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto">
-            Inscrivez-vous gratuitement et commencez chaque journée avec les conseils des astres.
+            Inscrivez-vous gratuitement et commencez chaque journee avec les conseils des astres.
           </p>
           <Link href="/auth/inscription">
             <Button variant="gold" size="lg">
-              Créer mon compte gratuit
+              Creer mon compte gratuit
             </Button>
           </Link>
         </div>
