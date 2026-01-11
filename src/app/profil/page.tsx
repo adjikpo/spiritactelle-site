@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button, Card, CardHeader, CardTitle, CardContent, Input } from '@/components/ui';
 import { createBrowserClient } from '@/lib/supabase';
-import type { Profile } from '@/types/database';
+import type { Profile, Database } from '@/types/database';
+
+type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
 
 export default function ProfilPage() {
   const router = useRouter();
@@ -30,18 +32,19 @@ export default function ProfilPage() {
         return;
       }
 
-      const { data: profile } = await supabase
+      const { data: profileData } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
 
-      if (profile) {
-        setProfile(profile);
-        setFullName(profile.full_name || '');
-        setBirthDate(profile.birth_date || '');
-        setBirthTime(profile.birth_time || '');
-        setBirthPlace(profile.birth_place || '');
+      const typedProfile = profileData as Profile | null;
+      if (typedProfile) {
+        setProfile(typedProfile);
+        setFullName(typedProfile.full_name || '');
+        setBirthDate(typedProfile.birth_date || '');
+        setBirthTime(typedProfile.birth_time || '');
+        setBirthPlace(typedProfile.birth_place || '');
       }
 
       setIsLoading(false);
@@ -58,15 +61,17 @@ export default function ProfilPage() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
+    const updateData: ProfileUpdate = {
+      full_name: fullName,
+      birth_date: birthDate || null,
+      birth_time: birthTime || null,
+      birth_place: birthPlace || null,
+      updated_at: new Date().toISOString(),
+    };
+
     const { error } = await supabase
       .from('profiles')
-      .update({
-        full_name: fullName,
-        birth_date: birthDate || null,
-        birth_time: birthTime || null,
-        birth_place: birthPlace || null,
-        updated_at: new Date().toISOString(),
-      })
+      .update(updateData as never)
       .eq('id', user.id);
 
     if (error) {

@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, Button, Input } from '@/components/ui';
 import { createBrowserClient } from '@/lib/supabase';
-import type { Profile } from '@/types/database';
+import type { Profile, Database } from '@/types/database';
+
+type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
 
 export default function AdminUsersPage() {
   const supabase = createBrowserClient();
@@ -22,7 +24,7 @@ export default function AdminUsersPage() {
       .order('created_at', { ascending: false });
 
     if (data) {
-      setUsers(data);
+      setUsers(data as Profile[]);
     }
     setIsLoading(false);
   };
@@ -34,12 +36,14 @@ export default function AdminUsersPage() {
   );
 
   const handleRoleChange = async (userId: string, newRole: 'user' | 'premium' | 'admin') => {
+    const updateData: ProfileUpdate = {
+      role: newRole,
+      is_premium: newRole === 'premium' || newRole === 'admin',
+    };
+
     const { error } = await supabase
       .from('profiles')
-      .update({
-        role: newRole,
-        is_premium: newRole === 'premium' || newRole === 'admin',
-      })
+      .update(updateData as never)
       .eq('id', userId);
 
     if (!error) {
