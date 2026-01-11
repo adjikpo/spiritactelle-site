@@ -1,11 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui';
-import { createBrowserClient } from '@/lib/supabase';
-import type { User } from '@supabase/supabase-js';
 
 const navigation = [
   { name: 'Horoscopes', href: '/horoscope' },
@@ -18,17 +16,8 @@ const navigation = [
 
 export function Header() {
   const pathname = usePathname();
-  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [supabase, setSupabase] = useState<ReturnType<typeof createBrowserClient> | null>(null);
-
-  // Initialize supabase client on client side only
-  useEffect(() => {
-    setSupabase(createBrowserClient());
-  }, []);
 
   // Detect scroll for header background
   useEffect(() => {
@@ -55,32 +44,6 @@ export function Header() {
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
-
-  useEffect(() => {
-    if (!supabase) return;
-
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-      setIsLoading(false);
-    };
-
-    getUser();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, [supabase]);
-
-  const handleLogout = async () => {
-    if (!supabase) return;
-    await supabase.auth.signOut();
-    setIsMobileMenuOpen(false);
-    router.push('/');
-    router.refresh();
-  };
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -141,48 +104,13 @@ export function Header() {
               ))}
             </div>
 
-            {/* Desktop Auth Buttons */}
+            {/* Desktop Newsletter Button */}
             <div className="hidden md:flex items-center gap-2">
-              {isLoading ? (
-                <div className="w-20 h-9 bg-[var(--color-border)] rounded-full animate-pulse" />
-              ) : user ? (
-                <>
-                  <Link href="/profil">
-                    <Button
-                      variant={isScrolled || !isHomePage ? 'ghost' : 'outline'}
-                      size="sm"
-                      className={!isScrolled && isHomePage ? 'border-white/30 text-white hover:bg-white/10' : ''}
-                    >
-                      Mon espace
-                    </Button>
-                  </Link>
-                  <Button
-                    variant={isScrolled || !isHomePage ? 'outline' : 'ghost'}
-                    size="sm"
-                    onClick={handleLogout}
-                    className={!isScrolled && isHomePage ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
-                  >
-                    Déconnexion
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Link href="/auth/connexion">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className={!isScrolled && isHomePage ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
-                    >
-                      Connexion
-                    </Button>
-                  </Link>
-                  <Link href="/auth/inscription">
-                    <Button variant="gold" size="sm">
-                      S&apos;inscrire
-                    </Button>
-                  </Link>
-                </>
-              )}
+              <Link href="/newsletter">
+                <Button variant="gold" size="sm">
+                  Newsletter
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -273,53 +201,21 @@ export function Header() {
             {/* Divider */}
             <div className="my-4 border-t border-[var(--color-border)]" />
 
-            {/* Auth Section */}
-            <div className="space-y-2">
-              {isLoading ? (
-                <div className="h-12 bg-[var(--color-bg-tertiary)] rounded-xl animate-pulse" />
-              ) : user ? (
-                <>
-                  <Link href="/profil" className="block">
-                    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[var(--color-bg-tertiary)]">
-                      <div className="w-10 h-10 rounded-full bg-[var(--color-primary)] flex items-center justify-center">
-                        <span className="text-white text-sm font-medium">
-                          {user.email?.charAt(0).toUpperCase()}
-                        </span>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-[var(--color-text-primary)] truncate">
-                          Mon espace
-                        </p>
-                        <p className="text-xs text-[var(--color-text-muted)] truncate">
-                          {user.email}
-                        </p>
-                      </div>
-                      <svg className="w-5 h-5 text-[var(--color-text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="w-full px-4 py-3 rounded-xl text-base font-medium text-[var(--color-error)] hover:bg-red-50 active:bg-red-50 transition-colors text-left"
-                  >
-                    Déconnexion
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link href="/auth/inscription" className="block">
-                    <Button variant="gold" size="lg" className="w-full">
-                      Créer un compte
-                    </Button>
-                  </Link>
-                  <Link href="/auth/connexion" className="block">
-                    <Button variant="outline" size="lg" className="w-full">
-                      Se connecter
-                    </Button>
-                  </Link>
-                </>
-              )}
+            {/* Newsletter Section */}
+            <div className="space-y-3">
+              <div className="px-4 py-3 rounded-xl bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10">
+                <p className="text-sm font-medium text-[var(--color-text-primary)] mb-1">
+                  Restez connecte aux etoiles
+                </p>
+                <p className="text-xs text-[var(--color-text-muted)]">
+                  Recevez votre horoscope et nos conseils spirituels
+                </p>
+              </div>
+              <Link href="/newsletter" className="block">
+                <Button variant="gold" size="lg" className="w-full">
+                  S&apos;abonner a la newsletter
+                </Button>
+              </Link>
             </div>
           </div>
 
