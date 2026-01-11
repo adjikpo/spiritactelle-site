@@ -2,7 +2,7 @@
 
 import { forwardRef, ButtonHTMLAttributes } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'outline' | 'gold' | 'mystic';
+type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'outline' | 'gold' | 'dark';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -15,47 +15,44 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: `
-    bg-[var(--color-accent-purple)] text-white
-    hover:bg-[var(--color-accent-purple-light)]
-    hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]
+    bg-[var(--color-primary)] text-white
+    hover:bg-[var(--color-primary-dark)]
+    shadow-md hover:shadow-lg
     active:scale-[0.98]
   `,
   secondary: `
-    bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)]
+    bg-white text-[var(--color-text-primary)]
     border border-[var(--color-border)]
-    hover:bg-[var(--color-bg-card)] hover:border-[var(--color-accent-purple)]
-    hover:shadow-[0_0_15px_rgba(147,51,234,0.2)]
+    hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]
+    shadow-sm hover:shadow-md
   `,
   ghost: `
     bg-transparent text-[var(--color-text-secondary)]
     hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]
   `,
   outline: `
-    bg-transparent text-[var(--color-accent-purple-light)]
-    border-2 border-[var(--color-accent-purple)]
-    hover:bg-[var(--color-accent-purple)] hover:text-white
-    hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]
+    bg-transparent text-[var(--color-primary)]
+    border-2 border-[var(--color-primary)]
+    hover:bg-[var(--color-primary)] hover:text-white
+    shadow-sm hover:shadow-md
   `,
   gold: `
-    bg-gradient-to-r from-[var(--color-accent-gold)] via-[var(--color-accent-gold-light)] to-[var(--color-accent-gold)]
-    text-[var(--color-bg-primary)] font-bold
-    hover:shadow-[var(--shadow-glow-gold)]
+    bg-[var(--color-secondary)] text-white font-semibold
+    hover:bg-[var(--color-secondary-dark)]
+    shadow-md hover:shadow-lg
     active:scale-[0.98]
-    border border-[var(--color-accent-gold-dark)]
   `,
-  mystic: `
-    bg-gradient-to-r from-[var(--color-accent-purple)] via-[var(--color-accent-pink)] to-[var(--color-accent-purple)]
-    text-white font-semibold
-    hover:shadow-[var(--shadow-glow-purple)]
+  dark: `
+    bg-[var(--color-bg-dark)] text-white
+    hover:bg-[#2d1f4e]
+    shadow-md hover:shadow-lg
     active:scale-[0.98]
-    background-size: 200% auto
-    hover:bg-right
   `,
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
   sm: 'px-4 py-2 text-sm rounded-lg',
-  md: 'px-6 py-3 text-base rounded-xl',
+  md: 'px-6 py-3 text-base rounded-lg',
   lg: 'px-8 py-4 text-lg rounded-xl',
 };
 
@@ -81,7 +78,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={`
           inline-flex items-center justify-center gap-2
           font-medium
-          transition-all duration-300 ease-out
+          transition-all duration-200 ease-out
           disabled:opacity-50 disabled:cursor-not-allowed
           cursor-pointer
           ${variantStyles[variant]}

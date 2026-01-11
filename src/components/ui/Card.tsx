@@ -1,6 +1,6 @@
 import { HTMLAttributes, forwardRef } from 'react';
 
-type CardVariant = 'default' | 'glass' | 'bordered' | 'glow' | 'mystic' | 'gold';
+type CardVariant = 'default' | 'elevated' | 'bordered' | 'dark' | 'glass';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: CardVariant;
@@ -10,35 +10,29 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 const variantStyles: Record<CardVariant, string> = {
   default: `
-    bg-[var(--gradient-card)]
+    bg-white
     border border-[var(--color-border)]
-    shadow-[var(--shadow-soft)]
+    shadow-[var(--shadow-card)]
   `,
-  glass: `
-    bg-[rgba(30,18,48,0.85)]
-    backdrop-blur-xl
-    border border-[rgba(147,51,234,0.2)]
+  elevated: `
+    bg-white
+    shadow-[var(--shadow-md)]
+    border border-[var(--color-border)]
   `,
   bordered: `
-    bg-transparent
-    border-2 border-[var(--color-border-light)]
-    hover:border-[var(--color-accent-purple)]
+    bg-white
+    border-2 border-[var(--color-border)]
   `,
-  glow: `
-    bg-[var(--color-bg-card)]
-    border border-[var(--color-accent-purple)]
-    shadow-[var(--shadow-glow-purple)]
+  dark: `
+    bg-[var(--color-bg-dark)]
+    text-white
+    border border-[rgba(255,255,255,0.1)]
   `,
-  mystic: `
-    bg-gradient-to-br from-[rgba(147,51,234,0.15)] via-[rgba(99,102,241,0.1)] to-[rgba(236,72,153,0.15)]
-    border border-[rgba(147,51,234,0.3)]
-    backdrop-blur-sm
-    shadow-[0_8px_32px_rgba(147,51,234,0.2)]
-  `,
-  gold: `
-    bg-gradient-to-br from-[rgba(245,197,24,0.1)] to-[rgba(201,160,0,0.05)]
-    border border-[rgba(245,197,24,0.3)]
-    shadow-[0_8px_32px_rgba(245,197,24,0.15)]
+  glass: `
+    bg-white/80
+    backdrop-blur-md
+    border border-[var(--color-border)]
+    shadow-[var(--shadow-md)]
   `,
 };
 
@@ -50,17 +44,17 @@ const paddingStyles = {
 };
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ variant = 'default', padding = 'md', hover = true, className = '', children, ...props }, ref) => {
+  ({ variant = 'default', padding = 'md', hover = false, className = '', children, ...props }, ref) => {
     const hoverStyles = hover
-      ? 'hover:scale-[1.02] hover:shadow-[0_12px_40px_rgba(147,51,234,0.25)] hover:border-[var(--color-accent-purple-light)]'
+      ? 'hover:shadow-[var(--shadow-lg)] hover:border-[var(--color-primary)] hover:-translate-y-1'
       : '';
 
     return (
       <div
         ref={ref}
         className={`
-          rounded-[var(--radius-lg)]
-          transition-all duration-300 ease-out
+          rounded-[var(--radius-xl)]
+          transition-all duration-200 ease-out
           ${variantStyles[variant]}
           ${paddingStyles[padding]}
           ${hoverStyles}
