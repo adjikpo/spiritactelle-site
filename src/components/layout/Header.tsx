@@ -1,26 +1,53 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui';
 import { createBrowserClient } from '@/lib/supabase';
 import type { User } from '@supabase/supabase-js';
 
 const navigation = [
-  { name: 'Accueil', href: '/' },
-  { name: 'Voyance', href: '/voyance' },
+  { name: 'Horoscopes', href: '/horoscope' },
   { name: 'Astrologie', href: '/astrologie' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Livre d\'Or', href: '/livre-dor' },
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const supabase = createBrowserClient();
+
+  // Detect scroll for header background
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -40,129 +67,264 @@ export function Header() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    setIsMobileMenuOpen(false);
     router.push('/');
     router.refresh();
   };
 
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 glass border-b border-[var(--color-accent-purple)]/20">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--color-accent-purple)] via-[var(--color-accent-pink)] to-[var(--color-accent-gold)] flex items-center justify-center shadow-[0_0_15px_rgba(147,51,234,0.4)] group-hover:shadow-[0_0_25px_rgba(147,51,234,0.6)] transition-shadow">
-              <span className="text-white text-xl">&#10022;</span>
-            </div>
-            <span className="text-xl font-bold text-gradient-gold group-hover:drop-shadow-[0_0_10px_rgba(245,197,24,0.5)] transition-all">
-              Spiritactelle
-            </span>
-          </Link>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[var(--color-border)]'
+            : 'bg-transparent'
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 group z-10">
+              <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all ${
+                isScrolled
+                  ? 'bg-[var(--color-primary)]'
+                  : 'bg-white/20 backdrop-blur-sm'
+              }`}>
+                <span className="text-white text-base sm:text-lg">✦</span>
+              </div>
+              <span className={`text-lg sm:text-xl font-bold transition-colors ${
+                isScrolled
+                  ? 'text-[var(--color-primary)]'
+                  : 'text-white'
+              }`}>
+                Spiritactelle
+              </span>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Auth Buttons */}
-          <div className="hidden md:flex items-center gap-3">
-            {isLoading ? (
-              <div className="w-20 h-8 bg-[var(--color-bg-tertiary)] rounded animate-pulse" />
-            ) : user ? (
-              <>
-                <Link href="/profil">
-                  <Button variant="ghost" size="sm">
-                    Mon espace
-                  </Button>
-                </Link>
-                <Button variant="secondary" size="sm" onClick={handleLogout}>
-                  Déconnexion
-                </Button>
-              </>
-            ) : (
-              <>
-                <Link href="/auth/connexion">
-                  <Button variant="ghost" size="sm">
-                    Connexion
-                  </Button>
-                </Link>
-                <Link href="/auth/inscription">
-                  <Button variant="gold" size="sm">
-                    Inscription
-                  </Button>
-                </Link>
-              </>
-            )}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-[var(--radius-md)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)]"
-            aria-label="Menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-[var(--color-border)]">
-            <div className="flex flex-col gap-2">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-4 py-2 rounded-[var(--radius-md)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] transition-colors"
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    isActive(item.href)
+                      ? isScrolled
+                        ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
+                        : 'bg-white/20 text-white'
+                      : isScrolled
+                        ? 'text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5'
+                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                  }`}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="flex gap-2 mt-4 px-4">
-                {user ? (
-                  <>
-                    <Link href="/profil" className="flex-1" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Button variant="ghost" size="sm" className="w-full">
-                        Mon espace
-                      </Button>
-                    </Link>
-                    <Button variant="secondary" size="sm" className="flex-1" onClick={handleLogout}>
-                      Déconnexion
+            </div>
+
+            {/* Desktop Auth Buttons */}
+            <div className="hidden md:flex items-center gap-2">
+              {isLoading ? (
+                <div className="w-20 h-9 bg-[var(--color-border)] rounded-full animate-pulse" />
+              ) : user ? (
+                <>
+                  <Link href="/profil">
+                    <Button
+                      variant={isScrolled ? 'ghost' : 'outline'}
+                      size="sm"
+                      className={!isScrolled ? 'border-white/30 text-white hover:bg-white/10' : ''}
+                    >
+                      Mon espace
                     </Button>
-                  </>
+                  </Link>
+                  <Button
+                    variant={isScrolled ? 'outline' : 'ghost'}
+                    size="sm"
+                    onClick={handleLogout}
+                    className={!isScrolled ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
+                  >
+                    Déconnexion
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link href="/auth/connexion">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={!isScrolled ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
+                    >
+                      Connexion
+                    </Button>
+                  </Link>
+                  <Link href="/auth/inscription">
+                    <Button variant="gold" size="sm">
+                      S&apos;inscrire
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`md:hidden p-2 -mr-2 rounded-lg transition-colors z-10 ${
+                isMobileMenuOpen
+                  ? 'text-[var(--color-text-primary)]'
+                  : isScrolled
+                    ? 'text-[var(--color-text-primary)]'
+                    : 'text-white'
+              }`}
+              aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isMobileMenuOpen}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <>
-                    <Link href="/auth/connexion" className="flex-1" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Button variant="ghost" size="sm" className="w-full">
-                        Connexion
-                      </Button>
-                    </Link>
-                    <Link href="/auth/inscription" className="flex-1" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Button variant="gold" size="sm" className="w-full">
-                        Inscription
-                      </Button>
-                    </Link>
-                  </>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 )}
-              </div>
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${
+          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+
+        {/* Menu Panel */}
+        <div
+          className={`absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          {/* Menu Header */}
+          <div className="flex items-center justify-between p-4 border-b border-[var(--color-border)]">
+            <span className="text-lg font-semibold text-[var(--color-text-primary)]">Menu</span>
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 -mr-2 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)]"
+              aria-label="Fermer le menu"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="p-4">
+            <div className="space-y-1">
+              <Link
+                href="/"
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                  pathname === '/'
+                    ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
+                    : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] active:bg-[var(--color-bg-tertiary)]'
+                }`}
+              >
+                <span className="text-xl">🏠</span>
+                Accueil
+              </Link>
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                    isActive(item.href)
+                      ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
+                      : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] active:bg-[var(--color-bg-tertiary)]'
+                  }`}
+                >
+                  <span className="text-xl">
+                    {item.name === 'Horoscopes' && '☀️'}
+                    {item.name === 'Astrologie' && '🌟'}
+                    {item.name === 'Livre d\'Or' && '📚'}
+                  </span>
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Divider */}
+            <div className="my-4 border-t border-[var(--color-border)]" />
+
+            {/* Auth Section */}
+            <div className="space-y-2">
+              {isLoading ? (
+                <div className="h-12 bg-[var(--color-bg-tertiary)] rounded-xl animate-pulse" />
+              ) : user ? (
+                <>
+                  <Link href="/profil" className="block">
+                    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[var(--color-bg-tertiary)]">
+                      <div className="w-10 h-10 rounded-full bg-[var(--color-primary)] flex items-center justify-center">
+                        <span className="text-white text-sm font-medium">
+                          {user.email?.charAt(0).toUpperCase()}
+                        </span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-[var(--color-text-primary)] truncate">
+                          Mon espace
+                        </p>
+                        <p className="text-xs text-[var(--color-text-muted)] truncate">
+                          {user.email}
+                        </p>
+                      </div>
+                      <svg className="w-5 h-5 text-[var(--color-text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-[var(--color-error)] hover:bg-red-50 active:bg-red-50 transition-colors"
+                  >
+                    <span className="text-xl">🚪</span>
+                    Déconnexion
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link href="/auth/inscription" className="block">
+                    <Button variant="gold" size="lg" className="w-full">
+                      Créer un compte
+                    </Button>
+                  </Link>
+                  <Link href="/auth/connexion" className="block">
+                    <Button variant="outline" size="lg" className="w-full">
+                      Se connecter
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
-        )}
-      </nav>
-    </header>
+
+          {/* Footer */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[var(--color-border)] bg-[var(--color-bg-tertiary)] safe-area-bottom">
+            <p className="text-xs text-center text-[var(--color-text-muted)]">
+              Spiritactelle © 2026
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </>
   );
 }

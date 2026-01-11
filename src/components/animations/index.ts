@@ -1,0 +1,1 @@
+export { StarryBackground } from './StarryBackground';

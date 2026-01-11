@@ -15,18 +15,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Spiritactelle - Voyance & Astrologie en ligne',
+    default: 'Spiritactelle - Horoscopes & Astrologie',
     template: '%s | Spiritactelle',
   },
   description:
-    'Découvrez votre thème astral, tirez les cartes et explorez votre chemin spirituel avec Spiritactelle. Astrologie, tarot et méditations guidées.',
+    'Horoscopes personnalisés, thèmes astraux et articles inspirants. Découvrez ce que les astres vous réservent avec Spiritactelle.',
   keywords: [
-    'voyance',
-    'astrologie',
-    'tarot',
-    'thème astral',
     'horoscope',
-    'méditation',
+    'astrologie',
+    'thème astral',
+    'signe astrologique',
+    'zodiaque',
+    'ascendant',
     'spiritualité',
   ],
   authors: [{ name: 'Spiritactelle' }],
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     siteName: 'Spiritactelle',
-    title: 'Spiritactelle - Voyance & Astrologie en ligne',
+    title: 'Spiritactelle - Horoscopes & Astrologie',
     description:
-      'Découvrez votre thème astral, tirez les cartes et explorez votre chemin spirituel.',
+      'Horoscopes personnalisés, thèmes astraux et articles inspirants pour éclairer votre chemin.',
   },
   twitter: {
     card: 'summary_large_image',
@@ -56,7 +56,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
-        <main className="min-h-screen pt-16">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

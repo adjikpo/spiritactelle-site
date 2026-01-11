@@ -1,29 +1,49 @@
 import Link from 'next/link';
 import { Button, Card, CardContent } from '@/components/ui';
+import { StarryBackground } from '@/components/animations';
+import {
+  AriesIcon,
+  TaurusIcon,
+  GeminiIcon,
+  CancerIcon,
+  LeoIcon,
+  VirgoIcon,
+  LibraIcon,
+  ScorpioIcon,
+  SagittariusIcon,
+  CapricornIcon,
+  AquariusIcon,
+  PiscesIcon,
+  SunIcon,
+  MoonIcon,
+  StarIcon,
+  ConstellationIcon,
+  PlanetIcon,
+} from '@/components/icons';
 
 const services = [
   {
     title: 'Horoscope du Jour',
-    description: 'Découvrez ce que les astres vous réservent aujourd\'hui',
-    icon: '☀️',
+    description: 'Ce que les astres vous réservent',
+    Icon: SunIcon,
     href: '/horoscope/quotidien',
   },
   {
-    title: 'Horoscope Hebdomadaire',
-    description: 'Vos prévisions pour la semaine à venir',
-    icon: '📅',
+    title: 'Hebdomadaire',
+    description: 'Prévisions de la semaine',
+    Icon: MoonIcon,
     href: '/horoscope/hebdomadaire',
   },
   {
-    title: 'Horoscope Mensuel',
-    description: 'Les grandes tendances du mois pour votre signe',
-    icon: '🌙',
+    title: 'Mensuel',
+    description: 'Tendances du mois',
+    Icon: StarIcon,
     href: '/horoscope/mensuel',
   },
   {
-    title: 'Horoscope Annuel',
-    description: 'Les prévisions détaillées pour votre année',
-    icon: '✨',
+    title: 'Annuel',
+    description: 'Votre année en détail',
+    Icon: ConstellationIcon,
     href: '/horoscope/annuel',
   },
 ];
@@ -31,62 +51,62 @@ const services = [
 const astrologie = [
   {
     title: 'Thème Astral',
-    description: 'Calculez votre carte du ciel natale complète',
-    icon: '🌟',
+    description: 'Votre carte du ciel',
+    Icon: ConstellationIcon,
     href: '/astrologie/theme-natal',
   },
   {
     title: 'Compatibilité',
-    description: 'Découvrez votre compatibilité amoureuse',
-    icon: '💕',
+    description: 'Affinités amoureuses',
+    Icon: StarIcon,
     href: '/astrologie/compatibilite',
   },
   {
     title: 'Ascendant',
-    description: 'Calculez et comprenez votre ascendant',
-    icon: '⬆️',
+    description: 'Calculez le vôtre',
+    Icon: SunIcon,
     href: '/astrologie/ascendant',
   },
   {
     title: 'Transits',
-    description: 'Les influences planétaires du moment',
-    icon: '🪐',
+    description: 'Influences du moment',
+    Icon: PlanetIcon,
     href: '/astrologie/transits',
   },
 ];
 
 const signes = [
-  { nom: 'Bélier', symbole: '♈', dates: '21 mars - 19 avril' },
-  { nom: 'Taureau', symbole: '♉', dates: '20 avril - 20 mai' },
-  { nom: 'Gémeaux', symbole: '♊', dates: '21 mai - 20 juin' },
-  { nom: 'Cancer', symbole: '♋', dates: '21 juin - 22 juillet' },
-  { nom: 'Lion', symbole: '♌', dates: '23 juillet - 22 août' },
-  { nom: 'Vierge', symbole: '♍', dates: '23 août - 22 sept.' },
-  { nom: 'Balance', symbole: '♎', dates: '23 sept. - 22 oct.' },
-  { nom: 'Scorpion', symbole: '♏', dates: '23 oct. - 21 nov.' },
-  { nom: 'Sagittaire', symbole: '♐', dates: '22 nov. - 21 déc.' },
-  { nom: 'Capricorne', symbole: '♑', dates: '22 déc. - 19 janv.' },
-  { nom: 'Verseau', symbole: '♒', dates: '20 janv. - 18 fév.' },
-  { nom: 'Poissons', symbole: '♓', dates: '19 fév. - 20 mars' },
+  { nom: 'Bélier', slug: 'belier', Icon: AriesIcon },
+  { nom: 'Taureau', slug: 'taureau', Icon: TaurusIcon },
+  { nom: 'Gémeaux', slug: 'gemeaux', Icon: GeminiIcon },
+  { nom: 'Cancer', slug: 'cancer', Icon: CancerIcon },
+  { nom: 'Lion', slug: 'lion', Icon: LeoIcon },
+  { nom: 'Vierge', slug: 'vierge', Icon: VirgoIcon },
+  { nom: 'Balance', slug: 'balance', Icon: LibraIcon },
+  { nom: 'Scorpion', slug: 'scorpion', Icon: ScorpioIcon },
+  { nom: 'Sagittaire', slug: 'sagittaire', Icon: SagittariusIcon },
+  { nom: 'Capricorne', slug: 'capricorne', Icon: CapricornIcon },
+  { nom: 'Verseau', slug: 'verseau', Icon: AquariusIcon },
+  { nom: 'Poissons', slug: 'poissons', Icon: PiscesIcon },
 ];
 
 const articlesRecents = [
   {
-    titre: 'Nouvelle Lune en Capricorne : Un nouveau départ',
-    extrait: 'Cette nouvelle lune nous invite à poser des intentions concrètes pour l\'année à venir...',
-    date: '10 janvier 2026',
+    titre: 'Nouvelle Lune en Capricorne',
+    extrait: 'Un nouveau départ pour l\'année...',
+    date: '10 jan.',
     categorie: 'Astrologie',
   },
   {
-    titre: 'Mercure rétrograde : Guide de survie',
-    extrait: 'Pas de panique ! Voici comment naviguer cette période avec sérénité...',
-    date: '8 janvier 2026',
+    titre: 'Mercure rétrograde',
+    extrait: 'Guide de survie pour cette période...',
+    date: '8 jan.',
     categorie: 'Conseils',
   },
   {
     titre: 'Les 12 signes et leur élément',
-    extrait: 'Feu, Terre, Air, Eau : comprendre les éléments pour mieux se connaître...',
-    date: '5 janvier 2026',
+    extrait: 'Feu, Terre, Air, Eau...',
+    date: '5 jan.',
     categorie: 'Découverte',
   },
 ];
@@ -94,54 +114,78 @@ const articlesRecents = [
 export default function HomePage() {
   return (
     <div className="relative">
-      {/* Hero Section */}
-      <section className="hero-dark min-h-[70vh] flex items-center justify-center py-20 px-4">
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="mb-6">
-            <span className="trust-badge">
-              <span className="text-lg">✦</span>
+      {/* Hero Section - includes padding for fixed header */}
+      <section className="hero-dark min-h-screen flex items-center justify-center pt-24 sm:pt-28 pb-16 sm:pb-20 px-4 relative overflow-hidden">
+        <StarryBackground />
+        <div className="relative z-10 text-center w-full max-w-4xl mx-auto">
+          <div className="mb-4 sm:mb-6">
+            <span className="trust-badge text-xs sm:text-sm">
+              <StarIcon size={18} className="text-[var(--color-secondary-light)]" />
               <span>Astrologie & Spiritualité</span>
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2">
             Explorez les mystères de{' '}
             <span className="text-[var(--color-secondary-light)]">votre destinée</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Horoscopes personnalisés, thèmes astraux et articles inspirants
-            pour éclairer votre chemin de vie.
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-2">
+            Horoscopes, thèmes astraux et articles inspirants pour éclairer votre chemin.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/horoscope/quotidien">
-              <Button variant="gold" size="lg" className="w-full sm:w-auto">
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 justify-center px-4">
+            <Link href="/horoscope/quotidien" className="w-full sm:w-auto">
+              <Button variant="gold" size="lg" className="w-full">
                 Mon horoscope du jour
               </Button>
             </Link>
-            <Link href="/astrologie/theme-natal">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10">
-                Calculer mon thème astral
+            <Link href="/astrologie/theme-natal" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full border-white/30 text-white hover:bg-white/10">
+                Mon thème astral
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Signes du Zodiaque - Quick Access */}
-      <section className="py-12 px-4 bg-[var(--color-bg-secondary)]">
+      {/* Signes du Zodiaque - Scroll horizontal sur mobile */}
+      <section className="py-8 sm:py-12 bg-[var(--color-bg-secondary)]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-2xl font-bold mb-8">Choisissez votre signe</h2>
-          <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-3">
+          <h2 className="text-center text-xl sm:text-2xl font-bold mb-6 sm:mb-8 px-4">
+            Choisissez votre signe
+          </h2>
+
+          {/* Mobile: horizontal scroll */}
+          <div className="overflow-x-auto pb-4 px-4 sm:hidden scrollbar-hide">
+            <div className="flex gap-3 w-max">
+              {signes.map((signe) => (
+                <Link
+                  key={signe.nom}
+                  href={`/horoscope/${signe.slug}`}
+                  className="flex-shrink-0 group text-center"
+                >
+                  <div className="w-16 h-16 rounded-xl bg-white border border-[var(--color-border)] flex items-center justify-center active:scale-95 transition-transform text-[var(--color-primary)]">
+                    <signe.Icon size={28} />
+                  </div>
+                  <p className="text-xs mt-1.5 text-[var(--color-text-secondary)]">
+                    {signe.nom}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Tablet/Desktop: grid */}
+          <div className="hidden sm:grid grid-cols-6 lg:grid-cols-12 gap-3 px-4">
             {signes.map((signe) => (
               <Link
                 key={signe.nom}
-                href={`/horoscope/${signe.nom.toLowerCase()}`}
+                href={`/horoscope/${signe.slug}`}
                 className="group text-center"
               >
-                <div className="aspect-square rounded-xl bg-white border border-[var(--color-border)] flex items-center justify-center text-3xl group-hover:border-[var(--color-primary)] group-hover:shadow-md transition-all">
-                  {signe.symbole}
+                <div className="aspect-square rounded-xl bg-white border border-[var(--color-border)] flex items-center justify-center text-[var(--color-primary)] group-hover:border-[var(--color-primary)] group-hover:shadow-md group-hover:text-[var(--color-primary-dark)] transition-all">
+                  <signe.Icon size={32} className="lg:w-9 lg:h-9" />
                 </div>
                 <p className="text-xs mt-2 text-[var(--color-text-secondary)] group-hover:text-[var(--color-primary)]">
                   {signe.nom}
@@ -153,24 +197,27 @@ export default function HomePage() {
       </section>
 
       {/* Horoscopes Section */}
-      <section className="py-16 px-4 bg-[var(--color-bg-primary)]">
+      <section className="py-10 sm:py-16 px-4 bg-[var(--color-bg-primary)]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Horoscopes</h2>
-            <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-              Des prévisions détaillées pour chaque période, adaptées à votre signe.
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Horoscopes</h2>
+            <p className="text-sm sm:text-base text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+              Des prévisions adaptées à votre signe
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Mobile: 2 colonnes, plus compact */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {services.map((service) => (
               <Link key={service.title} href={service.href}>
-                <div className="service-card h-full">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
+                <div className="service-card h-full p-4 sm:p-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-3 sm:mb-4">
+                    <service.Icon size={24} className="sm:w-7 sm:h-7" />
+                  </div>
+                  <h3 className="text-sm sm:text-lg font-semibold text-[var(--color-text-primary)] mb-1 sm:mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
+                  <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] line-clamp-2">
                     {service.description}
                   </p>
                 </div>
@@ -181,24 +228,26 @@ export default function HomePage() {
       </section>
 
       {/* Astrologie Section */}
-      <section className="py-16 px-4 bg-[var(--color-bg-secondary)]">
+      <section className="py-10 sm:py-16 px-4 bg-[var(--color-bg-secondary)]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Astrologie</h2>
-            <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-              Plongez dans l&apos;étude des astres et découvrez votre carte du ciel.
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Astrologie</h2>
+            <p className="text-sm sm:text-base text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+              Découvrez votre carte du ciel
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {astrologie.map((item) => (
               <Link key={item.title} href={item.href}>
-                <div className="service-card h-full">
-                  <div className="text-4xl mb-4">{item.icon}</div>
-                  <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
+                <div className="service-card h-full p-4 sm:p-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[var(--color-secondary)]/10 flex items-center justify-center text-[var(--color-secondary)] mb-3 sm:mb-4">
+                    <item.Icon size={24} className="sm:w-7 sm:h-7" />
+                  </div>
+                  <h3 className="text-sm sm:text-lg font-semibold text-[var(--color-text-primary)] mb-1 sm:mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
+                  <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] line-clamp-2">
                     {item.description}
                   </p>
                 </div>
@@ -209,21 +258,50 @@ export default function HomePage() {
       </section>
 
       {/* Livre d'Or / Articles Section */}
-      <section className="py-16 px-4 bg-[var(--color-bg-tertiary)]">
+      <section className="py-10 sm:py-16 px-4 bg-[var(--color-bg-tertiary)]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+          <div className="flex items-end justify-between mb-6 sm:mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Livre d&apos;Or</h2>
-              <p className="text-[var(--color-text-secondary)] max-w-xl">
-                Articles, réflexions et guides pour approfondir votre connaissance de l&apos;astrologie.
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-4">Livre d&apos;Or</h2>
+              <p className="text-sm sm:text-base text-[var(--color-text-secondary)] hidden sm:block max-w-xl">
+                Articles et guides pour approfondir l&apos;astrologie
               </p>
             </div>
-            <Link href="/livre-dor" className="mt-4 md:mt-0">
-              <Button variant="outline">Tous les articles</Button>
+            <Link href="/livre-dor">
+              <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+                Voir tout
+              </Button>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Mobile: horizontal scroll */}
+          <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:hidden scrollbar-hide">
+            <div className="flex gap-4 w-max">
+              {articlesRecents.map((article, index) => (
+                <Link key={index} href={`/livre-dor/${index + 1}`} className="w-72 flex-shrink-0">
+                  <Card variant="default" className="h-full">
+                    <CardContent className="p-4">
+                      <span className="inline-block px-2 py-0.5 bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-medium rounded-full mb-3">
+                        {article.categorie}
+                      </span>
+                      <h3 className="font-semibold text-base text-[var(--color-text-primary)] mb-2 line-clamp-2">
+                        {article.titre}
+                      </h3>
+                      <p className="text-sm text-[var(--color-text-secondary)] mb-3 line-clamp-2">
+                        {article.extrait}
+                      </p>
+                      <p className="text-xs text-[var(--color-text-muted)]">
+                        {article.date}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: grid */}
+          <div className="hidden sm:grid grid-cols-1 md:grid-cols-3 gap-6">
             {articlesRecents.map((article, index) => (
               <Link key={index} href={`/livre-dor/${index + 1}`}>
                 <Card variant="default" hover className="h-full">
@@ -249,78 +327,81 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-[var(--color-bg-primary)]">
+      <section className="py-10 sm:py-16 px-4 bg-[var(--color-bg-primary)]">
         <div className="max-w-4xl mx-auto">
-          <div className="cta-banner">
-            <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Recevez votre horoscope chaque matin
+          <div className="cta-banner p-6 sm:p-10">
+            <div className="relative z-10 text-center">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
+                Votre horoscope chaque matin
               </h2>
-              <p className="text-white/80 mb-8 max-w-xl mx-auto">
-                Inscrivez-vous gratuitement et recevez vos prévisions personnalisées
-                directement dans votre boîte mail.
+              <p className="text-sm sm:text-base text-white/80 mb-6 sm:mb-8 max-w-xl mx-auto">
+                Inscrivez-vous et recevez vos prévisions par mail
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/auth/inscription">
-                  <Button variant="gold" size="lg">
-                    Créer mon compte gratuit
-                  </Button>
-                </Link>
-              </div>
+              <Link href="/auth/inscription" className="inline-block w-full sm:w-auto">
+                <Button variant="gold" size="lg" className="w-full sm:w-auto">
+                  Créer mon compte gratuit
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4 bg-[var(--color-bg-secondary)]">
+      <section className="py-10 sm:py-16 px-4 bg-[var(--color-bg-secondary)]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
               Pourquoi Spiritactelle ?
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="feature-icon mx-auto mb-4">
-                <span>🎯</span>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
+            <div className="flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-4 sm:gap-0">
+              <div className="feature-icon flex-shrink-0 sm:mb-4">
+                <ConstellationIcon size={20} />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Précision astrologique</h3>
-              <p className="text-[var(--color-text-secondary)]">
-                Calculs basés sur les éphémérides suisses pour une exactitude maximale.
-              </p>
+              <div>
+                <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Précision astrologique</h3>
+                <p className="text-sm text-[var(--color-text-secondary)]">
+                  Calculs basés sur les éphémérides suisses
+                </p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="feature-icon mx-auto mb-4">
-                <span>📚</span>
+            <div className="flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-4 sm:gap-0">
+              <div className="feature-icon flex-shrink-0 sm:mb-4">
+                <StarIcon size={20} />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Contenu enrichissant</h3>
-              <p className="text-[var(--color-text-secondary)]">
-                Articles de fond et guides pour approfondir vos connaissances.
-              </p>
+              <div>
+                <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Contenu enrichissant</h3>
+                <p className="text-sm text-[var(--color-text-secondary)]">
+                  Articles et guides approfondis
+                </p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="feature-icon mx-auto mb-4">
-                <span>💫</span>
+            <div className="flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-4 sm:gap-0">
+              <div className="feature-icon flex-shrink-0 sm:mb-4">
+                <SunIcon size={20} />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Personnalisation</h3>
-              <p className="text-[var(--color-text-secondary)]">
-                Des prévisions adaptées à votre profil astrologique unique.
-              </p>
+              <div>
+                <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Personnalisation</h3>
+                <p className="text-sm text-[var(--color-text-secondary)]">
+                  Prévisions adaptées à votre profil
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="hero-dark py-12 px-4">
+      <section className="hero-dark py-10 sm:py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-lg text-white/80 mb-6">
-            Découvrez ce que les astres ont à vous révéler
+          <p className="text-base sm:text-lg text-white/80 mb-4 sm:mb-6">
+            Découvrez ce que les astres vous révèlent
           </p>
-          <Link href="/horoscope/quotidien">
-            <Button variant="gold" size="lg">
+          <Link href="/horoscope/quotidien" className="inline-block w-full sm:w-auto px-4 sm:px-0">
+            <Button variant="gold" size="lg" className="w-full sm:w-auto">
               Lire mon horoscope
             </Button>
           </Link>
