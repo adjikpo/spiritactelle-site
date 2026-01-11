@@ -352,6 +352,66 @@ export function GlobeIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
+// Icônes des 5 Éléments Chinois
+
+// Bois (Wood) - Arbre/Feuilles
+export function WoodElementIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M12 22V8" strokeLinecap="round" />
+      <path d="M12 8C12 8 8 6 8 4C8 2 10 2 12 4C14 2 16 2 16 4C16 6 12 8 12 8Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 14C12 14 7 12 7 9C7 6 10 7 12 10" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 14C12 14 17 12 17 9C17 6 14 7 12 10" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 22H15" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Feu (Fire) - Flamme
+export function FireElementIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M12 22C8 22 5 19 5 15C5 11 8 8 10 6C10 6 10 9 12 10C12 7 14 3 15 2C15 2 16 6 18 9C19.5 11 19 14 19 15C19 19 16 22 12 22Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 22C10 22 9 20 9 18C9 16 10 15 12 14C14 15 15 16 15 18C15 20 14 22 12 22Z" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Terre (Earth) - Montagne
+export function EarthElementIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M2 20L8 10L12 14L18 6L22 20H2Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 20H22" strokeLinecap="round" />
+      <circle cx="18" cy="6" r="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Métal (Metal) - Lingot/Diamant
+export function MetalElementIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M6 3H18L22 9L12 21L2 9L6 3Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 9H22" strokeLinecap="round" />
+      <path d="M12 21L8 9L6 3" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 21L16 9L18 3" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 9L12 3L16 9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Eau (Water) - Vagues
+export function WaterElementIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M2 6C4 6 5 8 7 8C9 8 10 6 12 6C14 6 15 8 17 8C19 8 20 6 22 6" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 12C4 12 5 14 7 14C9 14 10 12 12 12C14 12 15 14 17 14C19 14 20 12 22 12" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 18C4 18 5 20 7 20C9 20 10 18 12 18C14 18 15 20 17 20C19 20 20 18 22 18" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 // Export map pour accès dynamique (noms français)
 export const zodiacIcons = {
   belier: AriesIcon,

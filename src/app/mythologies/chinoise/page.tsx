@@ -9,6 +9,22 @@ import {
   getChineseZodiacSign,
   getChineseElement,
 } from '@/lib/api';
+import type { ChineseElement as ChineseElementType } from '@/lib/api/mythologies';
+import {
+  WoodElementIcon,
+  FireElementIcon,
+  EarthElementIcon,
+  MetalElementIcon,
+  WaterElementIcon,
+} from '@/components/icons';
+
+const elementIcons: Record<ChineseElementType, React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>> = {
+  wood: WoodElementIcon,
+  fire: FireElementIcon,
+  earth: EarthElementIcon,
+  metal: MetalElementIcon,
+  water: WaterElementIcon,
+};
 
 export default function ChineseAstrologyPage() {
   const [birthYear, setBirthYear] = useState('');
@@ -204,30 +220,97 @@ export default function ChineseAstrologyPage() {
         </div>
 
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">
             Les 5 Elements
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-4">
-            {Object.entries(CHINESE_ELEMENTS).map(([key, element]) => (
-              <div
-                key={key}
-                className="p-4 rounded-xl text-center"
-                style={{ backgroundColor: `${element.color}15` }}
-              >
+          <p className="text-[var(--color-text-secondary)] mb-6">
+            Les cinq elements (Wu Xing) sont au coeur de la philosophie chinoise.
+            Chaque element influence la personnalite et le destin de ceux qui y sont associes.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+            {Object.entries(CHINESE_ELEMENTS).map(([key, element]) => {
+              const Icon = elementIcons[key as ChineseElementType];
+              return (
                 <div
-                  className="w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center"
-                  style={{ backgroundColor: element.color }}
+                  key={key}
+                  className="p-4 rounded-xl text-center transition-transform hover:scale-105"
+                  style={{ backgroundColor: `${element.color}15` }}
                 >
-                  <span className="text-white font-bold">{element.nameFr[0]}</span>
+                  <div
+                    className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center"
+                    style={{ backgroundColor: element.color }}
+                  >
+                    <Icon size={28} className="text-white" />
+                  </div>
+                  <h3 className="font-bold text-lg" style={{ color: element.color }}>
+                    {element.nameFr}
+                  </h3>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">
+                    {element.season} - {element.direction}
+                  </p>
+                  <div className="mt-2 flex flex-wrap justify-center gap-1">
+                    {element.traits.slice(0, 2).map((trait) => (
+                      <span
+                        key={trait}
+                        className="px-2 py-0.5 text-xs rounded-full bg-white"
+                        style={{ color: element.color }}
+                      >
+                        {trait}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="font-bold" style={{ color: element.color }}>
-                  {element.nameFr}
-                </h3>
-                <p className="text-xs text-[var(--color-text-muted)] mt-1">
-                  {element.traits.slice(0, 2).join(', ')}
-                </p>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Details des elements */}
+          <div className="space-y-4">
+            {Object.entries(CHINESE_ELEMENTS).map(([key, element]) => {
+              const Icon = elementIcons[key as ChineseElementType];
+              return (
+                <div
+                  key={key}
+                  className="p-4 rounded-xl border-l-4 bg-[var(--color-bg-tertiary)]"
+                  style={{ borderColor: element.color }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: `${element.color}20` }}
+                    >
+                      <Icon size={24} style={{ color: element.color }} />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-[var(--color-text-primary)] mb-1">
+                        {element.nameFr}
+                      </h4>
+                      <p className="text-sm text-[var(--color-text-secondary)] mb-3">
+                        {element.description}
+                      </p>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                        <div className="bg-white rounded-lg p-2">
+                          <span className="text-[var(--color-text-muted)]">Saison</span>
+                          <p className="font-medium text-[var(--color-text-primary)]">{element.season}</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-2">
+                          <span className="text-[var(--color-text-muted)]">Direction</span>
+                          <p className="font-medium text-[var(--color-text-primary)]">{element.direction}</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-2">
+                          <span className="text-[var(--color-text-muted)]">Planete</span>
+                          <p className="font-medium text-[var(--color-text-primary)]">{element.planet}</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-2">
+                          <span className="text-[var(--color-text-muted)]">Organe</span>
+                          <p className="font-medium text-[var(--color-text-primary)]">{element.organ}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 

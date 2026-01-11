@@ -28,36 +28,77 @@ export interface EgyptianZodiacSign {
 
 export type ChineseElement = 'wood' | 'fire' | 'earth' | 'metal' | 'water';
 
-export const CHINESE_ELEMENTS: Record<ChineseElement, { name: string; nameFr: string; color: string; traits: string[] }> = {
+export const CHINESE_ELEMENTS: Record<ChineseElement, {
+  name: string;
+  nameFr: string;
+  color: string;
+  traits: string[];
+  season: string;
+  direction: string;
+  planet: string;
+  organ: string;
+  emotion: string;
+  description: string;
+}> = {
   wood: {
     name: 'Wood',
     nameFr: 'Bois',
     color: '#22C55E',
     traits: ['Creativite', 'Croissance', 'Flexibilite', 'Generosite'],
+    season: 'Printemps',
+    direction: 'Est',
+    planet: 'Jupiter',
+    organ: 'Foie',
+    emotion: 'Colere',
+    description: 'Le Bois represente la croissance, l\'expansion et la vitalite. Comme un arbre qui s\'eleve vers le ciel, les personnes Bois ont une energie ascendante et creative. Elles excellent dans l\'innovation et savent s\'adapter aux changements.',
   },
   fire: {
     name: 'Fire',
     nameFr: 'Feu',
     color: '#EF4444',
     traits: ['Passion', 'Energie', 'Dynamisme', 'Leadership'],
+    season: 'Ete',
+    direction: 'Sud',
+    planet: 'Mars',
+    organ: 'Coeur',
+    emotion: 'Joie',
+    description: 'Le Feu symbolise la passion, l\'enthousiasme et la transformation. Les personnes Feu rayonnent d\'une energie charismatique qui attire les autres. Elles sont des leaders naturels, capables d\'inspirer et de motiver.',
   },
   earth: {
     name: 'Earth',
     nameFr: 'Terre',
     color: '#A16207',
     traits: ['Stabilite', 'Patience', 'Pragmatisme', 'Fiabilite'],
+    season: 'Inter-saisons',
+    direction: 'Centre',
+    planet: 'Saturne',
+    organ: 'Rate',
+    emotion: 'Reflexion',
+    description: 'La Terre incarne la stabilite, l\'ancrage et la nourriture. Les personnes Terre sont des piliers fiables sur lesquels on peut compter. Elles apportent equilibre et harmonie dans leur entourage.',
   },
   metal: {
     name: 'Metal',
     nameFr: 'Metal',
     color: '#9CA3AF',
     traits: ['Determination', 'Force', 'Organisation', 'Ambition'],
+    season: 'Automne',
+    direction: 'Ouest',
+    planet: 'Venus',
+    organ: 'Poumons',
+    emotion: 'Tristesse',
+    description: 'Le Metal represente la precision, la determination et la purete. Les personnes Metal ont une grande force interieure et un sens aigu de la justice. Elles excellent dans l\'organisation et la discipline.',
   },
   water: {
     name: 'Water',
     nameFr: 'Eau',
     color: '#3B82F6',
     traits: ['Sagesse', 'Intuition', 'Adaptabilite', 'Diplomatie'],
+    season: 'Hiver',
+    direction: 'Nord',
+    planet: 'Mercure',
+    organ: 'Reins',
+    emotion: 'Peur',
+    description: 'L\'Eau symbolise la sagesse profonde, l\'intuition et l\'adaptabilite. Les personnes Eau sont comme le fleuve qui contourne les obstacles. Elles possedent une intelligence emotionnelle remarquable.',
   },
 };
 
