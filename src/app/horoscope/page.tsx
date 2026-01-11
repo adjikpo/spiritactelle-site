@@ -8,6 +8,7 @@ import { MoonPhaseWidget } from '@/components/wellness';
 import { fetchHoroscope, fetchQuoteOfTheDay, calculateMoonPhase } from '@/lib/api';
 import { HoroscopeData, Quote, MoonPhase, ZodiacSignKey } from '@/lib/api/types';
 import { ZODIAC_SIGNS } from '@/lib/api/constants';
+import { zodiacIconsByKey } from '@/components/icons';
 
 export default function HoroscopePage() {
   const [selectedSign, setSelectedSign] = useState<ZodiacSignKey | null>(null);
@@ -103,7 +104,12 @@ export default function HoroscopePage() {
                   }}
                 >
                   <div className="flex items-center gap-4">
-                    <span className="text-5xl">{ZODIAC_SIGNS[selectedSign].emoji}</span>
+                    <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center">
+                      {(() => {
+                        const IconComponent = zodiacIconsByKey[selectedSign];
+                        return <IconComponent size={32} className="text-white" />;
+                      })()}
+                    </div>
                     <div>
                       <h2 className="text-2xl font-bold">{ZODIAC_SIGNS[selectedSign].nameFr}</h2>
                       <p className="text-white/80 text-sm">{ZODIAC_SIGNS[selectedSign].dateRangeFr}</p>
@@ -176,19 +182,19 @@ export default function HoroscopePage() {
               href="/horoscope/compatibilite"
               className="px-5 py-2.5 bg-white rounded-full shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
             >
-              💕 Compatibilité
+              Compatibilité
             </Link>
             <Link
               href="/astrologie/theme-natal"
               className="px-5 py-2.5 bg-white rounded-full shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
             >
-              🌟 Thème natal
+              Thème natal
             </Link>
             <Link
               href="/astrologie/calendrier-lunaire"
               className="px-5 py-2.5 bg-white rounded-full shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
             >
-              🌙 Calendrier lunaire
+              Calendrier lunaire
             </Link>
           </div>
         </div>

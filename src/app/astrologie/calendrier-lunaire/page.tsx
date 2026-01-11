@@ -209,8 +209,8 @@ export default function CalendrierLunairePage() {
 
                 {/* Message spirituel */}
                 <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border border-purple-100">
-                  <h3 className="font-bold text-purple-800 mb-3 flex items-center gap-2">
-                    <span>✨</span> Guidance du jour
+                  <h3 className="font-bold text-purple-800 mb-3">
+                    Guidance du jour
                   </h3>
                   <p className="text-purple-700 leading-relaxed">
                     {getMoonGuidance(selectedMoonPhase)}

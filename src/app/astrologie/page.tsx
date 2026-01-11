@@ -23,23 +23,17 @@ export default function AstrologiePage() {
     {
       title: 'Thème Natal',
       description: 'Calculez votre carte du ciel au moment de votre naissance',
-      icon: '🌟',
       href: '/astrologie/theme-natal',
-      color: 'from-purple-500 to-indigo-500',
     },
     {
       title: 'Calendrier Lunaire',
       description: 'Suivez les phases de la lune et leurs influences',
-      icon: '🌙',
       href: '/astrologie/calendrier-lunaire',
-      color: 'from-indigo-500 to-blue-500',
     },
     {
       title: 'Transits Planétaires',
       description: 'Découvrez les positions actuelles des planètes',
-      icon: '🪐',
       href: '/astrologie/transits',
-      color: 'from-blue-500 to-cyan-500',
     },
   ];
 
@@ -95,20 +89,15 @@ export default function AstrologiePage() {
             <Link
               key={section.href}
               href={section.href}
-              className="group block bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              className="service-card p-6 h-full group"
             >
-              <div className={`bg-gradient-to-r ${section.color} p-6 text-white`}>
-                <span className="text-4xl block mb-3">{section.icon}</span>
-                <h3 className="text-xl font-bold mb-1">{section.title}</h3>
-              </div>
-              <div className="p-6">
-                <p className="text-[var(--color-text-secondary)] mb-4">
-                  {section.description}
-                </p>
-                <span className="text-[var(--color-primary)] font-medium group-hover:underline">
-                  Découvrir →
-                </span>
-              </div>
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{section.title}</h3>
+              <p className="text-[var(--color-text-secondary)] mb-4">
+                {section.description}
+              </p>
+              <span className="text-[var(--color-primary)] font-medium group-hover:underline">
+                Découvrir →
+              </span>
             </Link>
           ))}
         </div>
@@ -121,8 +110,8 @@ export default function AstrologiePage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                <span>🌟</span> Le Thème Natal
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3">
+                Le Thème Natal
               </h3>
               <p className="text-[var(--color-text-secondary)] leading-relaxed">
                 Votre thème natal est une photographie du ciel au moment exact de votre naissance.
@@ -132,8 +121,8 @@ export default function AstrologiePage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                <span>🌙</span> Les Cycles Lunaires
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3">
+                Les Cycles Lunaires
               </h3>
               <p className="text-[var(--color-text-secondary)] leading-relaxed">
                 La Lune influence nos émotions et notre énergie. Comprendre ses phases permet
@@ -143,8 +132,8 @@ export default function AstrologiePage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                <span>☀️</span> Les Signes Solaires
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3">
+                Les Signes Solaires
               </h3>
               <p className="text-[var(--color-text-secondary)] leading-relaxed">
                 Votre signe solaire (votre "signe" habituel) représente votre essence,
@@ -153,8 +142,8 @@ export default function AstrologiePage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                <span>⬆️</span> L'Ascendant
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3">
+                L'Ascendant
               </h3>
               <p className="text-[var(--color-text-secondary)] leading-relaxed">
                 L'ascendant est le masque que vous présentez au monde. Il influence votre apparence,

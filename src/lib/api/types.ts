@@ -127,6 +127,15 @@ export interface NumerologyProfile {
   compatibleNumbers: number[];
 }
 
+export interface FullNumerologyProfile {
+  lifePath: NumerologyProfile;
+  expression: number;
+  soul: number;
+  personality: number;
+  personalYear: number;
+  personalYearMeaning: { title: string; description: string };
+}
+
 // ============================================
 // Wellness Combined Types
 // ============================================

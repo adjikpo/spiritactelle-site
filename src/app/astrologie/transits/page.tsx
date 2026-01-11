@@ -277,8 +277,8 @@ export default function TransitsPage() {
 
             {/* Rétrogrades actives */}
             <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border border-red-100">
-              <h3 className="font-bold text-red-800 mb-3 flex items-center gap-2">
-                <span>⚠️</span> Rétrogrades Actives
+              <h3 className="font-bold text-red-800 mb-3">
+                Rétrogrades Actives
               </h3>
               <div className="space-y-2">
                 {transits.filter((t) => t.retrograde).length > 0 ? (
@@ -309,8 +309,8 @@ export default function TransitsPage() {
               href="/astrologie/calendrier-lunaire"
               className="block bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl p-6 hover:opacity-90 transition-opacity"
             >
-              <h3 className="font-bold mb-2 flex items-center gap-2">
-                <span>🌙</span> Calendrier Lunaire
+              <h3 className="font-bold mb-2">
+                Calendrier Lunaire
               </h3>
               <p className="text-sm text-indigo-100">
                 Consultez le calendrier complet des phases lunaires
@@ -326,8 +326,8 @@ export default function TransitsPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-blue-50 rounded-xl p-5">
-              <h3 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
-                <span>🔮</span> Qu'est-ce qu'un transit ?
+              <h3 className="font-medium text-blue-800 mb-2">
+                Qu'est-ce qu'un transit ?
               </h3>
               <p className="text-sm text-blue-700">
                 Un transit est le passage d'une planète dans un signe du zodiaque.
@@ -335,8 +335,8 @@ export default function TransitsPage() {
               </p>
             </div>
             <div className="bg-purple-50 rounded-xl p-5">
-              <h3 className="font-medium text-purple-800 mb-2 flex items-center gap-2">
-                <span>🔄</span> Les rétrogrades
+              <h3 className="font-medium text-purple-800 mb-2">
+                Les rétrogrades
               </h3>
               <p className="text-sm text-purple-700">
                 Quand une planète semble reculer dans le ciel, c'est une période
@@ -344,8 +344,8 @@ export default function TransitsPage() {
               </p>
             </div>
             <div className="bg-green-50 rounded-xl p-5">
-              <h3 className="font-medium text-green-800 mb-2 flex items-center gap-2">
-                <span>⭐</span> Impact personnel
+              <h3 className="font-medium text-green-800 mb-2">
+                Impact personnel
               </h3>
               <p className="text-sm text-green-700">
                 Les transits interagissent avec votre thème natal, créant des

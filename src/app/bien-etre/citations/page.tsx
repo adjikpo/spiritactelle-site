@@ -7,12 +7,12 @@ import { fetchRandomQuote, fetchQuoteOfTheDay } from '@/lib/api';
 import { Quote } from '@/lib/api/types';
 
 const QUOTE_CATEGORIES = [
-  { id: 'all', label: 'Toutes', emoji: '✨' },
-  { id: 'wisdom', label: 'Sagesse', emoji: '🦉' },
-  { id: 'love', label: 'Amour', emoji: '❤️' },
-  { id: 'motivation', label: 'Motivation', emoji: '🔥' },
-  { id: 'peace', label: 'Paix', emoji: '🕊️' },
-  { id: 'growth', label: 'Croissance', emoji: '🌱' },
+  { id: 'all', label: 'Toutes' },
+  { id: 'wisdom', label: 'Sagesse' },
+  { id: 'love', label: 'Amour' },
+  { id: 'motivation', label: 'Motivation' },
+  { id: 'peace', label: 'Paix' },
+  { id: 'growth', label: 'Croissance' },
 ];
 
 export default function CitationsPage() {
@@ -82,7 +82,6 @@ export default function CitationsPage() {
 
         {/* Header */}
         <div className="text-center mb-10">
-          <span className="text-5xl mb-4 block">💭</span>
           <h1 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-3">
             Citations Inspirantes
           </h1>
@@ -94,8 +93,8 @@ export default function CitationsPage() {
 
         {/* Citation du jour */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
-            <span>⭐</span> Citation du Jour
+          <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">
+            Citation du Jour
           </h2>
           {isLoading ? (
             <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-8 animate-pulse">
@@ -122,7 +121,6 @@ export default function CitationsPage() {
                 }
               `}
             >
-              <span className="mr-1">{category.emoji}</span>
               {category.label}
             </button>
           ))}
@@ -192,8 +190,8 @@ export default function CitationsPage() {
 
         {/* Section partage */}
         <div className="mt-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 border border-indigo-100">
-          <h3 className="font-bold text-indigo-800 mb-3 flex items-center gap-2">
-            <span>💡</span> Conseil du jour
+          <h3 className="font-bold text-indigo-800 mb-3">
+            Conseil du jour
           </h3>
           <p className="text-indigo-700">
             Choisissez une citation qui résonne avec vous et méditez dessus pendant quelques minutes.

@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { ZodiacSignKey, ZodiacSignInfo } from '@/lib/api/types';
+import { ZodiacSignKey } from '@/lib/api/types';
 import { ZODIAC_SIGNS } from '@/lib/api/constants';
+import { zodiacIconsByKey } from '@/components/icons';
 
 interface ZodiacCardProps {
   sign: ZodiacSignKey;
@@ -20,6 +21,7 @@ export function ZodiacCard({
   onClick,
 }: ZodiacCardProps) {
   const signInfo = ZODIAC_SIGNS[sign];
+  const IconComponent = zodiacIconsByKey[sign];
 
   const content = (
     <div
@@ -34,16 +36,27 @@ export function ZodiacCard({
       `}
       onClick={onClick}
     >
-      {/* Symbole */}
+      {/* Icône SVG */}
       <div
         className={`
-          text-4xl mb-2
-          ${variant === 'compact' ? 'text-center' : ''}
-          ${isSelected ? 'text-white' : ''}
+          mb-2 flex justify-center
+          ${variant === 'compact' ? '' : 'justify-start'}
         `}
-        style={{ color: isSelected ? undefined : signInfo.color }}
       >
-        {signInfo.emoji}
+        <div
+          className={`
+            w-12 h-12 rounded-xl flex items-center justify-center
+            ${isSelected
+              ? 'bg-white/20'
+              : 'bg-[var(--color-primary)]/10'
+            }
+          `}
+        >
+          <IconComponent
+            size={28}
+            className={isSelected ? 'text-white' : 'text-[var(--color-primary)]'}
+          />
+        </div>
       </div>
 
       {/* Nom */}

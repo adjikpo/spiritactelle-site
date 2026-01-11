@@ -42,10 +42,10 @@ html {
   --color-accent-purple-dark: #4a3370;
   --color-accent-pink: #c97b84;
 
-  /* Texte */
-  --color-text-primary: #2c2433;
-  --color-text-secondary: #4a4258;
-  --color-text-muted: #7d7489;
+  /* Texte - Contraste amélioré pour meilleure lisibilité */
+  --color-text-primary: #1a1523;
+  --color-text-secondary: #3d3550;
+  --color-text-muted: #6b6078;
   --color-text-light: #ffffff;
 
   /* Bordures */

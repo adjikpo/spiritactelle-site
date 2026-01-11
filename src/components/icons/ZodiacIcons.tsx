@@ -210,7 +210,60 @@ export function PlanetIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
-// Export map pour accès dynamique
+// Icônes Bien-être
+
+// Citation / Bulle de pensée
+export function QuoteIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 8h2v3H8V8z" fill="currentColor" />
+      <path d="M14 8h2v3h-2V8z" fill="currentColor" />
+    </svg>
+  );
+}
+
+// Affirmation / Étincelles
+export function SparklesIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M12 3L13.5 8.5L19 10L13.5 11.5L12 17L10.5 11.5L5 10L10.5 8.5L12 3Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M19 15L19.5 17L21.5 17.5L19.5 18L19 20L18.5 18L16.5 17.5L18.5 17L19 15Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M5 2L5.5 4L7.5 4.5L5.5 5L5 7L4.5 5L2.5 4.5L4.5 4L5 2Z" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Méditation / Lotus
+export function MeditationIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M12 21C12 21 8 17 8 13C8 10 10 8 12 8C14 8 16 10 16 13C16 17 12 21 12 21Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 8V3" strokeLinecap="round" />
+      <path d="M8 13C5 13 3 11 3 8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 13C19 13 21 11 21 8" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="3" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
+// Numérologie / Grille de chiffres
+export function NumerologyIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <rect x="3" y="3" width="8" height="8" rx="1" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="13" y="3" width="8" height="8" rx="1" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="3" y="13" width="8" height="8" rx="1" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="13" y="13" width="8" height="8" rx="1" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M7 5.5V9.5M6 6.5H8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 5.5C16 5.5 16 6.5 17 6.5C18 6.5 18 8 17 8.5C16 9 16 9.5 16 9.5H18" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 15.5H8L6 18.5H8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 15.5V18.5M18 15.5V18.5M16 17H18" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Export map pour accès dynamique (noms français)
 export const zodiacIcons = {
   belier: AriesIcon,
   taureau: TaurusIcon,
@@ -224,6 +277,22 @@ export const zodiacIcons = {
   capricorne: CapricornIcon,
   verseau: AquariusIcon,
   poissons: PiscesIcon,
+} as const;
+
+// Export map avec clés en anglais (pour ZodiacSignKey)
+export const zodiacIconsByKey = {
+  aries: AriesIcon,
+  taurus: TaurusIcon,
+  gemini: GeminiIcon,
+  cancer: CancerIcon,
+  leo: LeoIcon,
+  virgo: VirgoIcon,
+  libra: LibraIcon,
+  scorpio: ScorpioIcon,
+  sagittarius: SagittariusIcon,
+  capricorn: CapricornIcon,
+  aquarius: AquariusIcon,
+  pisces: PiscesIcon,
 } as const;
 
 export type ZodiacSign = keyof typeof zodiacIcons;

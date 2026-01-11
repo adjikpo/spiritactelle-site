@@ -8,7 +8,6 @@ const MEDITATION_SESSIONS = [
     id: 'respiration',
     title: 'Respiration Consciente',
     duration: 5,
-    emoji: '🌬️',
     description: 'Calmez votre esprit avec des exercices de respiration guidée.',
     color: 'from-blue-400 to-cyan-400',
     steps: [
@@ -30,7 +29,6 @@ const MEDITATION_SESSIONS = [
     id: 'bodyscan',
     title: 'Scan Corporel',
     duration: 10,
-    emoji: '🧘',
     description: 'Détendez chaque partie de votre corps progressivement.',
     color: 'from-purple-400 to-pink-400',
     steps: [
@@ -54,7 +52,6 @@ const MEDITATION_SESSIONS = [
     id: 'gratitude',
     title: 'Méditation de Gratitude',
     duration: 7,
-    emoji: '🙏',
     description: 'Cultivez la gratitude pour transformer votre perspective.',
     color: 'from-amber-400 to-orange-400',
     steps: [
@@ -75,7 +72,6 @@ const MEDITATION_SESSIONS = [
     id: 'visualisation',
     title: 'Visualisation Créatrice',
     duration: 8,
-    emoji: '🌟',
     description: 'Manifestez vos rêves à travers le pouvoir de la visualisation.',
     color: 'from-indigo-400 to-violet-400',
     steps: [
@@ -176,7 +172,6 @@ export default function MeditationPage() {
 
         {/* Header */}
         <div className="text-center mb-10">
-          <span className="text-5xl mb-4 block">🧘</span>
           <h1 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-3">
             Méditation Guidée
           </h1>
@@ -192,12 +187,9 @@ export default function MeditationPage() {
             <div className={`bg-gradient-to-br ${selectedSession.color} rounded-2xl p-8 text-white`}>
               {/* Header de session */}
               <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">{selectedSession.emoji}</span>
-                  <div>
-                    <h2 className="text-xl font-bold">{selectedSession.title}</h2>
-                    <p className="text-sm text-white/80">{selectedSession.duration} minutes</p>
-                  </div>
+                <div>
+                  <h2 className="text-xl font-bold">{selectedSession.title}</h2>
+                  <p className="text-sm text-white/80">{selectedSession.duration} minutes</p>
                 </div>
                 <button
                   onClick={() => {
@@ -301,7 +293,6 @@ export default function MeditationPage() {
                   }
                 `}
               >
-                <span className="text-3xl mb-3 block">{session.emoji}</span>
                 <h3 className={`font-bold text-lg mb-1 ${selectedSession?.id === session.id ? '' : 'text-[var(--color-text-primary)]'}`}>
                   {session.title}
                 </h3>
@@ -321,24 +312,20 @@ export default function MeditationPage() {
 
         {/* Conseils */}
         <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6 border border-teal-100">
-          <h3 className="font-bold text-teal-800 mb-4 flex items-center gap-2">
-            <span>💡</span> Conseils pour méditer
+          <h3 className="font-bold text-teal-800 mb-4">
+            Conseils pour méditer
           </h3>
           <div className="grid sm:grid-cols-2 gap-4 text-sm text-teal-700">
-            <div className="flex items-start gap-2">
-              <span>🌅</span>
+            <div>
               <p>Méditez idéalement le matin au réveil ou le soir avant de dormir.</p>
             </div>
-            <div className="flex items-start gap-2">
-              <span>🪑</span>
+            <div>
               <p>Trouvez une position confortable, assis ou allongé.</p>
             </div>
-            <div className="flex items-start gap-2">
-              <span>🔕</span>
+            <div>
               <p>Mettez votre téléphone en mode silencieux.</p>
             </div>
-            <div className="flex items-start gap-2">
-              <span>🕯️</span>
+            <div>
               <p>Créez une ambiance apaisante avec une lumière tamisée.</p>
             </div>
           </div>

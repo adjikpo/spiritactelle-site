@@ -1,37 +1,67 @@
 'use client';
 
-import { NumerologyProfile } from '@/lib/api/types';
+import { FullNumerologyProfile } from '@/lib/api/types';
 
 interface NumerologyCardProps {
-  profile: NumerologyProfile;
+  profile: FullNumerologyProfile;
   showDetails?: boolean;
 }
 
 export function NumerologyCard({ profile, showDetails = true }: NumerologyCardProps) {
+  const { lifePath, expression, soul, personality, personalYear, personalYearMeaning } = profile;
+
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 text-white text-center">
         <p className="text-sm text-white/70 mb-2">Votre chemin de vie</p>
-        <div className="text-6xl font-bold mb-2">{profile.lifePathNumber}</div>
-        <p className="text-xl font-medium">{profile.lifePathNameFr}</p>
+        <div className="text-6xl font-bold mb-2">{lifePath.lifePathNumber}</div>
+        <p className="text-xl font-medium">{lifePath.lifePathNameFr}</p>
       </div>
 
       {/* Contenu */}
       <div className="p-6">
         <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
-          {profile.descriptionFr}
+          {lifePath.descriptionFr}
         </p>
 
         {showDetails && (
           <div className="space-y-4">
+            {/* Nombres supplémentaires */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+              <div className="bg-indigo-50 rounded-xl p-3 text-center">
+                <div className="text-2xl font-bold text-indigo-600">{expression}</div>
+                <p className="text-xs text-indigo-700">Expression</p>
+              </div>
+              <div className="bg-rose-50 rounded-xl p-3 text-center">
+                <div className="text-2xl font-bold text-rose-600">{soul}</div>
+                <p className="text-xs text-rose-700">Âme</p>
+              </div>
+              <div className="bg-teal-50 rounded-xl p-3 text-center">
+                <div className="text-2xl font-bold text-teal-600">{personality}</div>
+                <p className="text-xs text-teal-700">Personnalité</p>
+              </div>
+              <div className="bg-amber-50 rounded-xl p-3 text-center">
+                <div className="text-2xl font-bold text-amber-600">{personalYear}</div>
+                <p className="text-xs text-amber-700">Année</p>
+              </div>
+            </div>
+
+            {/* Année personnelle */}
+            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-100">
+              <h4 className="font-medium text-amber-800 mb-2 flex items-center gap-2">
+                <span>📅</span> Votre année {personalYear}: {personalYearMeaning.title}
+              </h4>
+              <p className="text-sm text-amber-700">{personalYearMeaning.description}</p>
+            </div>
+
             {/* Points forts */}
             <div className="bg-green-50 rounded-xl p-4">
               <h4 className="font-medium text-green-800 mb-2 flex items-center gap-2">
                 <span>💪</span> Vos forces
               </h4>
               <div className="flex flex-wrap gap-2">
-                {profile.strengthsFr.map((strength, index) => (
+                {lifePath.strengthsFr.map((strength, index) => (
                   <span
                     key={index}
                     className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm"
@@ -48,7 +78,7 @@ export function NumerologyCard({ profile, showDetails = true }: NumerologyCardPr
                 <span>🎯</span> Vos défis
               </h4>
               <div className="flex flex-wrap gap-2">
-                {profile.challengesFr.map((challenge, index) => (
+                {lifePath.challengesFr.map((challenge, index) => (
                   <span
                     key={index}
                     className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm"
@@ -65,7 +95,7 @@ export function NumerologyCard({ profile, showDetails = true }: NumerologyCardPr
                 <span>💕</span> Nombres compatibles
               </h4>
               <div className="flex gap-3">
-                {profile.compatibleNumbers.map((num) => (
+                {lifePath.compatibleNumbers.map((num) => (
                   <span
                     key={num}
                     className="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold"

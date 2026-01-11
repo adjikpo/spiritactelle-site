@@ -42,7 +42,6 @@ export default function SigneDetailPage() {
     return (
       <div className="min-h-screen bg-[var(--color-bg-primary)] pt-20 pb-12 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-6xl mb-4">🔮</p>
           <h1 className="text-2xl font-bold mb-2">Signe non trouvé</h1>
           <p className="text-[var(--color-text-muted)] mb-6">
             Ce signe zodiacal n'existe pas.

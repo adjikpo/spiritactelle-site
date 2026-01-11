@@ -10,7 +10,6 @@ const AFFIRMATION_THEMES = [
   {
     id: 'confiance',
     title: 'Confiance en soi',
-    emoji: '💪',
     affirmations: [
       'Je suis capable de réaliser tout ce que j\'entreprends.',
       'Ma confiance grandit chaque jour.',
@@ -22,7 +21,6 @@ const AFFIRMATION_THEMES = [
   {
     id: 'abondance',
     title: 'Abondance',
-    emoji: '✨',
     affirmations: [
       'L\'abondance coule vers moi naturellement.',
       'Je suis ouvert(e) à recevoir tous les bienfaits de l\'univers.',
@@ -34,7 +32,6 @@ const AFFIRMATION_THEMES = [
   {
     id: 'amour',
     title: 'Amour',
-    emoji: '❤️',
     affirmations: [
       'Je suis digne d\'un amour profond et véritable.',
       'J\'attire des relations saines et épanouissantes.',
@@ -46,7 +43,6 @@ const AFFIRMATION_THEMES = [
   {
     id: 'paix',
     title: 'Paix intérieure',
-    emoji: '🕊️',
     affirmations: [
       'Je choisis la paix dans chaque moment.',
       'Mon esprit est calme et serein.',
@@ -58,7 +54,6 @@ const AFFIRMATION_THEMES = [
   {
     id: 'sante',
     title: 'Santé & Vitalité',
-    emoji: '🌿',
     affirmations: [
       'Mon corps est en parfaite santé.',
       'Je nourris mon corps avec amour et respect.',
@@ -70,7 +65,6 @@ const AFFIRMATION_THEMES = [
   {
     id: 'creativite',
     title: 'Créativité',
-    emoji: '🎨',
     affirmations: [
       'Ma créativité est infinie et unique.',
       'Les idées créatives me viennent facilement.',
@@ -133,7 +127,7 @@ export default function AffirmationsPage() {
     setThemeIndex(nextIndex);
     setCurrentAffirmation({
       text: theme.affirmations[nextIndex],
-      theme: theme.title,
+      category: theme.title,
     });
   }, [selectedTheme, themeIndex]);
 
@@ -146,7 +140,7 @@ export default function AffirmationsPage() {
     setThemeIndex(0);
     setCurrentAffirmation({
       text: theme.affirmations[0],
-      theme: theme.title,
+      category: theme.title,
     });
   };
 
@@ -175,7 +169,6 @@ export default function AffirmationsPage() {
 
         {/* Header */}
         <div className="text-center mb-10">
-          <span className="text-5xl mb-4 block">✨</span>
           <h1 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-3">
             Affirmations Positives
           </h1>
@@ -261,7 +254,6 @@ export default function AffirmationsPage() {
                   }
                 `}
               >
-                <span className="text-2xl mb-2 block">{theme.emoji}</span>
                 <h3 className="font-medium text-[var(--color-text-primary)]">{theme.title}</h3>
                 <p className="text-xs text-[var(--color-text-muted)] mt-1">
                   {theme.affirmations.length} affirmations
@@ -274,8 +266,8 @@ export default function AffirmationsPage() {
         {/* Favoris */}
         {favorites.length > 0 && (
           <div className="mb-10">
-            <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
-              <span>❤️</span> Mes favoris
+            <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">
+              Mes favoris
             </h2>
             <div className="space-y-3">
               {favorites.map((text, index) => (
@@ -283,7 +275,6 @@ export default function AffirmationsPage() {
                   key={index}
                   className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)]"
                 >
-                  <span className="text-amber-500 mt-1">✨</span>
                   <p className="flex-1 text-[var(--color-text-primary)]">{text}</p>
                   <button
                     onClick={() => toggleFavorite(text)}

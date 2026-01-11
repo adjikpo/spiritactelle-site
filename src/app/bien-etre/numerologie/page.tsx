@@ -4,12 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { NumerologyCard } from '@/components/wellness';
 import { getFullNumerologyProfile } from '@/lib/api';
-import { NumerologyProfile } from '@/lib/api/types';
+import { FullNumerologyProfile } from '@/lib/api/types';
 
 export default function NumerologiePage() {
   const [birthDate, setBirthDate] = useState('');
   const [fullName, setFullName] = useState('');
-  const [profile, setProfile] = useState<NumerologyProfile | null>(null);
+  const [profile, setProfile] = useState<FullNumerologyProfile | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
   const handleCalculate = () => {
@@ -112,21 +112,18 @@ export default function NumerologiePage() {
           </h2>
           <div className="grid sm:grid-cols-3 gap-4">
             <div className="bg-indigo-50 rounded-xl p-4 border border-indigo-100">
-              <div className="text-2xl font-bold text-indigo-600 mb-2">🛤️</div>
               <h3 className="font-medium text-indigo-800 mb-2">Chemin de Vie</h3>
               <p className="text-sm text-indigo-700">
                 Votre mission principale dans cette vie, calculée à partir de votre date de naissance.
               </p>
             </div>
             <div className="bg-purple-50 rounded-xl p-4 border border-purple-100">
-              <div className="text-2xl font-bold text-purple-600 mb-2">📝</div>
               <h3 className="font-medium text-purple-800 mb-2">Nombre d'Expression</h3>
               <p className="text-sm text-purple-700">
                 Vos talents naturels et la façon dont vous vous exprimez dans le monde.
               </p>
             </div>
             <div className="bg-rose-50 rounded-xl p-4 border border-rose-100">
-              <div className="text-2xl font-bold text-rose-600 mb-2">❤️</div>
               <h3 className="font-medium text-rose-800 mb-2">Nombre de l'Âme</h3>
               <p className="text-sm text-rose-700">
                 Vos désirs profonds et ce qui vous motive réellement dans la vie.
@@ -197,17 +194,15 @@ export default function NumerologiePage() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link
             href="/horoscope"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
+            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
           >
-            <span>♈</span>
-            <span>Horoscopes</span>
+            Horoscopes
           </Link>
           <Link
             href="/astrologie"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
+            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
           >
-            <span>🌌</span>
-            <span>Astrologie</span>
+            Astrologie
           </Link>
         </div>
       </div>

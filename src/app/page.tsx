@@ -19,6 +19,10 @@ import {
   StarIcon,
   ConstellationIcon,
   PlanetIcon,
+  QuoteIcon,
+  SparklesIcon,
+  MeditationIcon,
+  NumerologyIcon,
 } from '@/components/icons';
 
 const signes = [
@@ -45,9 +49,16 @@ const horoscopes = [
 
 const astrologie = [
   { title: 'Thème Astral', Icon: ConstellationIcon, href: '/astrologie/theme-natal' },
-  { title: 'Compatibilité', Icon: StarIcon, href: '/astrologie/compatibilite' },
-  { title: 'Ascendant', Icon: SunIcon, href: '/astrologie/ascendant' },
+  { title: 'Compatibilité', Icon: StarIcon, href: '/horoscope/compatibilite' },
+  { title: 'Calendrier Lunaire', Icon: MoonIcon, href: '/astrologie/calendrier-lunaire' },
   { title: 'Transits', Icon: PlanetIcon, href: '/astrologie/transits' },
+];
+
+const bienEtre = [
+  { title: 'Citations', Icon: QuoteIcon, href: '/bien-etre/citations' },
+  { title: 'Affirmations', Icon: SparklesIcon, href: '/bien-etre/affirmations' },
+  { title: 'Méditation', Icon: MeditationIcon, href: '/bien-etre/meditation' },
+  { title: 'Numérologie', Icon: NumerologyIcon, href: '/bien-etre/numerologie' },
 ];
 
 const articlesRecents = [
@@ -195,6 +206,30 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-semibold text-sm">{item.title}</h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1">Astrologie</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section Bien-être */}
+      <section className="py-12 sm:py-16 bg-[var(--color-bg-primary)]">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold mb-2">Bien-être & Développement</h2>
+            <p className="text-sm text-[var(--color-text-secondary)]">Nourrissez votre esprit au quotidien</p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            {bienEtre.map((item) => (
+              <Link key={item.title} href={item.href}>
+                <div className="service-card p-4 h-full text-center">
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-accent-teal)]/10 flex items-center justify-center text-[var(--color-accent-teal)] mb-3">
+                    <item.Icon size={24} />
+                  </div>
+                  <h3 className="font-semibold text-sm">{item.title}</h3>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">Bien-être</p>
                 </div>
               </Link>
             ))}

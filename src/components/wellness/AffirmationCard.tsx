@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { Affirmation } from '@/lib/api/types';
 
 interface AffirmationCardProps {
-  affirmation: string;
+  affirmation: Affirmation;
   onRefresh?: () => void;
 }
 
@@ -27,14 +28,14 @@ export function AffirmationCard({ affirmation, onRefresh }: AffirmationCardProps
 
         <div className="flex-1">
           <p className="text-xs text-amber-600 font-medium uppercase tracking-wide mb-2">
-            Affirmation du jour
+            {affirmation.category || 'Affirmation du jour'}
           </p>
           <p
             className={`text-lg text-amber-900 font-medium leading-relaxed transition-opacity duration-300 ${
               isAnimating ? 'opacity-0' : 'opacity-100'
             }`}
           >
-            {affirmation}
+            {affirmation.text}
           </p>
         </div>
 

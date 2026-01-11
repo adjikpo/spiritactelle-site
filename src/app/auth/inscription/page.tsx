@@ -81,7 +81,6 @@ export default function InscriptionPage() {
     return (
       <div className="min-h-screen flex items-center justify-center px-4 py-12">
         <Card variant="glass" padding="lg" className="max-w-md text-center">
-          <div className="text-5xl mb-4">✉️</div>
           <h2 className="text-xl font-bold mb-2">Vérifiez votre email</h2>
           <p className="text-[var(--color-text-muted)] mb-6">
             Nous avons envoyé un lien de confirmation à <strong>{email}</strong>.

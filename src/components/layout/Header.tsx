@@ -8,10 +8,10 @@ import { createBrowserClient } from '@/lib/supabase';
 import type { User } from '@supabase/supabase-js';
 
 const navigation = [
-  { name: 'Horoscopes', href: '/horoscope', emoji: '☀️' },
-  { name: 'Astrologie', href: '/astrologie', emoji: '🌟' },
-  { name: 'Bien-être', href: '/bien-etre', emoji: '🌿' },
-  { name: 'Livre d\'Or', href: '/livre-dor', emoji: '📚' },
+  { name: 'Horoscopes', href: '/horoscope' },
+  { name: 'Astrologie', href: '/astrologie' },
+  { name: 'Bien-être', href: '/bien-etre' },
+  { name: 'Livre d\'Or', href: '/livre-dor' },
 ];
 
 export function Header() {
@@ -78,13 +78,16 @@ export function Header() {
     return pathname.startsWith(href);
   };
 
+  // Vérifier si on est sur la page d'accueil (hero dark)
+  const isHomePage = pathname === '/';
+
   return (
     <>
       <header
         className={`fixed top-0 left-0 z-50 transition-all duration-300 ${
-          isScrolled
+          isScrolled || !isHomePage
             ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[var(--color-border)]'
-            : 'bg-transparent'
+            : 'bg-gradient-to-b from-black/50 to-transparent'
         }`}
         style={{ right: 0, width: '100%' }}
       >
@@ -93,14 +96,14 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group z-10">
               <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all ${
-                isScrolled
+                isScrolled || !isHomePage
                   ? 'bg-[var(--color-primary)]'
                   : 'bg-white/20 backdrop-blur-sm'
               }`}>
                 <span className="text-white text-base sm:text-lg">✦</span>
               </div>
               <span className={`text-lg sm:text-xl font-bold transition-colors ${
-                isScrolled
+                isScrolled || !isHomePage
                   ? 'text-[var(--color-primary)]'
                   : 'text-white'
               }`}>
@@ -116,10 +119,10 @@ export function Header() {
                   href={item.href}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                     isActive(item.href)
-                      ? isScrolled
+                      ? isScrolled || !isHomePage
                         ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
                         : 'bg-white/20 text-white'
-                      : isScrolled
+                      : isScrolled || !isHomePage
                         ? 'text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5'
                         : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
@@ -137,18 +140,18 @@ export function Header() {
                 <>
                   <Link href="/profil">
                     <Button
-                      variant={isScrolled ? 'ghost' : 'outline'}
+                      variant={isScrolled || !isHomePage ? 'ghost' : 'outline'}
                       size="sm"
-                      className={!isScrolled ? 'border-white/30 text-white hover:bg-white/10' : ''}
+                      className={!isScrolled && isHomePage ? 'border-white/30 text-white hover:bg-white/10' : ''}
                     >
                       Mon espace
                     </Button>
                   </Link>
                   <Button
-                    variant={isScrolled ? 'outline' : 'ghost'}
+                    variant={isScrolled || !isHomePage ? 'outline' : 'ghost'}
                     size="sm"
                     onClick={handleLogout}
-                    className={!isScrolled ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
+                    className={!isScrolled && isHomePage ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
                   >
                     Déconnexion
                   </Button>
@@ -159,7 +162,7 @@ export function Header() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={!isScrolled ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
+                      className={!isScrolled && isHomePage ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
                     >
                       Connexion
                     </Button>
@@ -179,7 +182,7 @@ export function Header() {
               className={`md:hidden p-2 -mr-2 rounded-lg transition-colors z-10 ${
                 isMobileMenuOpen
                   ? 'text-[var(--color-text-primary)]'
-                  : isScrolled
+                  : isScrolled || !isHomePage
                     ? 'text-[var(--color-text-primary)]'
                     : 'text-white'
               }`}
@@ -235,26 +238,24 @@ export function Header() {
             <div className="space-y-1">
               <Link
                 href="/"
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${
                   pathname === '/'
                     ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
                     : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] active:bg-[var(--color-bg-tertiary)]'
                 }`}
               >
-                <span className="text-xl">🏠</span>
                 Accueil
               </Link>
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                  className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${
                     isActive(item.href)
                       ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
                       : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] active:bg-[var(--color-bg-tertiary)]'
                   }`}
                 >
-                  <span className="text-xl">{item.emoji}</span>
                   {item.name}
                 </Link>
               ))}
@@ -291,9 +292,8 @@ export function Header() {
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-[var(--color-error)] hover:bg-red-50 active:bg-red-50 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl text-base font-medium text-[var(--color-error)] hover:bg-red-50 active:bg-red-50 transition-colors text-left"
                   >
-                    <span className="text-xl">🚪</span>
                     Déconnexion
                   </button>
                 </>

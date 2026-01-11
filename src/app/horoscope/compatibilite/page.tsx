@@ -75,8 +75,8 @@ export default function CompatibilitePage() {
 
             {/* Conseil */}
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100">
-              <h3 className="font-bold text-purple-800 mb-2 flex items-center gap-2">
-                <span>💡</span> Conseil des astres
+              <h3 className="font-bold text-purple-800 mb-2">
+                Conseil des astres
               </h3>
               <p className="text-purple-700">
                 {getCompatibilityAdvice(compatibility.level)}
@@ -134,25 +134,25 @@ export default function CompatibilitePage() {
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="bg-red-50 rounded-xl p-4">
-                <h4 className="font-medium text-red-800 mb-2">🔥 Feu + Air</h4>
+                <h4 className="font-medium text-red-800 mb-2">Feu + Air</h4>
                 <p className="text-sm text-red-700">
                   L'Air attise le Feu. Combinaison dynamique et stimulante.
                 </p>
               </div>
               <div className="bg-green-50 rounded-xl p-4">
-                <h4 className="font-medium text-green-800 mb-2">🌍 Terre + Eau</h4>
+                <h4 className="font-medium text-green-800 mb-2">Terre + Eau</h4>
                 <p className="text-sm text-green-700">
                   L'Eau nourrit la Terre. Union stable et nourrissante.
                 </p>
               </div>
               <div className="bg-blue-50 rounded-xl p-4">
-                <h4 className="font-medium text-blue-800 mb-2">✨ Même élément</h4>
+                <h4 className="font-medium text-blue-800 mb-2">Même élément</h4>
                 <p className="text-sm text-blue-700">
                   Compréhension naturelle mais peut manquer de complémentarité.
                 </p>
               </div>
               <div className="bg-amber-50 rounded-xl p-4">
-                <h4 className="font-medium text-amber-800 mb-2">⚡ Éléments opposés</h4>
+                <h4 className="font-medium text-amber-800 mb-2">Éléments opposés</h4>
                 <p className="text-sm text-amber-700">
                   Attraction des contraires mais nécessite des compromis.
                 </p>
