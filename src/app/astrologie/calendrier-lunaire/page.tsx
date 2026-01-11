@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import Link from 'next/link';
 import { MoonPhaseWidget } from '@/components/wellness';
+import { BackButton } from '@/components/layout';
 import { calculateMoonPhase, getMoonGuidance, getUpcomingPhases } from '@/lib/api';
 import { MoonPhase, MoonPhaseName } from '@/lib/api/types';
 import { MOON_PHASES } from '@/lib/api/constants';
@@ -94,13 +94,9 @@ export default function CalendrierLunairePage() {
     <div className="min-h-screen bg-[var(--color-bg-primary)] pt-20 pb-12">
       <div className="max-w-6xl mx-auto px-4">
         {/* Retour */}
-        <Link
-          href="/astrologie"
-          className="inline-flex items-center gap-2 text-[var(--color-text-muted)] hover:text-[var(--color-primary)] mb-6"
-        >
-          <span>←</span>
-          <span>Astrologie</span>
-        </Link>
+        <div className="mb-6">
+          <BackButton href="/astrologie" label="Astrologie" />
+        </div>
 
         {/* Header */}
         <div className="text-center mb-10">

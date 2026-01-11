@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { NumerologyCard } from '@/components/wellness';
+import { BackButton } from '@/components/layout';
 import { getFullNumerologyProfile } from '@/lib/api';
 import { FullNumerologyProfile } from '@/lib/api/types';
 
@@ -29,13 +30,9 @@ export default function NumerologiePage() {
     <div className="min-h-screen bg-[var(--color-bg-primary)] pt-20 pb-12">
       <div className="max-w-4xl mx-auto px-4">
         {/* Retour */}
-        <Link
-          href="/bien-etre"
-          className="inline-flex items-center gap-2 text-[var(--color-text-muted)] hover:text-[var(--color-primary)] mb-6"
-        >
-          <span>←</span>
-          <span>Bien-être</span>
-        </Link>
+        <div className="mb-6">
+          <BackButton href="/bien-etre" label="Bien-être" />
+        </div>
 
         {/* Header */}
         <div className="text-center mb-10">

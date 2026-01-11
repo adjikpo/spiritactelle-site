@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { CompatibilityMeter, CompatibilitySelector } from '@/components/horoscope';
+import { BackButton } from '@/components/layout';
 import { calculateCompatibility, getCompatibilityAdvice } from '@/lib/api';
 import { Compatibility, ZodiacSignKey } from '@/lib/api/types';
 import { ZODIAC_SIGNS } from '@/lib/api/constants';
@@ -39,13 +40,9 @@ export default function CompatibilitePage() {
     <div className="min-h-screen bg-[var(--color-bg-primary)] pt-20 pb-12">
       <div className="max-w-3xl mx-auto px-4">
         {/* Retour */}
-        <Link
-          href="/horoscope"
-          className="inline-flex items-center gap-2 text-[var(--color-text-muted)] hover:text-[var(--color-primary)] mb-6"
-        >
-          <span>←</span>
-          <span>Horoscopes</span>
-        </Link>
+        <div className="mb-6">
+          <BackButton href="/horoscope" label="Horoscopes" />
+        </div>
 
         {/* Header */}
         <div className="text-center mb-10">

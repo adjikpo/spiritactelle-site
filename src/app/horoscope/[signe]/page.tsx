@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ZodiacCard } from '@/components/horoscope';
 import { fetchHoroscope, getMostCompatible, getLeastCompatible } from '@/lib/api';
 import { HoroscopeData, ZodiacSignKey, HoroscopePeriod } from '@/lib/api/types';
 import { ZODIAC_SIGNS, ZODIAC_SIGNS_ARRAY } from '@/lib/api/constants';
 import { zodiacIconsByKey } from '@/components/icons';
+import { BackButton } from '@/components/layout';
 
 export default function SigneDetailPage() {
   const params = useParams();
@@ -65,13 +65,9 @@ export default function SigneDetailPage() {
     <div className="min-h-screen bg-[var(--color-bg-primary)] pt-20 pb-12">
       <div className="max-w-4xl mx-auto px-4">
         {/* Retour */}
-        <Link
-          href="/horoscope"
-          className="inline-flex items-center gap-2 text-[var(--color-text-muted)] hover:text-[var(--color-primary)] mb-6"
-        >
-          <span>←</span>
-          <span>Tous les signes</span>
-        </Link>
+        <div className="mb-6">
+          <BackButton href="/horoscope" label="Tous les signes" />
+        </div>
 
         {/* Header du signe */}
         <div
