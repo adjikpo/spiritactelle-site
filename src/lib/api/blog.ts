@@ -21,11 +21,11 @@ export type ArticleCategory =
   | 'tarot';
 
 export const ARTICLE_CATEGORIES: Record<ArticleCategory, { name: string; color: string }> = {
-  mythologies: { name: 'Mythologies', color: '#8B5CF6' },
-  astrologie: { name: 'Astrologie', color: '#F59E0B' },
-  pratiques: { name: 'Pratiques Spirituelles', color: '#10B981' },
-  'bien-etre': { name: 'Bien-etre', color: '#EC4899' },
-  tarot: { name: 'Tarot & Oracles', color: '#6366F1' },
+  mythologies: { name: 'Mythologies', color: '#7C3AED' },
+  astrologie: { name: 'Astrologie', color: '#D97706' },
+  pratiques: { name: 'Pratiques Spirituelles', color: '#059669' },
+  'bien-etre': { name: 'Bien-etre', color: '#DB2777' },
+  tarot: { name: 'Tarot & Oracles', color: '#0891B2' },
 };
 
 // Articles statiques

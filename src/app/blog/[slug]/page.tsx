@@ -51,18 +51,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </Link>
         </div>
 
-        <article className="bg-white rounded-2xl shadow-lg overflow-hidden">
-          <div
-            className="h-2"
-            style={{ backgroundColor: ARTICLE_CATEGORIES[article.category].color }}
-          />
-
+        <article className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[var(--color-border)]">
           <div className="p-8">
             <div className="flex items-center gap-3 mb-4">
               <span
                 className="px-3 py-1 text-sm font-medium rounded-full"
                 style={{
-                  backgroundColor: `${ARTICLE_CATEGORIES[article.category].color}20`,
+                  backgroundColor: `${ARTICLE_CATEGORIES[article.category].color}15`,
                   color: ARTICLE_CATEGORIES[article.category].color,
                 }}
               >

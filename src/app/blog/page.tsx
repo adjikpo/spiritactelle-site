@@ -39,28 +39,39 @@ export default function BlogPage() {
               Articles a la une
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
-              {featuredArticles.map((article) => (
-                <Link
-                  key={article.id}
-                  href={`/blog/${article.slug}`}
-                  className="group bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-6 text-white hover:shadow-xl transition-shadow"
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <span
-                      className="px-2 py-1 text-xs font-medium rounded-full bg-white/20"
-                    >
-                      {ARTICLE_CATEGORIES[article.category].name}
-                    </span>
-                    <span className="text-sm text-white/70">{article.readingTime} min</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:underline">
-                    {article.title}
-                  </h3>
-                  <p className="text-white/80 text-sm line-clamp-2">
-                    {article.excerpt}
-                  </p>
-                </Link>
-              ))}
+              {featuredArticles.map((article, index) => {
+                const cardStyles = [
+                  'bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200',
+                  'bg-gradient-to-br from-slate-50 to-gray-100 border border-slate-200',
+                ];
+                const textColors = [
+                  { primary: 'text-amber-900', secondary: 'text-amber-700', muted: 'text-amber-600/70', tag: 'bg-amber-100 text-amber-700' },
+                  { primary: 'text-slate-900', secondary: 'text-slate-700', muted: 'text-slate-600/70', tag: 'bg-slate-200 text-slate-700' },
+                ];
+                const style = cardStyles[index % 2];
+                const colors = textColors[index % 2];
+
+                return (
+                  <Link
+                    key={article.id}
+                    href={`/blog/${article.slug}`}
+                    className={`group ${style} rounded-2xl p-6 hover:shadow-xl transition-shadow`}
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${colors.tag}`}>
+                        {ARTICLE_CATEGORIES[article.category].name}
+                      </span>
+                      <span className={`text-sm ${colors.muted}`}>{article.readingTime} min</span>
+                    </div>
+                    <h3 className={`text-xl font-bold mb-2 group-hover:underline ${colors.primary}`}>
+                      {article.title}
+                    </h3>
+                    <p className={`${colors.secondary} text-sm line-clamp-2`}>
+                      {article.excerpt}
+                    </p>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}
@@ -96,18 +107,14 @@ export default function BlogPage() {
             <Link
               key={article.id}
               href={`/blog/${article.slug}`}
-              className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow overflow-hidden"
+              className="group bg-white rounded-2xl border border-[var(--color-border)] hover:shadow-lg transition-shadow overflow-hidden"
             >
-              <div
-                className="h-2"
-                style={{ backgroundColor: ARTICLE_CATEGORIES[article.category].color }}
-              />
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span
                     className="px-2 py-1 text-xs font-medium rounded-full"
                     style={{
-                      backgroundColor: `${ARTICLE_CATEGORIES[article.category].color}20`,
+                      backgroundColor: `${ARTICLE_CATEGORIES[article.category].color}15`,
                       color: ARTICLE_CATEGORIES[article.category].color,
                     }}
                   >
@@ -141,26 +148,26 @@ export default function BlogPage() {
           </div>
         )}
 
-        <div className="mt-12 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-6 border border-purple-100">
-          <h3 className="font-bold text-purple-800 mb-3">
+        <div className="mt-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-6 border border-amber-100">
+          <h3 className="font-bold text-amber-800 mb-3">
             Explorez nos autres ressources
           </h3>
           <div className="flex flex-wrap gap-4">
             <Link
               href="/mythologies"
-              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-purple-700"
+              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
             >
               Multi-Mythologies
             </Link>
             <Link
               href="/horoscope"
-              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-purple-700"
+              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
             >
               Horoscopes
             </Link>
             <Link
               href="/bien-etre"
-              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-purple-700"
+              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
             >
               Bien-etre
             </Link>

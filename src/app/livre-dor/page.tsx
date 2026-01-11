@@ -81,48 +81,52 @@ export default function LivreDorPage() {
               Temoignages a la une
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
-              {featuredTestimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-6 text-white"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="px-2 py-1 text-xs font-medium rounded-full bg-white/20">
-                      {TESTIMONIAL_SERVICES[testimonial.service].name}
-                    </span>
-                    <div className="flex gap-0.5">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <svg
-                          key={star}
-                          className={`w-4 h-4 ${star <= testimonial.rating ? 'text-amber-300' : 'text-white/30'}`}
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
+              {featuredTestimonials.map((testimonial, index) => {
+                const cardStyles = [
+                  'bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200',
+                  'bg-gradient-to-br from-slate-50 to-gray-100 border border-slate-200',
+                  'bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-200',
+                ];
+                const textColors = [
+                  { primary: 'text-amber-900', secondary: 'text-amber-700', muted: 'text-amber-600/70', tag: 'bg-amber-100 text-amber-700' },
+                  { primary: 'text-slate-900', secondary: 'text-slate-700', muted: 'text-slate-600/70', tag: 'bg-slate-200 text-slate-700' },
+                  { primary: 'text-rose-900', secondary: 'text-rose-700', muted: 'text-rose-600/70', tag: 'bg-rose-100 text-rose-700' },
+                ];
+                const style = cardStyles[index % 3];
+                const colors = textColors[index % 3];
+
+                return (
+                  <div
+                    key={testimonial.id}
+                    className={`${style} rounded-2xl p-6 hover:shadow-lg transition-shadow`}
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${colors.tag}`}>
+                        {TESTIMONIAL_SERVICES[testimonial.service].name}
+                      </span>
+                      <StarRating rating={testimonial.rating} />
                     </div>
-                  </div>
-                  <p className="text-white/90 text-sm leading-relaxed mb-4">
-                    "{testimonial.content}"
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">{testimonial.author}</p>
-                      {testimonial.location && (
-                        <p className="text-xs text-white/70">{testimonial.location}</p>
-                      )}
-                    </div>
-                    <p className="text-xs text-white/50">
-                      {new Date(testimonial.createdAt).toLocaleDateString('fr-FR', {
-                        day: 'numeric',
-                        month: 'short',
-                        year: 'numeric',
-                      })}
+                    <p className={`${colors.secondary} text-sm leading-relaxed mb-4`}>
+                      "{testimonial.content}"
                     </p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className={`font-medium ${colors.primary}`}>{testimonial.author}</p>
+                        {testimonial.location && (
+                          <p className={`text-xs ${colors.muted}`}>{testimonial.location}</p>
+                        )}
+                      </div>
+                      <p className={`text-xs ${colors.muted}`}>
+                        {new Date(testimonial.createdAt).toLocaleDateString('fr-FR', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric',
+                        })}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -220,14 +224,14 @@ export default function LivreDorPage() {
             Partagez votre experience
           </h3>
           <p className="text-amber-700 mb-4">
-            Vous avez utilise nos services ? Votre temoignage compte ! Aidez d'autres personnes
-            a decouvrir Spiritactelle en partageant votre experience.
+            Vous avez utilise nos services ? Votre temoignage compte ! La possibilite de laisser
+            un temoignage sera bientot disponible. En attendant, inscrivez-vous a notre newsletter.
           </p>
           <Link
-            href="/auth/connexion"
+            href="/newsletter"
             className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg font-medium hover:bg-amber-600 transition-colors"
           >
-            Laisser un temoignage
+            S&apos;inscrire a la newsletter
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
