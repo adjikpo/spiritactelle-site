@@ -44,10 +44,8 @@ const signes = [
 ];
 
 const horoscopes = [
-  { title: 'Quotidien', Icon: SunIcon, href: '/horoscope/quotidien' },
-  { title: 'Hebdomadaire', Icon: MoonIcon, href: '/horoscope/hebdomadaire' },
-  { title: 'Mensuel', Icon: StarIcon, href: '/horoscope/mensuel' },
-  { title: 'Annuel', Icon: ConstellationIcon, href: '/horoscope/annuel' },
+  { title: 'Quotidien', Icon: SunIcon, href: '/horoscope' },
+  { title: 'Compatibilite', Icon: StarIcon, href: '/horoscope/compatibilite' },
 ];
 
 const astrologie = [
@@ -109,69 +107,73 @@ export default function HomePage() {
           {/* Carte flottante centrale */}
           <div className="w-full max-w-6xl mx-auto">
             <div className="hero-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl">
-              {/* En-tête de la carte */}
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-6">
-                {/* Titre principal - Gauche */}
-                <div className="flex-1">
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                    L&apos;astrologie qui
-                  </h1>
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-secondary-light)] leading-tight">
-                    inspire votre vie
-                  </h2>
-                </div>
+              {/* En-tête centré */}
+              <div className="text-center mb-8">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
+                  L&apos;astrologie qui
+                </h1>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-secondary-light)] leading-tight">
+                  inspire votre vie
+                </h2>
+                <p className="mt-3 text-sm text-white/70 leading-relaxed max-w-md mx-auto">
+                  Horoscopes précis, thèmes astraux et articles inspirants pour éclairer votre quotidien.
+                </p>
+              </div>
 
-                {/* Description - Droite */}
-                <div className="lg:max-w-xs lg:text-right">
-                  <p className="text-sm text-white/70 leading-relaxed">
-                    Horoscopes précis, thèmes astraux et articles inspirants pour éclairer votre quotidien.
-                  </p>
+              {/* Roue zodiacale elegante */}
+              <div className="relative w-full max-w-lg mx-auto mb-8">
+                {/* Conteneur centré */}
+                <div className="relative" style={{ paddingBottom: '100%' }}>
+                  {/* Cercles decoratifs */}
+                  <div className="absolute inset-[15%] rounded-full border border-white/10" />
+                  <div className="absolute inset-[25%] rounded-full border border-white/15" />
+                  <div className="absolute inset-[35%] rounded-full border border-white/20 bg-white/5" />
+
+                  {/* Centre - Logo/Soleil */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[var(--color-secondary-light)] to-[var(--color-secondary)] shadow-2xl flex items-center justify-center">
+                    <span className="text-2xl sm:text-3xl">✦</span>
+                  </div>
+
+                  {/* Les 12 signes en cercle */}
+                  {signes.map((signe, index) => {
+                    const angle = (index * 30 - 90) * (Math.PI / 180);
+                    const radius = 40;
+                    const x = 50 + radius * Math.cos(angle);
+                    const y = 50 + radius * Math.sin(angle);
+
+                    return (
+                      <Link
+                        key={signe.nom}
+                        href={`/horoscope/${signe.slug}`}
+                        className="absolute group"
+                        style={{
+                          left: `${x}%`,
+                          top: `${y}%`,
+                          transform: 'translate(-50%, -50%)',
+                        }}
+                      >
+                        <div className="flex flex-col items-center">
+                          <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/95 shadow-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:bg-white">
+                            <signe.Icon className="w-5 h-5 sm:w-7 sm:h-7 text-[var(--color-primary)]" />
+                          </div>
+                          <span className="mt-1.5 text-[9px] sm:text-[11px] font-medium text-white/90 group-hover:text-white transition-colors whitespace-nowrap">
+                            {signe.nom}
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Grille des 12 signes - responsive */}
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 mb-6">
-                {signes.map((signe) => (
-                  <Link
-                    key={signe.nom}
-                    href={`/horoscope/${signe.slug}`}
-                    className="group"
-                  >
-                    <div className="zodiac-card bg-white rounded-xl p-3 sm:p-4 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)]">
-                        <signe.Icon className="w-6 h-6 sm:w-7 sm:h-7" />
-                      </div>
-                      <p className="text-xs sm:text-sm font-semibold text-[var(--color-text-primary)] leading-tight">
-                        {signe.nom}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Boutons CTA */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <Link href="/horoscope" className="w-full sm:w-auto">
-                  <Button variant="gold" size="lg" className="w-full sm:w-auto group">
-                    <span>Explorer</span>
+              {/* Bouton CTA centré */}
+              <div className="text-center">
+                <Link href="/horoscope">
+                  <Button variant="gold" size="lg" className="group">
+                    <span>Explorer les horoscopes</span>
                     <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                   </Button>
                 </Link>
-
-                <div className="flex items-center gap-2">
-                  <Link
-                    href="/horoscope"
-                    className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white/70 hover:bg-white/10 hover:text-white transition-all"
-                  >
-                    <span className="text-sm">←</span>
-                  </Link>
-                  <Link
-                    href="/astrologie"
-                    className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white/70 hover:bg-white/10 hover:text-white transition-all"
-                  >
-                    <span className="text-sm">→</span>
-                  </Link>
-                </div>
               </div>
 
             </div>

@@ -81,3 +81,12 @@ export {
   getAverageRating,
   getTotalTestimonials,
 } from './livre-dor';
+
+export {
+  getHoroscope,
+  getAllHoroscopesForSign,
+  isValidZodiacSign,
+  PERIOD_LABELS,
+  SIGN_NAMES_FR,
+} from './horoscope-api';
+export type { HoroscopePeriod, ZodiacSignKey, HoroscopeResponse } from './horoscope-api';

@@ -3,18 +3,25 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { fetchHoroscope, getMostCompatible, getLeastCompatible } from '@/lib/api';
-import { HoroscopeData, ZodiacSignKey, HoroscopePeriod } from '@/lib/api/types';
+import { getMostCompatible, getLeastCompatible, getHoroscope, PERIOD_LABELS } from '@/lib/api';
+import type { HoroscopePeriod, ZodiacSignKey, HoroscopeResponse } from '@/lib/api/horoscope-api';
 import { ZODIAC_SIGNS, ZODIAC_SIGNS_ARRAY } from '@/lib/api/constants';
-import { zodiacIconsByKey } from '@/components/icons';
+import { zodiacIconsByKey, SunIcon, MoonIcon, StarIcon, ConstellationIcon } from '@/components/icons';
 import { BackButton } from '@/components/layout';
+
+const periodIcons = {
+  today: SunIcon,
+  week: MoonIcon,
+  month: StarIcon,
+  year: ConstellationIcon,
+};
 
 export default function SigneDetailPage() {
   const params = useParams();
   const sign = params.signe as ZodiacSignKey;
 
   const [period, setPeriod] = useState<HoroscopePeriod>('today');
-  const [horoscope, setHoroscope] = useState<HoroscopeData | null>(null);
+  const [horoscope, setHoroscope] = useState<HoroscopeResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Vérifier que le signe est valide
@@ -27,7 +34,7 @@ export default function SigneDetailPage() {
     const loadHoroscope = async () => {
       setIsLoading(true);
       try {
-        const data = await fetchHoroscope(sign, period);
+        const data = await getHoroscope(sign, period);
         setHoroscope(data);
       } catch (error) {
         console.error('Error loading horoscope:', error);
@@ -123,28 +130,33 @@ export default function SigneDetailPage() {
 
         {/* Sélecteur de période */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <h2 className="text-xl font-bold text-[var(--color-text-primary)]">
               Horoscope
             </h2>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {[
-                { key: 'yesterday', label: 'Hier' },
-                { key: 'today', label: "Aujourd'hui" },
-                { key: 'tomorrow', label: 'Demain' },
-              ].map((p) => (
-                <button
-                  key={p.key}
-                  onClick={() => setPeriod(p.key as HoroscopePeriod)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    period === p.key
-                      ? 'bg-[var(--color-primary)] text-white'
-                      : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-border)]'
-                  }`}
-                >
-                  {p.label}
-                </button>
-              ))}
+                { key: 'today', label: 'Quotidien', icon: periodIcons.today },
+                { key: 'week', label: 'Hebdo', icon: periodIcons.week },
+                { key: 'month', label: 'Mensuel', icon: periodIcons.month },
+                { key: 'year', label: 'Annuel', icon: periodIcons.year },
+              ].map((p) => {
+                const IconComponent = p.icon;
+                return (
+                  <button
+                    key={p.key}
+                    onClick={() => setPeriod(p.key as HoroscopePeriod)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      period === p.key
+                        ? 'bg-[var(--color-primary)] text-white'
+                        : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-border)]'
+                    }`}
+                  >
+                    <IconComponent size={16} />
+                    {p.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -156,36 +168,18 @@ export default function SigneDetailPage() {
             </div>
           ) : horoscope ? (
             <>
-              <p className="text-[var(--color-text-primary)] leading-relaxed mb-6">
-                {horoscope.description}
-              </p>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {horoscope.mood && (
-                  <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3 text-center">
-                    <p className="text-xs text-[var(--color-text-muted)] mb-1">Humeur</p>
-                    <p className="font-medium text-sm">{horoscope.mood}</p>
-                  </div>
-                )}
-                {horoscope.color && (
-                  <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3 text-center">
-                    <p className="text-xs text-[var(--color-text-muted)] mb-1">Couleur</p>
-                    <p className="font-medium text-sm">{horoscope.color}</p>
-                  </div>
-                )}
-                {horoscope.luckyNumber && (
-                  <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3 text-center">
-                    <p className="text-xs text-[var(--color-text-muted)] mb-1">Nombre</p>
-                    <p className="font-medium text-sm">{horoscope.luckyNumber}</p>
-                  </div>
-                )}
-                {horoscope.luckyTime && (
-                  <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3 text-center">
-                    <p className="text-xs text-[var(--color-text-muted)] mb-1">Heure</p>
-                    <p className="font-medium text-sm">{horoscope.luckyTime}</p>
-                  </div>
-                )}
+              <div className="flex items-center gap-2 mb-4">
+                {(() => {
+                  const PeriodIcon = periodIcons[period];
+                  return <PeriodIcon size={20} className="text-[var(--color-primary)]" />;
+                })()}
+                <span className="text-sm font-medium text-[var(--color-primary)]">
+                  {PERIOD_LABELS[period].labelFr}
+                </span>
               </div>
+              <p className="text-[var(--color-text-primary)] leading-relaxed">
+                {horoscope.horoscope}
+              </p>
             </>
           ) : null}
         </div>

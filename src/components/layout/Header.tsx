@@ -23,8 +23,12 @@ export function Header() {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [supabase, setSupabase] = useState<ReturnType<typeof createBrowserClient> | null>(null);
 
-  const supabase = createBrowserClient();
+  // Initialize supabase client on client side only
+  useEffect(() => {
+    setSupabase(createBrowserClient());
+  }, []);
 
   // Detect scroll for header background
   useEffect(() => {
@@ -53,6 +57,8 @@ export function Header() {
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
+    if (!supabase) return;
+
     const getUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       setUser(user);
@@ -66,9 +72,10 @@ export function Header() {
     });
 
     return () => subscription.unsubscribe();
-  }, [supabase.auth]);
+  }, [supabase]);
 
   const handleLogout = async () => {
+    if (!supabase) return;
     await supabase.auth.signOut();
     setIsMobileMenuOpen(false);
     router.push('/');
