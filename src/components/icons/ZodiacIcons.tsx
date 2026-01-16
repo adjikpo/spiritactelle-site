@@ -281,12 +281,109 @@ export function ConstellationIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
-// Planète
+// Planète (générique)
 export function PlanetIcon({ size = 24, ...props }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
       <circle cx="12" cy="12" r="6" />
       <ellipse cx="12" cy="12" rx="10" ry="3" transform="rotate(-20 12 12)" />
+    </svg>
+  );
+}
+
+// Icônes des Planètes du Système Solaire
+
+// Mercure - symbole ☿ (cercle avec croix en bas et cornes en haut)
+export function MercuryIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <circle cx="12" cy="10" r="5" />
+      <path d="M12 15V21" strokeLinecap="round" />
+      <path d="M9 18H15" strokeLinecap="round" />
+      <path d="M8 5C8 3 10 2 12 2C14 2 16 3 16 5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Vénus - symbole ♀ (cercle avec croix en bas)
+export function VenusIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <circle cx="12" cy="9" r="6" />
+      <path d="M12 15V22" strokeLinecap="round" />
+      <path d="M9 19H15" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Mars - symbole ♂ (cercle avec flèche en haut à droite)
+export function MarsIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <circle cx="10" cy="14" r="6" />
+      <path d="M15 9L20 4" strokeLinecap="round" />
+      <path d="M15 4H20V9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Jupiter - symbole ♃ (croissant attaché à une croix)
+export function JupiterIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M8 4C5 4 3 6 3 9C3 12 5 14 8 14" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 14H18" strokeLinecap="round" />
+      <path d="M14 4V20" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Saturne - symbole ♄ (croix avec croissant en bas)
+export function SaturnIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M8 4H14" strokeLinecap="round" />
+      <path d="M11 4V14" strokeLinecap="round" />
+      <path d="M7 10H15" strokeLinecap="round" />
+      <path d="M11 14C11 17 13 20 16 20C19 20 21 18 21 15" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Uranus - symbole ♅ (cercle avec point central et flèche vers le haut)
+export function UranusIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <circle cx="12" cy="16" r="5" />
+      <circle cx="12" cy="16" r="1" fill="currentColor" />
+      <path d="M12 11V3" strokeLinecap="round" />
+      <path d="M9 6L12 3L15 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Neptune - symbole ♆ (trident)
+export function NeptuneIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <path d="M12 22V8" strokeLinecap="round" />
+      <path d="M8 15H16" strokeLinecap="round" />
+      <path d="M6 4V8C6 10 8 12 12 12C16 12 18 10 18 8V4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 4L6 2" strokeLinecap="round" />
+      <path d="M12 8V2" strokeLinecap="round" />
+      <path d="M18 4V2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Pluton - symbole ♇ (cercle au-dessus d'un croissant sur une croix)
+export function PlutoIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      <circle cx="12" cy="6" r="4" />
+      <path d="M12 10V22" strokeLinecap="round" />
+      <path d="M8 18H16" strokeLinecap="round" />
+      <path d="M6 14C6 12 8 10 12 10C16 10 18 12 18 14" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -540,3 +637,19 @@ export const moonPhaseIcons = {
 } as const;
 
 export type MoonPhaseName = keyof typeof moonPhaseIcons;
+
+// Export map pour les icônes des planètes
+export const planetIcons = {
+  sun: SunIcon,
+  moon: MoonIcon,
+  mercury: MercuryIcon,
+  venus: VenusIcon,
+  mars: MarsIcon,
+  jupiter: JupiterIcon,
+  saturn: SaturnIcon,
+  uranus: UranusIcon,
+  neptune: NeptuneIcon,
+  pluto: PlutoIcon,
+} as const;
+
+export type PlanetName = keyof typeof planetIcons;

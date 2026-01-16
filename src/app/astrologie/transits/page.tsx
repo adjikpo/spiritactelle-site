@@ -7,7 +7,8 @@ import { BackButton } from '@/components/layout';
 import { calculateMoonPhase, getUpcomingPhases } from '@/lib/api';
 import { MoonPhase, UpcomingMoonPhase } from '@/lib/api/types';
 import { ZODIAC_SIGNS } from '@/lib/api/constants';
-import { moonPhaseIcons } from '@/components/icons';
+import { moonPhaseIcons, planetIcons, PlanetName, zodiacIconsByKey } from '@/components/icons';
+import type { ZodiacSignKey } from '@/lib/api/horoscope-api';
 
 // Données des planètes et leurs significations
 const PLANETS = {
@@ -170,6 +171,8 @@ export default function TransitsPage() {
                 {transits.map((transit) => {
                   const planet = PLANETS[transit.planet as keyof typeof PLANETS];
                   const sign = ZODIAC_SIGNS[transit.sign as keyof typeof ZODIAC_SIGNS];
+                  const PlanetIcon = planetIcons[transit.planet as PlanetName];
+                  const SignIcon = zodiacIconsByKey[transit.sign as ZodiacSignKey];
 
                   return (
                     <div
@@ -177,10 +180,10 @@ export default function TransitsPage() {
                       className="flex items-center gap-4 p-4 rounded-sm bg-[var(--color-bg-secondary)] border border-[var(--color-border)]"
                     >
                       <div
-                        className="w-12 h-12 rounded-sm flex items-center justify-center text-2xl"
+                        className="w-12 h-12 rounded-sm flex items-center justify-center"
                         style={{ backgroundColor: `${planet.color}20`, color: planet.color }}
                       >
-                        {planet.symbol}
+                        {PlanetIcon && <PlanetIcon size={28} />}
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
@@ -193,9 +196,9 @@ export default function TransitsPage() {
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-1 text-sm text-[var(--color-text-secondary)]">
+                        <div className="flex items-center gap-1.5 text-sm text-[var(--color-text-secondary)]">
                           <span>en</span>
-                          <span style={{ color: sign?.color }}>{sign?.symbol}</span>
+                          {SignIcon && <SignIcon size={16} style={{ color: sign?.color }} />}
                           <span>{sign?.nameFr}</span>
                         </div>
                       </div>
@@ -211,13 +214,15 @@ export default function TransitsPage() {
                 Signification des Planètes
               </h2>
               <div className="space-y-4">
-                {Object.entries(PLANETS).map(([key, planet]) => (
+                {Object.entries(PLANETS).map(([key, planet]) => {
+                  const PlanetIcon = planetIcons[key as PlanetName];
+                  return (
                   <div
                     key={key}
                     className="flex items-start gap-4 p-4 rounded-sm hover:bg-[var(--color-bg-secondary)] transition-colors"
                   >
-                    <span className="text-2xl" style={{ color: planet.color }}>
-                      {planet.symbol}
+                    <span style={{ color: planet.color }}>
+                      {PlanetIcon && <PlanetIcon size={28} />}
                     </span>
                     <div>
                       <div className="flex items-center gap-3 mb-1">
@@ -233,7 +238,8 @@ export default function TransitsPage() {
                       </p>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -287,9 +293,12 @@ export default function TransitsPage() {
                     .filter((t) => t.retrograde)
                     .map((transit) => {
                       const planet = PLANETS[transit.planet as keyof typeof PLANETS];
+                      const PlanetIcon = planetIcons[transit.planet as PlanetName];
                       return (
                         <div key={transit.planet} className="flex items-center gap-2">
-                          <span style={{ color: planet.color }}>{planet.symbol}</span>
+                          <span style={{ color: planet.color }}>
+                            {PlanetIcon && <PlanetIcon size={20} />}
+                          </span>
                           <span className="text-red-700">{planet.name}</span>
                         </div>
                       );

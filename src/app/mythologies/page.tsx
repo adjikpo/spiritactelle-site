@@ -24,6 +24,7 @@ const MYTHOLOGIES = [
     color: '#F59E0B',
     gradient: 'from-amber-500 to-yellow-500',
     features: ['12 divinites', 'Sagesse ancienne', 'Mission de vie'],
+    comingSoon: true,
   },
   {
     id: 'celte',

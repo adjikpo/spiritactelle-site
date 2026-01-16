@@ -137,29 +137,38 @@ export default function SigneDetailPage() {
             </h2>
             <div className="flex flex-wrap justify-center gap-2">
               {[
-                { key: 'today', label: 'Quotidien', icon: periodIcons.today },
-                { key: 'week', label: 'Hebdo', icon: periodIcons.week },
-                { key: 'month', label: 'Mensuel', icon: periodIcons.month },
-                { key: 'year', label: 'Annuel', icon: periodIcons.year },
+                { key: 'today', label: 'Quotidien', icon: periodIcons.today, comingSoon: false },
+                { key: 'week', label: 'Hebdo', icon: periodIcons.week, comingSoon: false },
+                { key: 'month', label: 'Mensuel', icon: periodIcons.month, comingSoon: true },
+                { key: 'year', label: 'Annuel', icon: periodIcons.year, comingSoon: true },
               ].map((p) => {
                 const IconComponent = p.icon;
                 return (
                   <button
                     key={p.key}
                     onClick={() => {
+                      if (p.comingSoon) return;
                       setPeriod(p.key as HoroscopePeriod);
                       setTimeout(() => {
                         horoscopeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       }, 100);
                     }}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-medium transition-colors ${
-                      period === p.key
+                    disabled={p.comingSoon}
+                    className={`relative flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-medium transition-colors ${
+                      p.comingSoon
+                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                        : period === p.key
                         ? 'bg-[var(--color-primary)] text-white'
                         : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-border)]'
                     }`}
                   >
                     <IconComponent size={16} />
                     {p.label}
+                    {p.comingSoon && (
+                      <span className="absolute -top-2 -right-2 px-1.5 py-0.5 bg-gray-800 text-white text-[9px] rounded-sm">
+                        Bientôt
+                      </span>
+                    )}
                   </button>
                 );
               })}
