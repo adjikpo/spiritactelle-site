@@ -16,7 +16,7 @@ export default function ProfilPage() {
           <CardContent>
             <div className="text-center py-8">
               {/* Icon */}
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-sm bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center">
                 <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
@@ -28,7 +28,7 @@ export default function ProfilPage() {
               </h1>
 
               {/* Coming soon message */}
-              <div className="mb-8 p-4 rounded-xl bg-amber-50 border border-amber-200 text-left">
+              <div className="mb-8 p-4 rounded-sm bg-amber-50 border border-amber-200 text-left">
                 <div className="flex gap-3">
                   <div className="flex-shrink-0">
                     <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@ export default function ProfilPage() {
               </div>
 
               {/* Newsletter CTA */}
-              <div className="p-6 rounded-xl bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 mb-6">
+              <div className="p-6 rounded-sm bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 mb-6">
                 <p className="text-[var(--color-text-primary)] font-medium mb-2">
                   Soyez informe du lancement !
                 </p>

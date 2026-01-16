@@ -28,10 +28,10 @@ export default function NewsletterPage() {
           <BackButton href="/" label="Accueil" />
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="bg-white rounded-sm shadow-lg overflow-hidden">
           {/* Header décoratif */}
           <div className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] p-8 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-sm bg-white/20 flex items-center justify-center">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
@@ -48,7 +48,7 @@ export default function NewsletterPage() {
           <div className="p-6 sm:p-8">
             {isSubmitted ? (
               <div className="text-center py-8">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-sm bg-green-100 flex items-center justify-center">
                   <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
@@ -68,7 +68,7 @@ export default function NewsletterPage() {
             ) : (
               <>
                 {/* Message compte non disponible */}
-                <div className="mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200">
+                <div className="mb-6 p-4 rounded-sm bg-amber-50 border border-amber-200">
                   <div className="flex gap-3">
                     <div className="flex-shrink-0">
                       <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export default function NewsletterPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="exemple@email.com"
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-sm border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all"
                     />
                   </div>
 

@@ -106,7 +106,7 @@ export default function HomePage() {
         <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 pt-20 pb-8">
           {/* Carte flottante centrale */}
           <div className="w-full max-w-6xl mx-auto">
-            <div className="hero-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl">
+            <div className="hero-card rounded-sm sm:rounded-sm p-5 sm:p-8 lg:p-10 backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl">
               {/* En-tête centré */}
               <div className="text-center mb-8">
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
@@ -120,24 +120,139 @@ export default function HomePage() {
                 </p>
               </div>
 
-              {/* Roue zodiacale elegante */}
+              {/* Roue zodiacale - Système Solaire */}
               <div className="relative w-full max-w-lg mx-auto mb-8">
                 {/* Conteneur centré */}
                 <div className="relative" style={{ paddingBottom: '100%' }}>
-                  {/* Cercles decoratifs */}
-                  <div className="absolute inset-[15%] rounded-full border border-white/10" />
-                  <div className="absolute inset-[25%] rounded-full border border-white/15" />
-                  <div className="absolute inset-[35%] rounded-full border border-white/20 bg-white/5" />
 
-                  {/* Centre - Logo/Soleil */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[var(--color-secondary-light)] to-[var(--color-secondary)] shadow-2xl flex items-center justify-center">
-                    <span className="text-2xl sm:text-3xl">✦</span>
+                  {/* Nébuleuse de fond */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-radial from-purple-900/20 via-indigo-900/10 to-transparent blur-2xl" />
+
+                  {/* Orbites du système solaire */}
+                  <div className="absolute inset-[8%] rounded-full border border-white/5 border-dashed animate-[spin_120s_linear_infinite]" />
+                  <div className="absolute inset-[16%] rounded-full border border-cyan-400/10 shadow-[0_0_15px_rgba(34,211,238,0.1)]" />
+                  <div className="absolute inset-[24%] rounded-full border border-blue-400/15 shadow-[0_0_20px_rgba(96,165,250,0.1)]" />
+                  <div className="absolute inset-[32%] rounded-full border border-purple-400/20 shadow-[0_0_25px_rgba(192,132,252,0.15)]" />
+                  <div className="absolute inset-[40%] rounded-full border-2 border-amber-400/25 shadow-[0_0_30px_rgba(251,191,36,0.2)]" />
+
+                  {/* Petites planètes orbitantes */}
+                  <div className="absolute inset-[16%] rounded-full animate-[spin_60s_linear_infinite]">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+                  </div>
+                  <div className="absolute inset-[24%] rounded-full animate-[spin_45s_linear_infinite_reverse]">
+                    <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-br from-orange-300 to-orange-500 shadow-[0_0_12px_rgba(251,146,60,0.8)]" />
+                  </div>
+                  <div className="absolute inset-[32%] rounded-full animate-[spin_30s_linear_infinite]">
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-blue-300 to-blue-500 shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
                   </div>
 
-                  {/* Les 12 signes en cercle */}
+                  {/* Corona solaire externe */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-radial from-amber-500/30 via-orange-500/10 to-transparent blur-xl animate-pulse" />
+
+                  {/* Rayons du soleil */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-36 sm:h-36">
+                    {[...Array(12)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute top-1/2 left-1/2 w-0.5 h-full origin-bottom"
+                        style={{
+                          transform: `translate(-50%, -100%) rotate(${i * 30}deg)`,
+                        }}
+                      >
+                        <div className="w-full h-1/2 bg-gradient-to-t from-amber-400/40 via-amber-300/20 to-transparent" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Soleil central - Coeur du système */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24">
+                    {/* Glow externe */}
+                    <div className="absolute inset-[-20%] rounded-full bg-gradient-radial from-yellow-400/50 via-orange-500/30 to-transparent blur-md animate-pulse" />
+
+                    {/* Surface du soleil */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 via-amber-400 to-orange-500 shadow-[0_0_60px_rgba(251,191,36,0.8),inset_0_0_30px_rgba(255,255,255,0.3)]">
+                      {/* Taches solaires */}
+                      <div className="absolute top-[30%] left-[25%] w-2 h-2 rounded-full bg-orange-600/50" />
+                      <div className="absolute top-[50%] right-[30%] w-1.5 h-1.5 rounded-full bg-orange-600/40" />
+                      <div className="absolute bottom-[35%] left-[40%] w-1 h-1 rounded-full bg-orange-600/30" />
+                    </div>
+
+                    {/* Reflet lumineux */}
+                    <div className="absolute top-[15%] left-[20%] w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/40 blur-sm" />
+
+                    {/* Symbole central - SVG Soleil */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <svg
+                        className="w-12 h-12 sm:w-14 sm:h-14 drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]"
+                        viewBox="0 0 64 64"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        {/* Rayons externes */}
+                        {[...Array(12)].map((_, i) => (
+                          <line
+                            key={i}
+                            x1="32"
+                            y1="8"
+                            x2="32"
+                            y2="2"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            transform={`rotate(${i * 30} 32 32)`}
+                            opacity="0.9"
+                          />
+                        ))}
+                        {/* Rayons secondaires */}
+                        {[...Array(12)].map((_, i) => (
+                          <line
+                            key={`s-${i}`}
+                            x1="32"
+                            y1="10"
+                            x2="32"
+                            y2="6"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            transform={`rotate(${i * 30 + 15} 32 32)`}
+                            opacity="0.6"
+                          />
+                        ))}
+                        {/* Cercle externe glow */}
+                        <circle cx="32" cy="32" r="18" fill="url(#sunGradientOuter)" />
+                        {/* Cercle principal */}
+                        <circle cx="32" cy="32" r="14" fill="url(#sunGradientMain)" />
+                        {/* Cercle interne lumineux */}
+                        <circle cx="32" cy="32" r="10" fill="url(#sunGradientInner)" />
+                        {/* Point central brillant */}
+                        <circle cx="32" cy="32" r="4" fill="white" opacity="0.8" />
+                        {/* Reflet */}
+                        <circle cx="27" cy="27" r="3" fill="white" opacity="0.5" />
+                        {/* Dégradés */}
+                        <defs>
+                          <radialGradient id="sunGradientOuter" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stopColor="#FFF7ED" stopOpacity="0.3" />
+                            <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.1" />
+                          </radialGradient>
+                          <radialGradient id="sunGradientMain" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stopColor="#FEFCE8" />
+                            <stop offset="50%" stopColor="#FCD34D" />
+                            <stop offset="100%" stopColor="#F59E0B" />
+                          </radialGradient>
+                          <radialGradient id="sunGradientInner" cx="30%" cy="30%" r="70%">
+                            <stop offset="0%" stopColor="white" />
+                            <stop offset="50%" stopColor="#FEF3C7" />
+                            <stop offset="100%" stopColor="#FBBF24" />
+                          </radialGradient>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Les 12 signes en cercle - comme des constellations */}
                   {signes.map((signe, index) => {
                     const angle = (index * 30 - 90) * (Math.PI / 180);
-                    const radius = 40;
+                    const radius = 42;
                     const x = 50 + radius * Math.cos(angle);
                     const y = 50 + radius * Math.sin(angle);
 
@@ -153,16 +268,27 @@ export default function HomePage() {
                         }}
                       >
                         <div className="flex flex-col items-center">
-                          <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/95 shadow-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:bg-white">
-                            <signe.Icon className="w-5 h-5 sm:w-7 sm:h-7 text-[var(--color-primary)]" />
+                          {/* Halo derrière l'icône */}
+                          <div className="absolute w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/5 blur-md group-hover:bg-amber-400/20 transition-all duration-500" />
+
+                          <div className="relative w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-br from-white via-gray-50 to-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(255,255,255,0.2)] flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_4px_30px_rgba(251,191,36,0.6),0_0_20px_rgba(255,255,255,0.4)] border border-white/60">
+                            <signe.Icon className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-primary)] group-hover:text-amber-600 transition-colors duration-300" />
                           </div>
-                          <span className="mt-1.5 text-[9px] sm:text-[11px] font-medium text-white/90 group-hover:text-white transition-colors whitespace-nowrap">
+                          <span className="mt-1.5 text-[9px] sm:text-[11px] font-semibold text-white/90 group-hover:text-amber-300 transition-colors whitespace-nowrap drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                             {signe.nom}
                           </span>
                         </div>
                       </Link>
                     );
                   })}
+
+                  {/* Étoiles scintillantes */}
+                  <div className="absolute top-[5%] left-[15%] w-1 h-1 rounded-full bg-white animate-pulse" style={{ animationDelay: '0s' }} />
+                  <div className="absolute top-[12%] right-[20%] w-0.5 h-0.5 rounded-full bg-white/80 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                  <div className="absolute bottom-[8%] left-[25%] w-1 h-1 rounded-full bg-white/90 animate-pulse" style={{ animationDelay: '1s' }} />
+                  <div className="absolute bottom-[15%] right-[12%] w-0.5 h-0.5 rounded-full bg-white animate-pulse" style={{ animationDelay: '1.5s' }} />
+                  <div className="absolute top-[25%] left-[8%] w-0.5 h-0.5 rounded-full bg-cyan-300/80 animate-pulse" style={{ animationDelay: '2s' }} />
+                  <div className="absolute top-[20%] right-[5%] w-1 h-1 rounded-full bg-amber-200/80 animate-pulse" style={{ animationDelay: '2.5s' }} />
                 </div>
               </div>
 
@@ -203,7 +329,7 @@ export default function HomePage() {
             {horoscopes.map((item) => (
               <Link key={item.title} href={item.href}>
                 <div className="service-card p-4 h-full text-center">
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-3">
+                  <div className="w-12 h-12 mx-auto rounded-sm bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-3">
                     <item.Icon size={24} />
                   </div>
                   <h3 className="font-semibold text-sm">{item.title}</h3>
@@ -218,7 +344,7 @@ export default function HomePage() {
             {astrologie.map((item) => (
               <Link key={item.title} href={item.href}>
                 <div className="service-card p-4 h-full text-center">
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-secondary)]/10 flex items-center justify-center text-[var(--color-secondary)] mb-3">
+                  <div className="w-12 h-12 mx-auto rounded-sm bg-[var(--color-secondary)]/10 flex items-center justify-center text-[var(--color-secondary)] mb-3">
                     <item.Icon size={24} />
                   </div>
                   <h3 className="font-semibold text-sm">{item.title}</h3>
@@ -242,7 +368,7 @@ export default function HomePage() {
             {bienEtre.map((item) => (
               <Link key={item.title} href={item.href}>
                 <div className="service-card p-4 h-full text-center">
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-accent-teal)]/10 flex items-center justify-center text-[var(--color-accent-teal)] mb-3">
+                  <div className="w-12 h-12 mx-auto rounded-sm bg-[var(--color-accent-teal)]/10 flex items-center justify-center text-[var(--color-accent-teal)] mb-3">
                     <item.Icon size={24} />
                   </div>
                   <h3 className="font-semibold text-sm">{item.title}</h3>
@@ -266,7 +392,7 @@ export default function HomePage() {
             {mythologies.map((item) => (
               <Link key={item.title} href={item.href}>
                 <div className="service-card p-4 h-full text-center">
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-accent-coral)]/10 flex items-center justify-center text-[var(--color-accent-coral)] mb-3">
+                  <div className="w-12 h-12 mx-auto rounded-sm bg-[var(--color-accent-coral)]/10 flex items-center justify-center text-[var(--color-accent-coral)] mb-3">
                     <item.Icon size={24} />
                   </div>
                   <h3 className="font-semibold text-sm">{item.title}</h3>
@@ -318,7 +444,7 @@ export default function HomePage() {
                   </p>
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-medium text-[var(--color-text-primary)]">{temoignage.auteur}</p>
-                    <span className="px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-medium rounded-full">
+                    <span className="px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-medium rounded-sm">
                       {temoignage.service}
                     </span>
                   </div>
@@ -341,7 +467,7 @@ export default function HomePage() {
             {blogArticles.map((item) => (
               <Link key={item.title} href={item.href}>
                 <div className="service-card p-4 h-full text-center">
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-3">
+                  <div className="w-12 h-12 mx-auto rounded-sm bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-3">
                     <item.Icon size={24} />
                   </div>
                   <h3 className="font-semibold text-sm">{item.title}</h3>

@@ -57,7 +57,7 @@ export function CompatibilityMeter({ compatibility }: CompatibilityMeterProps) {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 border border-[var(--color-border)]">
+    <div className="bg-white rounded-sm shadow-lg p-6 border border-[var(--color-border)]">
       {/* Header avec les deux signes */}
       <div className="flex items-center justify-center gap-4 mb-6">
         <div className="text-center">
@@ -116,7 +116,7 @@ export function CompatibilityMeter({ compatibility }: CompatibilityMeterProps) {
 
       {/* Points forts et defis */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div className="bg-green-50 rounded-xl p-4 border border-green-100">
+        <div className="bg-green-50 rounded-sm p-4 border border-green-100">
           <h4 className="font-medium text-green-800 mb-2 flex items-center gap-2">
             <StarIcon className="w-4 h-4 text-green-600" />
             Points forts
@@ -131,7 +131,7 @@ export function CompatibilityMeter({ compatibility }: CompatibilityMeterProps) {
           </ul>
         </div>
 
-        <div className="bg-amber-50 rounded-xl p-4 border border-amber-100">
+        <div className="bg-amber-50 rounded-sm p-4 border border-amber-100">
           <h4 className="font-medium text-amber-800 mb-2 flex items-center gap-2">
             <BoltIcon className="w-4 h-4 text-amber-600" />
             Defis
@@ -193,7 +193,7 @@ function ZodiacDropdown({
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full sm:w-48 px-4 py-3 rounded-xl border border-[var(--color-border)] bg-white text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] cursor-pointer flex items-center gap-3"
+          className="w-full sm:w-48 px-4 py-3 rounded-sm border border-[var(--color-border)] bg-white text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] cursor-pointer flex items-center gap-3"
         >
           {SelectedIcon && <SelectedIcon size={20} style={{ color: selectedSign.color }} />}
           <span className="flex-1 text-left">{selectedSign.nameFr}</span>
@@ -203,7 +203,7 @@ function ZodiacDropdown({
         </button>
 
         {isOpen && (
-          <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-white rounded-xl border border-[var(--color-border)] shadow-lg max-h-64 overflow-y-auto">
+          <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-white rounded-sm border border-[var(--color-border)] shadow-lg max-h-64 overflow-y-auto">
             {signs.map((sign) => {
               const SignIcon = zodiacIconsByKey[sign];
               const signInfo = ZODIAC_SIGNS[sign];
@@ -246,7 +246,7 @@ export function CompatibilitySelector({
   onSign2Change: (sign: ZodiacSignKey) => void;
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 border border-[var(--color-border)]">
+    <div className="bg-white rounded-sm shadow-lg p-6 border border-[var(--color-border)]">
       <h3 className="text-lg font-bold text-center mb-6">Calculer votre compatibilite</h3>
 
       <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">

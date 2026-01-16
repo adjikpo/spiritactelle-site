@@ -57,7 +57,7 @@ export default function SigneDetailPage() {
           </p>
           <Link
             href="/horoscope"
-            className="px-6 py-3 bg-[var(--color-primary)] text-white rounded-lg"
+            className="px-6 py-3 bg-[var(--color-primary)] text-white rounded-sm"
           >
             Retour aux horoscopes
           </Link>
@@ -79,13 +79,13 @@ export default function SigneDetailPage() {
 
         {/* Header du signe */}
         <div
-          className="rounded-2xl p-8 text-white mb-8"
+          className="rounded-sm p-8 text-white mb-8"
           style={{
             background: `linear-gradient(135deg, ${signInfo.color}, ${signInfo.color}cc)`,
           }}
         >
           <div className="flex flex-col sm:flex-row items-center gap-6">
-            <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center">
+            <div className="w-20 h-20 rounded-sm bg-white/20 flex items-center justify-center">
               {(() => {
                 const IconComponent = zodiacIconsByKey[sign];
                 return <IconComponent size={48} className="text-white" />;
@@ -95,13 +95,13 @@ export default function SigneDetailPage() {
               <h1 className="text-3xl sm:text-4xl font-bold mb-2">{signInfo.nameFr}</h1>
               <p className="text-white text-lg mb-3 font-medium">{signInfo.dateRangeFr}</p>
               <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-                <span className="px-3 py-1 bg-white/20 rounded-full text-sm">
+                <span className="px-3 py-1 bg-white/20 rounded-sm text-sm">
                   {signInfo.elementFr}
                 </span>
-                <span className="px-3 py-1 bg-white/20 rounded-full text-sm">
+                <span className="px-3 py-1 bg-white/20 rounded-sm text-sm">
                   {signInfo.modalityFr}
                 </span>
-                <span className="px-3 py-1 bg-white/20 rounded-full text-sm">
+                <span className="px-3 py-1 bg-white/20 rounded-sm text-sm">
                   {signInfo.rulerFr}
                 </span>
               </div>
@@ -110,7 +110,7 @@ export default function SigneDetailPage() {
         </div>
 
         {/* Description du signe */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-4">
             À propos du {signInfo.nameFr}
           </h2>
@@ -121,7 +121,7 @@ export default function SigneDetailPage() {
             {signInfo.traitsFr.map((trait, index) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-[var(--color-bg-tertiary)] rounded-full text-sm text-[var(--color-text-primary)]"
+                className="px-3 py-1 bg-[var(--color-bg-tertiary)] rounded-sm text-sm text-[var(--color-text-primary)]"
               >
                 {trait}
               </span>
@@ -130,7 +130,7 @@ export default function SigneDetailPage() {
         </div>
 
         {/* Sélecteur de période */}
-        <div ref={horoscopeRef} className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div ref={horoscopeRef} className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <div className="flex flex-col items-center gap-4 mb-6">
             <h2 className="text-xl font-bold text-[var(--color-text-primary)]">
               Horoscope
@@ -152,7 +152,7 @@ export default function SigneDetailPage() {
                         horoscopeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       }, 100);
                     }}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-medium transition-colors ${
                       period === p.key
                         ? 'bg-[var(--color-primary)] text-white'
                         : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-border)]'
@@ -192,7 +192,7 @@ export default function SigneDetailPage() {
 
         {/* Compatibilité */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="bg-white rounded-sm shadow-lg p-6">
             <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
               <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -206,9 +206,9 @@ export default function SigneDetailPage() {
                   <Link
                     key={s}
                     href={`/horoscope/${s}`}
-                    className="flex items-center gap-3 p-3 bg-green-50 rounded-xl hover:bg-green-100 transition-colors"
+                    className="flex items-center gap-3 p-3 bg-green-50 rounded-sm hover:bg-green-100 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-sm bg-green-100 flex items-center justify-center">
                       <CompatIcon size={24} className="text-green-700" />
                     </div>
                     <span className="font-medium text-green-800">{ZODIAC_SIGNS[s].nameFr}</span>
@@ -218,7 +218,7 @@ export default function SigneDetailPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="bg-white rounded-sm shadow-lg p-6">
             <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
               <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -232,9 +232,9 @@ export default function SigneDetailPage() {
                   <Link
                     key={s}
                     href={`/horoscope/${s}`}
-                    className="flex items-center gap-3 p-3 bg-amber-50 rounded-xl hover:bg-amber-100 transition-colors"
+                    className="flex items-center gap-3 p-3 bg-amber-50 rounded-sm hover:bg-amber-100 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-sm bg-amber-100 flex items-center justify-center">
                       <ChallengeIcon size={24} className="text-amber-700" />
                     </div>
                     <span className="font-medium text-amber-800">{ZODIAC_SIGNS[s].nameFr}</span>
@@ -252,7 +252,7 @@ export default function SigneDetailPage() {
         </div>
 
         {/* Autres signes */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+        <div className="bg-white rounded-sm shadow-lg p-6">
           <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">
             Découvrir les autres signes
           </h3>
@@ -263,9 +263,9 @@ export default function SigneDetailPage() {
                 <Link
                   key={s}
                   href={`/horoscope/${s}`}
-                  className="p-3 text-center bg-[var(--color-bg-tertiary)] rounded-xl hover:bg-[var(--color-border)] transition-colors"
+                  className="p-3 text-center bg-[var(--color-bg-tertiary)] rounded-sm hover:bg-[var(--color-border)] transition-colors"
                 >
-                  <div className="w-10 h-10 mx-auto mb-1 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center">
+                  <div className="w-10 h-10 mx-auto mb-1 rounded-sm bg-[var(--color-primary)]/10 flex items-center justify-center">
                     <OtherSignIcon size={24} className="text-[var(--color-primary)]" />
                   </div>
                   <span className="text-xs text-[var(--color-text-muted)]">

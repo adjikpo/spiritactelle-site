@@ -39,7 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               ${leftIcon ? 'pl-10' : ''}
               ${rightIcon ? 'pr-10' : ''}
               bg-[var(--color-bg-tertiary)]
-              border rounded-[var(--radius-md)]
+              border rounded-sm
               text-[var(--color-text-primary)]
               placeholder:text-[var(--color-text-muted)]
               transition-all duration-[var(--transition-fast)]

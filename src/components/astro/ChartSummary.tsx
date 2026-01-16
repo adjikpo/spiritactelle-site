@@ -23,7 +23,7 @@ export function ChartSummary({ chart }: ChartSummaryProps) {
       {/* Trio principal */}
       <div className="grid grid-cols-3 gap-4">
         {/* Soleil */}
-        <div className="text-center p-4 bg-[var(--color-bg-tertiary)] rounded-xl">
+        <div className="text-center p-4 bg-[var(--color-bg-tertiary)] rounded-sm">
           <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-yellow-100 flex items-center justify-center">
             <span className="text-2xl">☉</span>
           </div>
@@ -37,7 +37,7 @@ export function ChartSummary({ chart }: ChartSummaryProps) {
         </div>
 
         {/* Lune */}
-        <div className="text-center p-4 bg-[var(--color-bg-tertiary)] rounded-xl">
+        <div className="text-center p-4 bg-[var(--color-bg-tertiary)] rounded-sm">
           <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-blue-100 flex items-center justify-center">
             <span className="text-2xl">☽</span>
           </div>
@@ -51,7 +51,7 @@ export function ChartSummary({ chart }: ChartSummaryProps) {
         </div>
 
         {/* Ascendant */}
-        <div className="text-center p-4 bg-[var(--color-bg-tertiary)] rounded-xl">
+        <div className="text-center p-4 bg-[var(--color-bg-tertiary)] rounded-sm">
           <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-purple-100 flex items-center justify-center">
             <span className="text-lg font-bold">AC</span>
           </div>
@@ -63,7 +63,7 @@ export function ChartSummary({ chart }: ChartSummaryProps) {
       </div>
 
       {/* Dominantes élémentaires */}
-      <div className="p-4 bg-[var(--color-bg-tertiary)] rounded-xl">
+      <div className="p-4 bg-[var(--color-bg-tertiary)] rounded-sm">
         <h3 className="font-semibold text-sm mb-3">Répartition des éléments</h3>
         <div className="grid grid-cols-4 gap-2">
           {Object.entries(dominants.elements).map(([element, score]) => {
@@ -80,7 +80,7 @@ export function ChartSummary({ chart }: ChartSummaryProps) {
             return (
               <div key={element} className="text-center">
                 <div
-                  className={`h-16 rounded-lg ${style.bg} flex items-end justify-center overflow-hidden`}
+                  className={`h-16 rounded-sm ${style.bg} flex items-end justify-center overflow-hidden`}
                 >
                   <div
                     className={`w-full ${style.text} bg-current opacity-30`}
@@ -100,7 +100,7 @@ export function ChartSummary({ chart }: ChartSummaryProps) {
       </div>
 
       {/* Positions planétaires */}
-      <div className="p-4 bg-[var(--color-bg-tertiary)] rounded-xl">
+      <div className="p-4 bg-[var(--color-bg-tertiary)] rounded-sm">
         <h3 className="font-semibold text-sm mb-3">Positions planétaires</h3>
         <div className="space-y-2">
           {chart.planets
@@ -139,7 +139,7 @@ export function ChartSummary({ chart }: ChartSummaryProps) {
       </div>
 
       {/* Aspects principaux */}
-      <div className="p-4 bg-[var(--color-bg-tertiary)] rounded-xl">
+      <div className="p-4 bg-[var(--color-bg-tertiary)] rounded-sm">
         <h3 className="font-semibold text-sm mb-3">
           Aspects ({chart.aspects.length})
         </h3>

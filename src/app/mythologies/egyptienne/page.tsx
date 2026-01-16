@@ -38,7 +38,7 @@ export default function EgyptianAstrologyPage() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">
             Calculez votre signe egyptien
           </h2>
@@ -51,13 +51,13 @@ export default function EgyptianAstrologyPage() {
                 type="date"
                 value={birthDate}
                 onChange={(e) => setBirthDate(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 rounded-sm border border-[var(--color-border)] focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none"
               />
             </div>
             <div className="flex items-end">
               <button
                 onClick={handleCalculate}
-                className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-white rounded-xl font-medium hover:opacity-90 transition-opacity"
+                className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-white rounded-sm font-medium hover:opacity-90 transition-opacity"
               >
                 Calculer
               </button>
@@ -67,7 +67,7 @@ export default function EgyptianAstrologyPage() {
 
         {result && (
           <div
-            className="rounded-2xl p-6 mb-8 border"
+            className="rounded-sm p-6 mb-8 border"
             style={{
               backgroundColor: `${result.color}10`,
               borderColor: `${result.color}30`,
@@ -82,7 +82,7 @@ export default function EgyptianAstrologyPage() {
               </h3>
               <div className="inline-flex items-center gap-2">
                 <span
-                  className="px-3 py-1 rounded-full text-sm font-medium text-white"
+                  className="px-3 py-1 rounded-sm text-sm font-medium text-white"
                   style={{ backgroundColor: result.color }}
                 >
                   Element {result.element}
@@ -99,7 +99,7 @@ export default function EgyptianAstrologyPage() {
                   {result.traits.map((trait) => (
                     <span
                       key={trait}
-                      className="px-3 py-1 bg-white rounded-full text-sm"
+                      className="px-3 py-1 bg-white rounded-sm text-sm"
                       style={{ color: result.color }}
                     >
                       {trait}
@@ -116,7 +116,7 @@ export default function EgyptianAstrologyPage() {
                   {result.strengths.map((strength) => (
                     <span
                       key={strength}
-                      className="px-3 py-1 bg-green-100 rounded-full text-sm text-green-700"
+                      className="px-3 py-1 bg-green-100 rounded-sm text-sm text-green-700"
                     >
                       {strength}
                     </span>
@@ -132,7 +132,7 @@ export default function EgyptianAstrologyPage() {
                   {result.weaknesses.map((weakness) => (
                     <span
                       key={weakness}
-                      className="px-3 py-1 bg-amber-100 rounded-full text-sm text-amber-700"
+                      className="px-3 py-1 bg-amber-100 rounded-sm text-sm text-amber-700"
                     >
                       {weakness}
                     </span>
@@ -163,7 +163,7 @@ export default function EgyptianAstrologyPage() {
           </div>
         )}
 
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6">
             Les 12 Divinites du Zodiaque Egyptien
           </h2>
@@ -171,7 +171,7 @@ export default function EgyptianAstrologyPage() {
             {EGYPTIAN_ZODIAC.map((sign) => (
               <div
                 key={sign.id}
-                className="p-4 rounded-xl border transition-colors hover:shadow-md"
+                className="p-4 rounded-sm border transition-colors hover:shadow-md"
                 style={{
                   backgroundColor: `${sign.color}05`,
                   borderColor: `${sign.color}20`,
@@ -179,7 +179,7 @@ export default function EgyptianAstrologyPage() {
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold"
+                    className="w-10 h-10 rounded-sm flex items-center justify-center text-white font-bold"
                     style={{ backgroundColor: sign.color }}
                   >
                     {sign.deityFr[0]}
@@ -197,7 +197,7 @@ export default function EgyptianAstrologyPage() {
                   {sign.traits.slice(0, 2).map((trait) => (
                     <span
                       key={trait}
-                      className="px-2 py-0.5 text-xs rounded-full"
+                      className="px-2 py-0.5 text-xs rounded-sm"
                       style={{
                         backgroundColor: `${sign.color}15`,
                         color: sign.color,
@@ -212,7 +212,7 @@ export default function EgyptianAstrologyPage() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-6 border border-amber-100">
+        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-sm p-6 border border-amber-100">
           <h3 className="font-bold text-amber-800 mb-3">
             A propos de l'Astrologie Egyptienne
           </h3>
@@ -231,13 +231,13 @@ export default function EgyptianAstrologyPage() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link
             href="/mythologies/chinoise"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Astrologie Chinoise
           </Link>
           <Link
             href="/horoscope"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Astrologie Occidentale
           </Link>

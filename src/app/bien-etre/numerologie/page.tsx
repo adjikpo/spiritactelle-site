@@ -47,7 +47,7 @@ export default function NumerologiePage() {
         </div>
 
         {/* Formulaire */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">
             Calculez votre profil numérologique
           </h2>
@@ -61,7 +61,7 @@ export default function NumerologiePage() {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="Prénom et Nom"
-                className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none"
+                className="w-full px-4 py-3 rounded-sm border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none"
               />
             </div>
             <div>
@@ -72,14 +72,14 @@ export default function NumerologiePage() {
                 type="date"
                 value={birthDate}
                 onChange={(e) => setBirthDate(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none"
+                className="w-full px-4 py-3 rounded-sm border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none"
               />
             </div>
           </div>
           <button
             onClick={handleCalculate}
             disabled={!birthDate || !fullName.trim() || isCalculating}
-            className="w-full py-3 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-xl font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isCalculating ? (
               <span className="flex items-center justify-center gap-2">
@@ -103,24 +103,24 @@ export default function NumerologiePage() {
         )}
 
         {/* Explication des nombres */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-6">
             Comprendre les nombres
           </h2>
           <div className="grid sm:grid-cols-3 gap-4">
-            <div className="bg-indigo-50 rounded-xl p-4 border border-indigo-100">
+            <div className="bg-indigo-50 rounded-sm p-4 border border-indigo-100">
               <h3 className="font-medium text-indigo-800 mb-2">Chemin de Vie</h3>
               <p className="text-sm text-indigo-700">
                 Votre mission principale dans cette vie, calculée à partir de votre date de naissance.
               </p>
             </div>
-            <div className="bg-purple-50 rounded-xl p-4 border border-purple-100">
+            <div className="bg-purple-50 rounded-sm p-4 border border-purple-100">
               <h3 className="font-medium text-purple-800 mb-2">Nombre d'Expression</h3>
               <p className="text-sm text-purple-700">
                 Vos talents naturels et la façon dont vous vous exprimez dans le monde.
               </p>
             </div>
-            <div className="bg-rose-50 rounded-xl p-4 border border-rose-100">
+            <div className="bg-rose-50 rounded-sm p-4 border border-rose-100">
               <h3 className="font-medium text-rose-800 mb-2">Nombre de l'Âme</h3>
               <p className="text-sm text-rose-700">
                 Vos désirs profonds et ce qui vous motive réellement dans la vie.
@@ -130,7 +130,7 @@ export default function NumerologiePage() {
         </div>
 
         {/* Signification des nombres 1-9 */}
-        <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl p-6 border border-indigo-100">
+        <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-sm p-6 border border-indigo-100">
           <h2 className="text-lg font-bold text-indigo-800 mb-6">
             Les 9 nombres fondamentaux
           </h2>
@@ -148,9 +148,9 @@ export default function NumerologiePage() {
             ].map((item) => (
               <div
                 key={item.num}
-                className="bg-white/60 backdrop-blur-sm rounded-xl p-4 flex items-start gap-3"
+                className="bg-white/60 backdrop-blur-sm rounded-sm p-4 flex items-start gap-3"
               >
-                <span className="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold">
+                <span className="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-sm flex items-center justify-center font-bold">
                   {item.num}
                 </span>
                 <div>
@@ -172,9 +172,9 @@ export default function NumerologiePage() {
               ].map((item) => (
                 <div
                   key={item.num}
-                  className="bg-gradient-to-r from-amber-100 to-yellow-100 rounded-xl p-4 flex items-start gap-3"
+                  className="bg-gradient-to-r from-amber-100 to-yellow-100 rounded-sm p-4 flex items-start gap-3"
                 >
-                  <span className="w-8 h-8 bg-amber-200 text-amber-700 rounded-full flex items-center justify-center font-bold text-sm">
+                  <span className="w-8 h-8 bg-amber-200 text-amber-700 rounded-sm flex items-center justify-center font-bold text-sm">
                     {item.num}
                   </span>
                   <div>
@@ -191,13 +191,13 @@ export default function NumerologiePage() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link
             href="/horoscope"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow"
           >
             Horoscopes
           </Link>
           <Link
             href="/astrologie"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow"
           >
             Astrologie
           </Link>

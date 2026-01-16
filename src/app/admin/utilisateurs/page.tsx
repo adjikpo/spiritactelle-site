@@ -69,7 +69,7 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Info banner */}
-      <div className="mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200">
+      <div className="mb-6 p-4 rounded-sm bg-amber-50 border border-amber-200">
         <div className="flex gap-3">
           <span className="text-amber-600">⚠️</span>
           <div>
@@ -124,7 +124,7 @@ export default function AdminUsersPage() {
                   >
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-gold)] flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-sm bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-gold)] flex items-center justify-center">
                           <span className="text-white text-xs">
                             {user.full_name ? user.full_name.charAt(0).toUpperCase() : '?'}
                           </span>

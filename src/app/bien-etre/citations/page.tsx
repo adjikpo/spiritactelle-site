@@ -93,7 +93,7 @@ export default function CitationsPage() {
             Citation du Jour
           </h2>
           {isLoading ? (
-            <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-8 animate-pulse">
+            <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-sm p-8 animate-pulse">
               <div className="h-8 bg-purple-200 rounded w-3/4 mx-auto mb-4"></div>
               <div className="h-4 bg-purple-200 rounded w-1/4 mx-auto"></div>
             </div>
@@ -109,7 +109,7 @@ export default function CitationsPage() {
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
               className={`
-                px-4 py-2 rounded-full text-sm font-medium transition-all
+                px-4 py-2 rounded-sm text-sm font-medium transition-all
                 ${
                   selectedCategory === category.id
                     ? 'bg-[var(--color-primary)] text-white'
@@ -126,7 +126,7 @@ export default function CitationsPage() {
         <div className="flex justify-center mb-8">
           <button
             onClick={getNewQuote}
-            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-sm font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -143,7 +143,7 @@ export default function CitationsPage() {
               .map((_, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 shadow-md animate-pulse"
+                  className="bg-white rounded-sm p-6 shadow-md animate-pulse"
                 >
                   <div className="h-5 bg-gray-200 rounded w-full mb-2"></div>
                   <div className="h-5 bg-gray-200 rounded w-3/4 mb-4"></div>
@@ -167,7 +167,7 @@ export default function CitationsPage() {
             <button
               onClick={loadMoreQuotes}
               disabled={isLoadingMore}
-              className="px-8 py-3 bg-white rounded-xl text-[var(--color-text-primary)] font-medium shadow-md hover:shadow-lg transition-shadow disabled:opacity-50"
+              className="px-8 py-3 bg-white rounded-sm text-[var(--color-text-primary)] font-medium shadow-md hover:shadow-lg transition-shadow disabled:opacity-50"
             >
               {isLoadingMore ? (
                 <span className="flex items-center gap-2">
@@ -185,7 +185,7 @@ export default function CitationsPage() {
         )}
 
         {/* Section partage */}
-        <div className="mt-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 border border-indigo-100">
+        <div className="mt-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-sm p-6 border border-indigo-100">
           <h3 className="font-bold text-indigo-800 mb-3">
             Conseil du jour
           </h3>

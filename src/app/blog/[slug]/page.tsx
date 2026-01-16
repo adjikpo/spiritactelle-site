@@ -42,7 +42,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <div className="mb-6">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-3 py-2 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] rounded-lg text-[var(--color-text-primary)] text-sm font-medium transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-2 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] rounded-sm text-[var(--color-text-primary)] text-sm font-medium transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -51,11 +51,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </Link>
         </div>
 
-        <article className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[var(--color-border)]">
+        <article className="bg-white rounded-sm shadow-lg overflow-hidden border border-[var(--color-border)]">
           <div className="p-8">
             <div className="flex items-center gap-3 mb-4">
               <span
-                className="px-3 py-1 text-sm font-medium rounded-full"
+                className="px-3 py-1 text-sm font-medium rounded-sm"
                 style={{
                   backgroundColor: `${ARTICLE_CATEGORIES[article.category].color}15`,
                   color: ARTICLE_CATEGORIES[article.category].color,
@@ -144,7 +144,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 {article.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 text-sm bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] rounded-full"
+                    className="px-3 py-1 text-sm bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] rounded-sm"
                   >
                     #{tag}
                   </span>
@@ -164,7 +164,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <Link
                   key={related.id}
                   href={`/blog/${related.slug}`}
-                  className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow"
+                  className="bg-white rounded-sm p-4 shadow-md hover:shadow-lg transition-shadow"
                 >
                   <span
                     className="text-xs font-medium"
@@ -184,13 +184,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link
             href="/mythologies"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Multi-Mythologies
           </Link>
           <Link
             href="/horoscope"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Horoscopes
           </Link>

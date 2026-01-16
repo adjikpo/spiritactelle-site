@@ -18,7 +18,7 @@ export function MoonPhaseWidget({
 
   if (variant === 'compact') {
     return (
-      <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-6 h-full flex flex-col justify-center">
+      <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-sm p-6 h-full flex flex-col justify-center">
         <div className="flex items-center gap-4">
           {PhaseIcon ? <PhaseIcon size={60} className="text-yellow-200" /> : null}
           <div className="flex-1">
@@ -33,7 +33,7 @@ export function MoonPhaseWidget({
 
   // Version complète
   return (
-    <div className="bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 rounded-2xl p-6 text-white overflow-hidden relative">
+    <div className="bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 rounded-sm p-6 text-white overflow-hidden relative">
       {/* Étoiles décoratives */}
       <div className="absolute inset-0 opacity-30">
         {[...Array(20)].map((_, i) => (
@@ -77,7 +77,7 @@ export function MoonPhaseWidget({
 
         {/* Rituels */}
         {showRituals && (
-          <div className="bg-yellow-100/20 rounded-xl p-4">
+          <div className="bg-yellow-100/20 rounded-sm p-4">
             <h4 className="font-medium mb-3 text-yellow-200">
               Rituels recommandés
             </h4>
@@ -105,7 +105,7 @@ export function UpcomingPhasesWidget({
   phases: { phase: string; phaseFr: string; date: Date }[];
 }) {
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 border border-[var(--color-border)]">
+    <div className="bg-white rounded-sm shadow-md p-4 border border-[var(--color-border)]">
       <h3 className="font-medium text-[var(--color-text-primary)] mb-4">Prochaines phases</h3>
       <div className="space-y-3">
         {phases.map((phase, index) => {
@@ -138,7 +138,7 @@ export function UpcomingPhasesWidget({
  */
 export function MoonPhaseWidgetSkeleton() {
   return (
-    <div className="bg-[var(--color-border)] rounded-2xl p-6 animate-pulse">
+    <div className="bg-[var(--color-border)] rounded-sm p-6 animate-pulse">
       <div className="text-center">
         <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-4" />
         <div className="h-6 bg-white/20 rounded w-32 mx-auto mb-2" />

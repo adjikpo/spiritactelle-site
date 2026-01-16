@@ -20,7 +20,7 @@ export function AffirmationCard({ affirmation, onRefresh }: AffirmationCardProps
   };
 
   return (
-    <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-100">
+    <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-sm p-6 border border-amber-100">
       <div className="flex items-start gap-4">
         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-400 flex items-center justify-center flex-shrink-0">
           <span className="text-2xl">🌟</span>
@@ -64,7 +64,7 @@ export function AffirmationList({ affirmations }: { affirmations: string[] }) {
       {affirmations.map((affirmation, index) => (
         <div
           key={index}
-          className="bg-white rounded-xl p-4 border border-[var(--color-border)] flex items-start gap-3"
+          className="bg-white rounded-sm p-4 border border-[var(--color-border)] flex items-start gap-3"
         >
           <span className="text-xl">✨</span>
           <p className="text-[var(--color-text-primary)]">{affirmation}</p>
@@ -79,7 +79,7 @@ export function AffirmationList({ affirmations }: { affirmations: string[] }) {
  */
 export function AffirmationCardSkeleton() {
   return (
-    <div className="bg-amber-50 rounded-2xl p-6 animate-pulse">
+    <div className="bg-amber-50 rounded-sm p-6 animate-pulse">
       <div className="flex items-start gap-4">
         <div className="w-12 h-12 rounded-full bg-amber-200" />
         <div className="flex-1 space-y-2">

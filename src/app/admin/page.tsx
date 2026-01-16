@@ -43,7 +43,7 @@ export default function AdminDashboard() {
       <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
 
       {/* Info banner */}
-      <div className="mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200">
+      <div className="mb-6 p-4 rounded-sm bg-amber-50 border border-amber-200">
         <div className="flex gap-3">
           <span className="text-amber-600">⚠️</span>
           <div>
@@ -86,19 +86,19 @@ export default function AdminDashboard() {
             <div className="space-y-2">
               <a
                 href="/admin/articles/nouveau"
-                className="block px-4 py-3 rounded-lg bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] transition-colors"
+                className="block px-4 py-3 rounded-sm bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] transition-colors"
               >
                 📝 Creer un nouvel article
               </a>
               <a
                 href="/admin/meditations/nouveau"
-                className="block px-4 py-3 rounded-lg bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] transition-colors"
+                className="block px-4 py-3 rounded-sm bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] transition-colors"
               >
                 🧘 Ajouter une meditation
               </a>
               <a
                 href="/admin/horoscopes/generer"
-                className="block px-4 py-3 rounded-lg bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] transition-colors"
+                className="block px-4 py-3 rounded-sm bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] transition-colors"
               >
                 ✨ Generer les horoscopes du jour
               </a>

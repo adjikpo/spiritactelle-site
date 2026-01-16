@@ -53,7 +53,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={`
-          rounded-[var(--radius-xl)]
+          rounded-sm
           transition-all duration-200 ease-out
           ${variantStyles[variant]}
           ${paddingStyles[padding]}

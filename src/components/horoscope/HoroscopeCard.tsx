@@ -12,7 +12,7 @@ export function HoroscopeCard({ horoscope, showDetails = true }: HoroscopeCardPr
   const signInfo = ZODIAC_SIGNS[horoscope.sign];
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="bg-white rounded-sm shadow-lg overflow-hidden">
       {/* Header avec gradient */}
       <div
         className="p-6 text-white"
@@ -21,7 +21,7 @@ export function HoroscopeCard({ horoscope, showDetails = true }: HoroscopeCardPr
         }}
       >
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-sm bg-white/20 flex items-center justify-center">
             <span className="text-3xl font-medium text-white">{signInfo.symbol}</span>
           </div>
           <div>
@@ -42,25 +42,25 @@ export function HoroscopeCard({ horoscope, showDetails = true }: HoroscopeCardPr
         {showDetails && (
           <div className="grid grid-cols-2 gap-4">
             {horoscope.mood && (
-              <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3">
+              <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-3">
                 <p className="text-xs text-[var(--color-text-muted)] mb-1">Humeur</p>
                 <p className="font-medium text-[var(--color-text-primary)]">{horoscope.mood}</p>
               </div>
             )}
             {horoscope.color && (
-              <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3">
+              <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-3">
                 <p className="text-xs text-[var(--color-text-muted)] mb-1">Couleur du jour</p>
                 <p className="font-medium text-[var(--color-text-primary)]">{horoscope.color}</p>
               </div>
             )}
             {horoscope.luckyNumber && (
-              <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3">
+              <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-3">
                 <p className="text-xs text-[var(--color-text-muted)] mb-1">Nombre chanceux</p>
                 <p className="font-medium text-[var(--color-text-primary)]">{horoscope.luckyNumber}</p>
               </div>
             )}
             {horoscope.compatibility && (
-              <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3">
+              <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-3">
                 <p className="text-xs text-[var(--color-text-muted)] mb-1">Compatibilité</p>
                 <p className="font-medium text-[var(--color-text-primary)]">{horoscope.compatibility}</p>
               </div>
@@ -87,7 +87,7 @@ export function HoroscopeCardCompact({
   return (
     <div
       className={`
-        bg-white rounded-xl p-4 border border-[var(--color-border)]
+        bg-white rounded-sm p-4 border border-[var(--color-border)]
         hover:shadow-md transition-all duration-200
         ${onClick ? 'cursor-pointer' : ''}
       `}
@@ -95,7 +95,7 @@ export function HoroscopeCardCompact({
     >
       <div className="flex items-start gap-3">
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+          className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: `${signInfo.color}15` }}
         >
           <span className="text-xl font-medium" style={{ color: signInfo.color }}>
@@ -118,7 +118,7 @@ export function HoroscopeCardCompact({
  */
 export function HoroscopeCardSkeleton() {
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
+    <div className="bg-white rounded-sm shadow-lg overflow-hidden animate-pulse">
       <div className="h-32 bg-[var(--color-border)]" />
       <div className="p-6 space-y-4">
         <div className="h-4 bg-[var(--color-border)] rounded w-full" />
@@ -126,7 +126,7 @@ export function HoroscopeCardSkeleton() {
         <div className="h-4 bg-[var(--color-border)] rounded w-4/6" />
         <div className="grid grid-cols-2 gap-4 mt-6">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-16 bg-[var(--color-border)] rounded-xl" />
+            <div key={i} className="h-16 bg-[var(--color-border)] rounded-sm" />
           ))}
         </div>
       </div>

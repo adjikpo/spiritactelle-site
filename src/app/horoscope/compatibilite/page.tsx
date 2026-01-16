@@ -72,7 +72,7 @@ export default function CompatibilitePage() {
             <CompatibilityMeter compatibility={compatibility} />
 
             {/* Conseil */}
-            <div className="bg-gradient-to-r from-rose-50 to-amber-50 rounded-2xl p-6 border border-rose-100">
+            <div className="bg-gradient-to-r from-rose-50 to-amber-50 rounded-sm p-6 border border-rose-100">
               <h3 className="font-bold text-rose-800 mb-2">
                 Conseil des astres
               </h3>
@@ -88,10 +88,10 @@ export default function CompatibilitePage() {
                 return (
                   <Link
                     href={`/horoscope/${sign1}`}
-                    className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
+                    className="flex-1 flex items-center gap-3 bg-white rounded-sm p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
                   >
                     <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      className="w-12 h-12 rounded-sm flex items-center justify-center"
                       style={{ backgroundColor: `${ZODIAC_SIGNS[sign1].color}15` }}
                     >
                       {Sign1Icon && <Sign1Icon size={24} style={{ color: ZODIAC_SIGNS[sign1].color }} />}
@@ -113,10 +113,10 @@ export default function CompatibilitePage() {
                 return (
                   <Link
                     href={`/horoscope/${sign2}`}
-                    className="flex-1 flex items-center gap-3 bg-white rounded-xl p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
+                    className="flex-1 flex items-center gap-3 bg-white rounded-sm p-4 border border-[var(--color-border)] hover:shadow-lg transition-shadow"
                   >
                     <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      className="w-12 h-12 rounded-sm flex items-center justify-center"
                       style={{ backgroundColor: `${ZODIAC_SIGNS[sign2].color}15` }}
                     >
                       {Sign2Icon && <Sign2Icon size={24} style={{ color: ZODIAC_SIGNS[sign2].color }} />}
@@ -137,7 +137,7 @@ export default function CompatibilitePage() {
         )}
 
         {/* Explication */}
-        <div className="mt-12 bg-white rounded-2xl shadow-lg p-6">
+        <div className="mt-12 bg-white rounded-sm shadow-lg p-6">
           <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-4">
             Comment fonctionne la compatibilité ?
           </h2>
@@ -147,25 +147,25 @@ export default function CompatibilitePage() {
               et les modalités (Cardinal, Fixe, Mutable) de chaque signe.
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-red-50 rounded-xl p-4">
+              <div className="bg-red-50 rounded-sm p-4">
                 <h4 className="font-medium text-red-800 mb-2">Feu + Air</h4>
                 <p className="text-sm text-red-700">
                   L'Air attise le Feu. Combinaison dynamique et stimulante.
                 </p>
               </div>
-              <div className="bg-green-50 rounded-xl p-4">
+              <div className="bg-green-50 rounded-sm p-4">
                 <h4 className="font-medium text-green-800 mb-2">Terre + Eau</h4>
                 <p className="text-sm text-green-700">
                   L'Eau nourrit la Terre. Union stable et nourrissante.
                 </p>
               </div>
-              <div className="bg-blue-50 rounded-xl p-4">
+              <div className="bg-blue-50 rounded-sm p-4">
                 <h4 className="font-medium text-blue-800 mb-2">Même élément</h4>
                 <p className="text-sm text-blue-700">
                   Compréhension naturelle mais peut manquer de complémentarité.
                 </p>
               </div>
-              <div className="bg-amber-50 rounded-xl p-4">
+              <div className="bg-amber-50 rounded-sm p-4">
                 <h4 className="font-medium text-amber-800 mb-2">Éléments opposés</h4>
                 <p className="text-sm text-amber-700">
                   Attraction des contraires mais nécessite des compromis.

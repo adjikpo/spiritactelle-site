@@ -80,9 +80,9 @@ export default function HoroscopePage() {
         {selectedSign && (
           <div className="max-w-2xl mx-auto">
             {isLoading ? (
-              <div className="bg-white rounded-2xl shadow-lg p-8 animate-pulse">
+              <div className="bg-white rounded-sm shadow-lg p-8 animate-pulse">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-[var(--color-border)] rounded-full" />
+                  <div className="w-16 h-16 bg-[var(--color-border)] rounded-sm" />
                   <div className="space-y-2">
                     <div className="h-6 bg-[var(--color-border)] rounded w-32" />
                     <div className="h-4 bg-[var(--color-border)] rounded w-24" />
@@ -95,7 +95,7 @@ export default function HoroscopePage() {
                 </div>
               </div>
             ) : horoscope ? (
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="bg-white rounded-sm shadow-lg overflow-hidden">
                 {/* Header avec gradient */}
                 <div
                   className="p-6 text-white"
@@ -104,7 +104,7 @@ export default function HoroscopePage() {
                   }}
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-sm bg-white/20 flex items-center justify-center">
                       {(() => {
                         const IconComponent = zodiacIconsByKey[selectedSign];
                         return <IconComponent size={32} className="text-white" />;
@@ -126,25 +126,25 @@ export default function HoroscopePage() {
                   {/* Détails */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     {horoscope.mood && (
-                      <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3">
+                      <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-3">
                         <p className="text-xs text-[var(--color-text-muted)] mb-1">Humeur</p>
                         <p className="font-medium text-[var(--color-text-primary)]">{horoscope.mood}</p>
                       </div>
                     )}
                     {horoscope.color && (
-                      <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3">
+                      <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-3">
                         <p className="text-xs text-[var(--color-text-muted)] mb-1">Couleur du jour</p>
                         <p className="font-medium text-[var(--color-text-primary)]">{horoscope.color}</p>
                       </div>
                     )}
                     {horoscope.luckyNumber && (
-                      <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3">
+                      <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-3">
                         <p className="text-xs text-[var(--color-text-muted)] mb-1">Nombre chanceux</p>
                         <p className="font-medium text-[var(--color-text-primary)]">{horoscope.luckyNumber}</p>
                       </div>
                     )}
                     {horoscope.compatibility && (
-                      <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-3">
+                      <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-3">
                         <p className="text-xs text-[var(--color-text-muted)] mb-1">Compatibilité</p>
                         <p className="font-medium text-[var(--color-text-primary)]">{horoscope.compatibility}</p>
                       </div>
@@ -155,13 +155,13 @@ export default function HoroscopePage() {
                   <div className="flex flex-wrap gap-3 justify-center">
                     <Link
                       href={`/horoscope/${selectedSign}`}
-                      className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+                      className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-sm text-sm font-medium hover:opacity-90 transition-opacity"
                     >
                       Voir plus sur {ZODIAC_SIGNS[selectedSign].nameFr}
                     </Link>
                     <Link
                       href="/horoscope/compatibilite"
-                      className="px-4 py-2 bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] rounded-lg text-sm font-medium hover:bg-[var(--color-border)] transition-colors"
+                      className="px-4 py-2 bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] rounded-sm text-sm font-medium hover:bg-[var(--color-border)] transition-colors"
                     >
                       Test de compatibilité
                     </Link>
@@ -180,19 +180,19 @@ export default function HoroscopePage() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/horoscope/compatibilite"
-              className="px-5 py-2.5 bg-white rounded-full shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
+              className="px-5 py-2.5 bg-white rounded-sm shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
             >
               Compatibilité
             </Link>
             <Link
               href="/astrologie/theme-natal"
-              className="px-5 py-2.5 bg-white rounded-full shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
+              className="px-5 py-2.5 bg-white rounded-sm shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
             >
               Thème natal
             </Link>
             <Link
               href="/astrologie/calendrier-lunaire"
-              className="px-5 py-2.5 bg-white rounded-full shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
+              className="px-5 py-2.5 bg-white rounded-sm shadow-md text-[var(--color-text-primary)] hover:shadow-lg transition-shadow"
             >
               Calendrier lunaire
             </Link>

@@ -31,7 +31,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-gold)] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-sm bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-gold)] flex items-center justify-center">
                 <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                 </svg>

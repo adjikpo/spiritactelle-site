@@ -59,7 +59,7 @@ export default function ChineseAstrologyPage() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">
             Calculez votre signe chinois
           </h2>
@@ -75,13 +75,13 @@ export default function ChineseAstrologyPage() {
                 placeholder="Ex: 1990"
                 min="1900"
                 max="2100"
-                className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 rounded-sm border border-[var(--color-border)] focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
               />
             </div>
             <div className="flex items-end">
               <button
                 onClick={handleCalculate}
-                className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-xl font-medium hover:opacity-90 transition-opacity"
+                className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-sm font-medium hover:opacity-90 transition-opacity"
               >
                 Calculer
               </button>
@@ -90,7 +90,7 @@ export default function ChineseAstrologyPage() {
         </div>
 
         {result && (
-          <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 border border-red-100 mb-8">
+          <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-sm p-6 border border-red-100 mb-8">
             <div className="text-center mb-6">
               <p className="text-red-600 font-medium mb-2">Votre signe chinois</p>
               <h3 className="text-3xl font-bold text-red-800 mb-2">
@@ -98,7 +98,7 @@ export default function ChineseAstrologyPage() {
               </h3>
               <div className="inline-flex items-center gap-2">
                 <span
-                  className="px-3 py-1 rounded-full text-sm font-medium text-white"
+                  className="px-3 py-1 rounded-sm text-sm font-medium text-white"
                   style={{ backgroundColor: CHINESE_ELEMENTS[result.element].color }}
                 >
                   Element {CHINESE_ELEMENTS[result.element].nameFr}
@@ -113,7 +113,7 @@ export default function ChineseAstrologyPage() {
                   {result.sign.traits.map((trait) => (
                     <span
                       key={trait}
-                      className="px-3 py-1 bg-white rounded-full text-sm text-red-700"
+                      className="px-3 py-1 bg-white rounded-sm text-sm text-red-700"
                     >
                       {trait}
                     </span>
@@ -127,7 +127,7 @@ export default function ChineseAstrologyPage() {
                   {result.sign.strengths.map((strength) => (
                     <span
                       key={strength}
-                      className="px-3 py-1 bg-green-100 rounded-full text-sm text-green-700"
+                      className="px-3 py-1 bg-green-100 rounded-sm text-sm text-green-700"
                     >
                       {strength}
                     </span>
@@ -141,7 +141,7 @@ export default function ChineseAstrologyPage() {
                   {result.sign.weaknesses.map((weakness) => (
                     <span
                       key={weakness}
-                      className="px-3 py-1 bg-amber-100 rounded-full text-sm text-amber-700"
+                      className="px-3 py-1 bg-amber-100 rounded-sm text-sm text-amber-700"
                     >
                       {weakness}
                     </span>
@@ -157,7 +157,7 @@ export default function ChineseAstrologyPage() {
                     return (
                       <span
                         key={compat}
-                        className="px-3 py-1 bg-pink-100 rounded-full text-sm text-pink-700"
+                        className="px-3 py-1 bg-pink-100 rounded-sm text-sm text-pink-700"
                       >
                         {compatSign?.nameFr}
                       </span>
@@ -179,7 +179,7 @@ export default function ChineseAstrologyPage() {
                 {CHINESE_ELEMENTS[result.element].traits.map((trait) => (
                   <span
                     key={trait}
-                    className="px-3 py-1 rounded-full text-sm text-white"
+                    className="px-3 py-1 rounded-sm text-sm text-white"
                     style={{ backgroundColor: CHINESE_ELEMENTS[result.element].color }}
                   >
                     {trait}
@@ -190,7 +190,7 @@ export default function ChineseAstrologyPage() {
           </div>
         )}
 
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6">
             Les 12 Animaux du Zodiaque Chinois
           </h2>
@@ -198,7 +198,7 @@ export default function ChineseAstrologyPage() {
             {CHINESE_ZODIAC.map((sign) => (
               <div
                 key={sign.id}
-                className="p-4 rounded-xl bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] transition-colors"
+                className="p-4 rounded-sm bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] transition-colors"
               >
                 <h3 className="font-bold text-[var(--color-text-primary)]">{sign.nameFr}</h3>
                 <p className="text-xs text-[var(--color-text-muted)] mt-1">
@@ -208,7 +208,7 @@ export default function ChineseAstrologyPage() {
                   {sign.traits.slice(0, 2).map((trait) => (
                     <span
                       key={trait}
-                      className="px-2 py-0.5 text-xs bg-white rounded-full text-[var(--color-text-secondary)]"
+                      className="px-2 py-0.5 text-xs bg-white rounded-sm text-[var(--color-text-secondary)]"
                     >
                       {trait}
                     </span>
@@ -219,7 +219,7 @@ export default function ChineseAstrologyPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-sm shadow-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">
             Les 5 Elements
           </h2>
@@ -233,11 +233,11 @@ export default function ChineseAstrologyPage() {
               return (
                 <div
                   key={key}
-                  className="p-4 rounded-xl text-center transition-transform hover:scale-105"
+                  className="p-4 rounded-sm text-center transition-transform hover:scale-105"
                   style={{ backgroundColor: `${element.color}15` }}
                 >
                   <div
-                    className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center"
+                    className="w-14 h-14 rounded-sm mx-auto mb-3 flex items-center justify-center"
                     style={{ backgroundColor: element.color }}
                   >
                     <Icon size={28} className="text-white" />
@@ -252,7 +252,7 @@ export default function ChineseAstrologyPage() {
                     {element.traits.slice(0, 2).map((trait) => (
                       <span
                         key={trait}
-                        className="px-2 py-0.5 text-xs rounded-full bg-white"
+                        className="px-2 py-0.5 text-xs rounded-sm bg-white"
                         style={{ color: element.color }}
                       >
                         {trait}
@@ -271,12 +271,12 @@ export default function ChineseAstrologyPage() {
               return (
                 <div
                   key={key}
-                  className="p-4 rounded-xl border-l-4 bg-[var(--color-bg-tertiary)]"
+                  className="p-4 rounded-sm border-l-4 bg-[var(--color-bg-tertiary)]"
                   style={{ borderColor: element.color }}
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                      className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
                       style={{ backgroundColor: `${element.color}20` }}
                     >
                       <Icon size={24} style={{ color: element.color }} />
@@ -289,19 +289,19 @@ export default function ChineseAstrologyPage() {
                         {element.description}
                       </p>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                        <div className="bg-white rounded-lg p-2">
+                        <div className="bg-white rounded-sm p-2">
                           <span className="text-[var(--color-text-muted)]">Saison</span>
                           <p className="font-medium text-[var(--color-text-primary)]">{element.season}</p>
                         </div>
-                        <div className="bg-white rounded-lg p-2">
+                        <div className="bg-white rounded-sm p-2">
                           <span className="text-[var(--color-text-muted)]">Direction</span>
                           <p className="font-medium text-[var(--color-text-primary)]">{element.direction}</p>
                         </div>
-                        <div className="bg-white rounded-lg p-2">
+                        <div className="bg-white rounded-sm p-2">
                           <span className="text-[var(--color-text-muted)]">Planete</span>
                           <p className="font-medium text-[var(--color-text-primary)]">{element.planet}</p>
                         </div>
-                        <div className="bg-white rounded-lg p-2">
+                        <div className="bg-white rounded-sm p-2">
                           <span className="text-[var(--color-text-muted)]">Organe</span>
                           <p className="font-medium text-[var(--color-text-primary)]">{element.organ}</p>
                         </div>
@@ -314,7 +314,7 @@ export default function ChineseAstrologyPage() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-6 border border-red-100">
+        <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-sm p-6 border border-red-100">
           <h3 className="font-bold text-red-800 mb-3">
             A propos de l'Astrologie Chinoise
           </h3>
@@ -333,13 +333,13 @@ export default function ChineseAstrologyPage() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link
             href="/mythologies/egyptienne"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Astrologie Egyptienne
           </Link>
           <Link
             href="/horoscope"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Astrologie Occidentale
           </Link>

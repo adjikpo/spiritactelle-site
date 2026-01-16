@@ -61,7 +61,7 @@ export default function AstrologiePage() {
 
         {/* Prochaines phases */}
         {upcomingPhases.length > 0 && (
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-12">
+          <div className="bg-white rounded-sm shadow-lg p-6 mb-12">
             <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-4 text-center">
               Prochaines phases lunaires
             </h2>
@@ -109,7 +109,7 @@ export default function AstrologiePage() {
         </div>
 
         {/* Informations sur l'astrologie */}
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-white rounded-sm shadow-lg p-8">
           <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-6 text-center">
             Comprendre l'Astrologie
           </h2>
@@ -161,7 +161,7 @@ export default function AstrologiePage() {
           <div className="mt-8 text-center">
             <Link
               href="/astrologie/theme-natal"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-800 to-indigo-900 text-white rounded-xl font-medium hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-800 to-indigo-900 text-white rounded-sm font-medium hover:opacity-90 transition-opacity"
             >
               <span>Calculer mon thème natal</span>
               <span>→</span>

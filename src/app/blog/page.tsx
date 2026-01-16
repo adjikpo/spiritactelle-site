@@ -55,10 +55,10 @@ export default function BlogPage() {
                   <Link
                     key={article.id}
                     href={`/blog/${article.slug}`}
-                    className={`group ${style} rounded-2xl p-6 hover:shadow-xl transition-shadow`}
+                    className={`group ${style} rounded-sm p-6 hover:shadow-xl transition-shadow`}
                   >
                     <div className="flex items-center gap-2 mb-3">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${colors.tag}`}>
+                      <span className={`px-2 py-1 text-xs font-medium rounded-sm ${colors.tag}`}>
                         {ARTICLE_CATEGORIES[article.category].name}
                       </span>
                       <span className={`text-sm ${colors.muted}`}>{article.readingTime} min</span>
@@ -79,7 +79,7 @@ export default function BlogPage() {
         <div className="flex flex-wrap gap-2 mb-8">
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            className={`px-4 py-2 rounded-sm text-sm font-medium transition-all ${
               selectedCategory === 'all'
                 ? 'bg-[var(--color-primary)] text-white'
                 : 'bg-white text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)]'
@@ -91,7 +91,7 @@ export default function BlogPage() {
             <button
               key={key}
               onClick={() => setSelectedCategory(key as ArticleCategory)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-4 py-2 rounded-sm text-sm font-medium transition-all ${
                 selectedCategory === key
                   ? 'bg-[var(--color-primary)] text-white'
                   : 'bg-white text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)]'
@@ -107,12 +107,12 @@ export default function BlogPage() {
             <Link
               key={article.id}
               href={`/blog/${article.slug}`}
-              className="group bg-white rounded-2xl border border-[var(--color-border)] hover:shadow-lg transition-shadow overflow-hidden"
+              className="group bg-white rounded-sm border border-[var(--color-border)] hover:shadow-lg transition-shadow overflow-hidden"
             >
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span
-                    className="px-2 py-1 text-xs font-medium rounded-full"
+                    className="px-2 py-1 text-xs font-medium rounded-sm"
                     style={{
                       backgroundColor: `${ARTICLE_CATEGORIES[article.category].color}15`,
                       color: ARTICLE_CATEGORIES[article.category].color,
@@ -148,26 +148,26 @@ export default function BlogPage() {
           </div>
         )}
 
-        <div className="mt-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-6 border border-amber-100">
+        <div className="mt-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-sm p-6 border border-amber-100">
           <h3 className="font-bold text-amber-800 mb-3">
             Explorez nos autres ressources
           </h3>
           <div className="flex flex-wrap gap-4">
             <Link
               href="/mythologies"
-              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
+              className="px-4 py-2 bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
             >
               Multi-Mythologies
             </Link>
             <Link
               href="/horoscope"
-              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
+              className="px-4 py-2 bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
             >
               Horoscopes
             </Link>
             <Link
               href="/bien-etre"
-              className="px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
+              className="px-4 py-2 bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow text-[var(--color-text-primary)]"
             >
               Bien-etre
             </Link>

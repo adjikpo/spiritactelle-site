@@ -112,12 +112,12 @@ export default function CalendrierLunairePage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Calendrier */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="bg-white rounded-sm shadow-lg p-6">
               {/* Navigation du mois */}
               <div className="flex items-center justify-between mb-6">
                 <button
                   onClick={() => navigateMonth(-1)}
-                  className="p-2 hover:bg-[var(--color-bg-tertiary)] rounded-lg transition-colors"
+                  className="p-2 hover:bg-[var(--color-bg-tertiary)] rounded-sm transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -128,7 +128,7 @@ export default function CalendrierLunairePage() {
                 </h2>
                 <button
                   onClick={() => navigateMonth(1)}
-                  className="p-2 hover:bg-[var(--color-bg-tertiary)] rounded-lg transition-colors"
+                  className="p-2 hover:bg-[var(--color-bg-tertiary)] rounded-sm transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -157,7 +157,7 @@ export default function CalendrierLunairePage() {
                     key={index}
                     onClick={() => setSelectedDate(day.date)}
                     className={`
-                      relative p-2 rounded-lg text-center transition-all
+                      relative p-2 rounded-sm text-center transition-all
                       ${!day.isCurrentMonth ? 'opacity-30' : ''}
                       ${isToday(day.date) ? 'bg-[var(--color-primary)] text-white' : ''}
                       ${isSelected(day.date) && !isToday(day.date) ? 'bg-[var(--color-bg-tertiary)] ring-2 ring-[var(--color-primary)]' : ''}
@@ -200,7 +200,7 @@ export default function CalendrierLunairePage() {
                 <MoonPhaseWidget moonPhase={selectedMoonPhase} variant="full" showRituals />
 
                 {/* Date sélectionnée */}
-                <div className="bg-white rounded-xl p-4 shadow-md">
+                <div className="bg-white rounded-sm p-4 shadow-md">
                   <p className="text-sm text-[var(--color-text-muted)] mb-1">Date sélectionnée</p>
                   <p className="font-medium text-[var(--color-text-primary)]">
                     {selectedDate.toLocaleDateString('fr-FR', {
@@ -213,7 +213,7 @@ export default function CalendrierLunairePage() {
                 </div>
 
                 {/* Message spirituel */}
-                <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border border-purple-100">
+                <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-sm p-6 border border-purple-100">
                   <h3 className="font-bold text-purple-800 mb-3">
                     Guidance du jour
                   </h3>
@@ -230,7 +230,7 @@ export default function CalendrierLunairePage() {
                 setSelectedDate(new Date());
                 setCurrentMonth(new Date());
               }}
-              className="w-full py-3 bg-[var(--color-primary)] text-white rounded-xl font-medium hover:opacity-90 transition-opacity"
+              className="w-full py-3 bg-[var(--color-primary)] text-white rounded-sm font-medium hover:opacity-90 transition-opacity"
             >
               Revenir à aujourd'hui
             </button>

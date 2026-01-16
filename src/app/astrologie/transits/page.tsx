@@ -162,7 +162,7 @@ export default function TransitsPage() {
           {/* Transits actuels */}
           <div className="lg:col-span-2 space-y-6">
             {/* Grille des planètes */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="bg-white rounded-sm shadow-lg p-6">
               <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6">
                 Positions Planétaires Actuelles
               </h2>
@@ -174,10 +174,10 @@ export default function TransitsPage() {
                   return (
                     <div
                       key={transit.planet}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)]"
+                      className="flex items-center gap-4 p-4 rounded-sm bg-[var(--color-bg-secondary)] border border-[var(--color-border)]"
                     >
                       <div
-                        className="w-12 h-12 rounded-full flex items-center justify-center text-2xl"
+                        className="w-12 h-12 rounded-sm flex items-center justify-center text-2xl"
                         style={{ backgroundColor: `${planet.color}20`, color: planet.color }}
                       >
                         {planet.symbol}
@@ -188,7 +188,7 @@ export default function TransitsPage() {
                             {planet.name}
                           </span>
                           {transit.retrograde && (
-                            <span className="text-xs px-2 py-0.5 bg-red-100 text-red-700 rounded-full">
+                            <span className="text-xs px-2 py-0.5 bg-red-100 text-red-700 rounded-sm">
                               Rétrograde
                             </span>
                           )}
@@ -206,7 +206,7 @@ export default function TransitsPage() {
             </div>
 
             {/* Signification des planètes */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="bg-white rounded-sm shadow-lg p-6">
               <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6">
                 Signification des Planètes
               </h2>
@@ -214,7 +214,7 @@ export default function TransitsPage() {
                 {Object.entries(PLANETS).map(([key, planet]) => (
                   <div
                     key={key}
-                    className="flex items-start gap-4 p-4 rounded-xl hover:bg-[var(--color-bg-secondary)] transition-colors"
+                    className="flex items-start gap-4 p-4 rounded-sm hover:bg-[var(--color-bg-secondary)] transition-colors"
                   >
                     <span className="text-2xl" style={{ color: planet.color }}>
                       {planet.symbol}
@@ -246,7 +246,7 @@ export default function TransitsPage() {
             )}
 
             {/* Prochaines phases */}
-            <div className="bg-white rounded-xl shadow-md p-6">
+            <div className="bg-white rounded-sm shadow-md p-6">
               <h3 className="font-bold text-[var(--color-text-primary)] mb-4">
                 Prochaines Phases Lunaires
               </h3>
@@ -256,7 +256,7 @@ export default function TransitsPage() {
                   return (
                   <div
                     key={index}
-                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-[var(--color-bg-secondary)]"
+                    className="flex items-center gap-3 p-2 rounded-sm hover:bg-[var(--color-bg-secondary)]"
                   >
                     {PhaseIcon ? <PhaseIcon size={28} className="text-indigo-600" /> : null}
                     <div>
@@ -277,7 +277,7 @@ export default function TransitsPage() {
             </div>
 
             {/* Rétrogrades actives */}
-            <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border border-red-100">
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-sm p-6 border border-red-100">
               <h3 className="font-bold text-red-800 mb-3">
                 Rétrogrades Actives
               </h3>
@@ -308,7 +308,7 @@ export default function TransitsPage() {
             {/* Lien vers le calendrier */}
             <Link
               href="/astrologie/calendrier-lunaire"
-              className="block bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl p-6 hover:opacity-90 transition-opacity"
+              className="block bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-sm p-6 hover:opacity-90 transition-opacity"
             >
               <h3 className="font-bold mb-2">
                 Calendrier Lunaire
@@ -321,12 +321,12 @@ export default function TransitsPage() {
         </div>
 
         {/* Section éducative */}
-        <div className="mt-12 bg-white rounded-2xl shadow-lg p-6">
+        <div className="mt-12 bg-white rounded-sm shadow-lg p-6">
           <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-6">
             Comprendre les Transits
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-blue-50 rounded-xl p-5">
+            <div className="bg-blue-50 rounded-sm p-5">
               <h3 className="font-medium text-blue-800 mb-2">
                 Qu'est-ce qu'un transit ?
               </h3>
@@ -335,7 +335,7 @@ export default function TransitsPage() {
                 Ces mouvements influencent l'énergie collective et personnelle.
               </p>
             </div>
-            <div className="bg-purple-50 rounded-xl p-5">
+            <div className="bg-purple-50 rounded-sm p-5">
               <h3 className="font-medium text-purple-800 mb-2">
                 Les rétrogrades
               </h3>
@@ -344,7 +344,7 @@ export default function TransitsPage() {
                 de révision et d'introspection liée aux thèmes de cette planète.
               </p>
             </div>
-            <div className="bg-green-50 rounded-xl p-5">
+            <div className="bg-green-50 rounded-sm p-5">
               <h3 className="font-medium text-green-800 mb-2">
                 Impact personnel
               </h3>

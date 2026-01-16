@@ -11,7 +11,7 @@ export function NumerologyCard({ profile, showDetails = true }: NumerologyCardPr
   const { lifePath, expression, soul, personality, personalYear, personalYearMeaning } = profile;
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="bg-white rounded-sm shadow-lg overflow-hidden">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 text-white text-center">
         <p className="text-sm text-white/70 mb-2">Votre chemin de vie</p>
@@ -29,26 +29,26 @@ export function NumerologyCard({ profile, showDetails = true }: NumerologyCardPr
           <div className="space-y-4">
             {/* Nombres supplémentaires */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-              <div className="bg-indigo-50 rounded-xl p-3 text-center">
+              <div className="bg-indigo-50 rounded-sm p-3 text-center">
                 <div className="text-2xl font-bold text-indigo-600">{expression}</div>
                 <p className="text-xs text-indigo-700">Expression</p>
               </div>
-              <div className="bg-rose-50 rounded-xl p-3 text-center">
+              <div className="bg-rose-50 rounded-sm p-3 text-center">
                 <div className="text-2xl font-bold text-rose-600">{soul}</div>
                 <p className="text-xs text-rose-700">Âme</p>
               </div>
-              <div className="bg-teal-50 rounded-xl p-3 text-center">
+              <div className="bg-teal-50 rounded-sm p-3 text-center">
                 <div className="text-2xl font-bold text-teal-600">{personality}</div>
                 <p className="text-xs text-teal-700">Personnalité</p>
               </div>
-              <div className="bg-amber-50 rounded-xl p-3 text-center">
+              <div className="bg-amber-50 rounded-sm p-3 text-center">
                 <div className="text-2xl font-bold text-amber-600">{personalYear}</div>
                 <p className="text-xs text-amber-700">Année</p>
               </div>
             </div>
 
             {/* Année personnelle */}
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-100">
+            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-sm p-4 border border-amber-100">
               <h4 className="font-medium text-amber-800 mb-2 flex items-center gap-2">
                 <svg className="w-4 h-4 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -62,7 +62,7 @@ export function NumerologyCard({ profile, showDetails = true }: NumerologyCardPr
             </div>
 
             {/* Points forts */}
-            <div className="bg-green-50 rounded-xl p-4">
+            <div className="bg-green-50 rounded-sm p-4">
               <h4 className="font-medium text-green-800 mb-2 flex items-center gap-2">
                 <svg className="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -82,7 +82,7 @@ export function NumerologyCard({ profile, showDetails = true }: NumerologyCardPr
             </div>
 
             {/* Défis */}
-            <div className="bg-amber-50 rounded-xl p-4">
+            <div className="bg-amber-50 rounded-sm p-4">
               <h4 className="font-medium text-amber-800 mb-2 flex items-center gap-2">
                 <svg className="w-4 h-4 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10" />
@@ -104,7 +104,7 @@ export function NumerologyCard({ profile, showDetails = true }: NumerologyCardPr
             </div>
 
             {/* Compatibilité */}
-            <div className="bg-purple-50 rounded-xl p-4">
+            <div className="bg-purple-50 rounded-sm p-4">
               <h4 className="font-medium text-purple-800 mb-2 flex items-center gap-2">
                 <svg className="w-4 h-4 text-purple-600" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -153,7 +153,7 @@ export function NumerologyForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-6">
+    <form onSubmit={handleSubmit} className="bg-white rounded-sm shadow-lg p-6">
       <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-6">
         Calculez votre chemin de vie
       </h3>
@@ -167,7 +167,7 @@ export function NumerologyForm({
             type="date"
             name="birthDate"
             required
-            className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+            className="w-full px-4 py-3 rounded-sm border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           />
         </div>
 
@@ -179,7 +179,7 @@ export function NumerologyForm({
             type="text"
             name="name"
             placeholder="Pour le nombre d'expression"
-            className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+            className="w-full px-4 py-3 rounded-sm border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           />
           <p className="text-xs text-[var(--color-text-muted)] mt-1">
             Permet de calculer votre nombre d'expression
@@ -189,7 +189,7 @@ export function NumerologyForm({
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+          className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
         >
           {isLoading ? 'Calcul en cours...' : 'Calculer mon profil'}
         </button>
@@ -211,7 +211,7 @@ export function NumerologyBadge({
   description?: string;
 }) {
   return (
-    <div className="bg-[var(--color-bg-tertiary)] rounded-xl p-4 text-center">
+    <div className="bg-[var(--color-bg-tertiary)] rounded-sm p-4 text-center">
       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 text-white flex items-center justify-center text-xl font-bold mx-auto mb-2">
         {number}
       </div>

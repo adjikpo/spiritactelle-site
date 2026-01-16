@@ -61,7 +61,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
           w-full ${sizeStyles[size]}
           bg-[var(--color-bg-card)]
           border border-[var(--color-border)]
-          rounded-[var(--radius-xl)]
+          rounded-sm
           shadow-2xl
           animate-in zoom-in-95 duration-200
         `}
@@ -76,7 +76,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
             </h2>
             <button
               onClick={onClose}
-              className="p-1 rounded-[var(--radius-sm)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] transition-colors"
+              className="p-1 rounded-sm text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] transition-colors"
               aria-label="Fermer"
             >
               <svg

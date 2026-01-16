@@ -28,7 +28,7 @@ export function QuoteCard({
 
   if (variant === 'featured') {
     return (
-      <div className="relative bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent-purple)] rounded-2xl p-8 text-white overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent-purple)] rounded-sm p-8 text-white overflow-hidden">
         {/* Motif décoratif */}
         <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
           <svg viewBox="0 0 100 100" fill="currentColor">
@@ -73,7 +73,7 @@ export function QuoteCard({
 
   // Default variant
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 border border-[var(--color-border)]">
+    <div className="bg-white rounded-sm shadow-md p-6 border border-[var(--color-border)]">
       <div className={`transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
         <div className="flex items-start gap-3">
           <span className="text-3xl text-[var(--color-accent-gold)] opacity-50">❝</span>
@@ -110,7 +110,7 @@ export function QuoteCard({
 export function QuoteCardSkeleton({ variant = 'default' }: { variant?: 'default' | 'featured' }) {
   if (variant === 'featured') {
     return (
-      <div className="bg-[var(--color-border)] rounded-2xl p-8 animate-pulse">
+      <div className="bg-[var(--color-border)] rounded-sm p-8 animate-pulse">
         <div className="h-8 w-8 bg-white/20 rounded mb-4" />
         <div className="space-y-3">
           <div className="h-6 bg-white/20 rounded w-full" />
@@ -123,7 +123,7 @@ export function QuoteCardSkeleton({ variant = 'default' }: { variant?: 'default'
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 border border-[var(--color-border)] animate-pulse">
+    <div className="bg-white rounded-sm shadow-md p-6 border border-[var(--color-border)] animate-pulse">
       <div className="flex items-start gap-3">
         <div className="w-8 h-8 bg-[var(--color-border)] rounded" />
         <div className="flex-1 space-y-2">

@@ -63,13 +63,13 @@ export default function ThemeNatalPage() {
         {!chart ? (
           /* Formulaire */
           <div className="max-w-md mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+            <div className="bg-white rounded-sm shadow-lg p-6 sm:p-8">
               <h2 className="text-lg font-semibold text-[var(--color-text-primary)] mb-6">
                 Vos informations de naissance
               </h2>
 
               {error && (
-                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-sm text-red-600 text-sm">
                   {error}
                 </div>
               )}
@@ -99,7 +99,7 @@ export default function ThemeNatalPage() {
             </div>
 
             {/* Informations de naissance */}
-            <div className="text-center p-4 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)]">
+            <div className="text-center p-4 bg-[var(--color-bg-secondary)] rounded-sm border border-[var(--color-border)]">
               <p className="text-sm text-[var(--color-text-secondary)]">
                 Thème natal calculé pour le{' '}
                 <span className="font-medium text-[var(--color-text-primary)]">
@@ -123,12 +123,12 @@ export default function ThemeNatalPage() {
             {/* Layout principal */}
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Roue zodiacale */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 flex items-center justify-center">
+              <div className="bg-white rounded-sm shadow-lg p-6 flex items-center justify-center">
                 <ZodiacWheel chart={chart} size={350} showAspects={true} />
               </div>
 
               {/* Résumé */}
-              <div className="bg-white rounded-2xl shadow-lg p-6">
+              <div className="bg-white rounded-sm shadow-lg p-6">
                 <h2 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4">
                   Analyse du thème
                 </h2>
@@ -137,7 +137,7 @@ export default function ThemeNatalPage() {
             </div>
 
             {/* Légende */}
-            <div className="bg-[var(--color-bg-secondary)] rounded-xl p-4">
+            <div className="bg-[var(--color-bg-secondary)] rounded-sm p-4">
               <h3 className="font-medium text-sm mb-3">Légende des aspects</h3>
               <div className="flex flex-wrap gap-4 text-xs">
                 <div className="flex items-center gap-2">

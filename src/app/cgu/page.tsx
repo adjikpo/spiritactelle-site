@@ -12,7 +12,7 @@ export default function CGUPage() {
         <div className="mb-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-3 py-2 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] rounded-lg text-[var(--color-text-primary)] text-sm font-medium transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-2 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] rounded-sm text-[var(--color-text-primary)] text-sm font-medium transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -21,7 +21,7 @@ export default function CGUPage() {
           </Link>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-white rounded-sm shadow-lg p-8">
           <h1 className="text-3xl font-bold text-[var(--color-text-primary)] mb-8">
             Conditions Generales d'Utilisation
           </h1>
@@ -110,7 +110,7 @@ export default function CGUPage() {
               <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4">
                 6. Nature des contenus
               </h2>
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+              <div className="bg-amber-50 border border-amber-200 rounded-sm p-4 mb-4">
                 <p className="text-amber-800 font-medium">
                   Important : Les contenus proposes sur Spiritactelle (horoscopes, tarot, numerologie, etc.)
                   sont fournis a titre de divertissement et de reflexion personnelle.
@@ -191,13 +191,13 @@ export default function CGUPage() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link
             href="/mentions-legales"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Mentions legales
           </Link>
           <Link
             href="/confidentialite"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Confidentialite
           </Link>

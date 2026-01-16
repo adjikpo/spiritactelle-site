@@ -7,6 +7,70 @@ et ce projet adhère au [Versioning Sémantique](https://semver.org/lang/fr/).
 
 ---
 
+## [0.5.0] - 2026-01-16 - Refonte Design & Système Solaire
+
+### Modifié
+
+#### Design System - Border Radius
+- **Uniformisation des coins arrondis** sur tout le site
+  - Remplacement de `rounded-full`, `rounded-2xl`, `rounded-xl`, `rounded-lg` par `rounded-sm`
+  - 43 fichiers modifiés pour une cohérence visuelle
+  - Composants UI : Button, Card, Input, Modal
+  - Composants Wellness : MoonPhaseWidget, AffirmationCard, NumerologyCard, QuoteCard
+  - Composants Horoscope : HoroscopeCard, ZodiacCard, CompatibilityMeter, ChartSummary
+  - Layout : Header, Footer, PageHeader
+  - Toutes les pages App
+
+#### Page d'Accueil - Roue Zodiacale
+- **Transformation en Système Solaire** (`src/app/page.tsx`)
+  - Nébuleuse de fond avec dégradé violet/indigo
+  - 5 orbites concentriques avec couleurs distinctes (blanc, cyan, bleu, violet, ambre)
+  - 3 planètes animées en rotation à différentes vitesses
+  - Corona solaire avec effet de glow pulsant
+  - 12 rayons solaires émanant du centre
+
+- **Soleil Central - Icône SVG Personnalisée**
+  - SVG détaillé avec :
+    - 12 rayons externes blancs (espacés de 30°)
+    - 12 rayons secondaires plus courts (décalés de 15°)
+    - 3 cercles concentriques avec dégradés radiaux
+    - Taches solaires pour le réalisme
+    - Reflet lumineux pour l'effet 3D
+    - Point central brillant
+  - Dégradés SVG : `sunGradientOuter`, `sunGradientMain`, `sunGradientInner`
+  - Drop-shadow CSS pour l'effet de brillance
+
+- **Signes Zodiacaux**
+  - Halo individuel derrière chaque icône
+  - Animation hover avec glow doré
+  - Texte avec drop-shadow pour meilleure lisibilité
+
+- **Étoiles Scintillantes**
+  - 6 étoiles avec animation pulse
+  - Délais d'animation différents pour effet naturel
+  - Couleurs variées (blanc, cyan, ambre)
+
+### Exception Design
+- **Roue Zodiacale** : Conservation de `rounded-full` pour les cercles et le soleil
+  - Orbites circulaires
+  - Planètes orbitantes
+  - Soleil central
+  - Icônes des signes
+
+### Fichiers Modifiés
+- `src/app/page.tsx` - Nouveau système solaire
+- `src/components/ui/Button.tsx` - rounded-sm
+- `src/components/ui/Card.tsx` - rounded-sm
+- `src/components/ui/Input.tsx` - rounded-sm
+- `src/components/ui/Modal.tsx` - rounded-sm
+- `src/components/wellness/*.tsx` - rounded-sm
+- `src/components/horoscope/*.tsx` - rounded-sm
+- `src/components/astro/*.tsx` - rounded-sm
+- `src/components/layout/*.tsx` - rounded-sm
+- Toutes les pages dans `src/app/**/*.tsx`
+
+---
+
 ## [0.4.0] - 2026-01-11 - Version Vercel
 
 ### Ajouté

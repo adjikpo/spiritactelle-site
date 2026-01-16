@@ -181,7 +181,7 @@ export default function MeditationPage() {
         {/* Session en cours */}
         {selectedSession ? (
           <div className="mb-10">
-            <div className={`bg-gradient-to-br ${selectedSession.color} rounded-2xl p-8 text-white`}>
+            <div className={`bg-gradient-to-br ${selectedSession.color} rounded-sm p-8 text-white`}>
               {/* Header de session */}
               <div className="flex items-center justify-between mb-6">
                 <div>
@@ -193,7 +193,7 @@ export default function MeditationPage() {
                     reset();
                     setSelectedSession(null);
                   }}
-                  className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+                  className="p-2 hover:bg-white/20 rounded-sm transition-colors"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -210,7 +210,7 @@ export default function MeditationPage() {
 
               {/* Barre de progression de l'étape */}
               <div className="mb-4">
-                <div className="h-2 bg-white/20 rounded-full overflow-hidden">
+                <div className="h-2 bg-white/20 rounded-sm overflow-hidden">
                   <div
                     className="h-full bg-white transition-all duration-1000"
                     style={{
@@ -224,7 +224,7 @@ export default function MeditationPage() {
               <div className="flex items-center justify-center gap-4">
                 <button
                   onClick={reset}
-                  className="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                  className="p-3 bg-white/20 rounded-sm hover:bg-white/30 transition-colors"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -232,7 +232,7 @@ export default function MeditationPage() {
                 </button>
                 <button
                   onClick={togglePlay}
-                  className="p-4 bg-white rounded-full text-gray-800 hover:bg-white/90 transition-colors"
+                  className="p-4 bg-white rounded-sm text-gray-800 hover:bg-white/90 transition-colors"
                 >
                   {isPlaying ? (
                     <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -255,7 +255,7 @@ export default function MeditationPage() {
                   <span>Étape {currentStepIndex + 1} / {selectedSession.steps.length}</span>
                   <span>{Math.round((totalElapsed / getTotalDuration(selectedSession)) * 100)}%</span>
                 </div>
-                <div className="h-1 bg-white/20 rounded-full overflow-hidden">
+                <div className="h-1 bg-white/20 rounded-sm overflow-hidden">
                   <div
                     className="h-full bg-white/50 transition-all duration-1000"
                     style={{
@@ -282,7 +282,7 @@ export default function MeditationPage() {
                   setSelectedSession(session);
                 }}
                 className={`
-                  p-6 rounded-2xl text-left transition-all hover:-translate-y-1
+                  p-6 rounded-sm text-left transition-all hover:-translate-y-1
                   ${
                     selectedSession?.id === session.id
                       ? `bg-gradient-to-br ${session.color} text-white`
@@ -308,7 +308,7 @@ export default function MeditationPage() {
         </div>
 
         {/* Conseils */}
-        <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6 border border-teal-100">
+        <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-sm p-6 border border-teal-100">
           <h3 className="font-bold text-teal-800 mb-4">
             Conseils pour méditer
           </h3>

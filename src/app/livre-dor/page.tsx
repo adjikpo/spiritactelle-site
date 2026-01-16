@@ -55,7 +55,7 @@ export default function LivreDorPage() {
             Decouvrez les temoignages de notre communaute et partagez votre experience avec Spiritactelle.
           </p>
 
-          <div className="inline-flex items-center gap-6 bg-white rounded-2xl shadow-md px-6 py-4">
+          <div className="inline-flex items-center gap-6 bg-white rounded-sm shadow-md px-6 py-4">
             <div className="text-center">
               <div className="flex items-center justify-center gap-1">
                 <span className="text-2xl font-bold text-[var(--color-text-primary)]">{averageRating}</span>
@@ -98,10 +98,10 @@ export default function LivreDorPage() {
                 return (
                   <div
                     key={testimonial.id}
-                    className={`${style} rounded-2xl p-6 hover:shadow-lg transition-shadow`}
+                    className={`${style} rounded-sm p-6 hover:shadow-lg transition-shadow`}
                   >
                     <div className="flex items-center justify-between mb-4">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${colors.tag}`}>
+                      <span className={`px-2 py-1 text-xs font-medium rounded-sm ${colors.tag}`}>
                         {TESTIMONIAL_SERVICES[testimonial.service].name}
                       </span>
                       <StarRating rating={testimonial.rating} />
@@ -134,7 +134,7 @@ export default function LivreDorPage() {
         <div className="flex flex-wrap gap-2 mb-8">
           <button
             onClick={() => setSelectedService('all')}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            className={`px-4 py-2 rounded-sm text-sm font-medium transition-all ${
               selectedService === 'all'
                 ? 'bg-[var(--color-primary)] text-white'
                 : 'bg-white text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)]'
@@ -146,7 +146,7 @@ export default function LivreDorPage() {
             <button
               key={key}
               onClick={() => setSelectedService(key as TestimonialService)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-4 py-2 rounded-sm text-sm font-medium transition-all ${
                 selectedService === key
                   ? 'bg-[var(--color-primary)] text-white'
                   : 'bg-white text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)]'
@@ -161,12 +161,12 @@ export default function LivreDorPage() {
           {filteredTestimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow"
+              className="bg-white rounded-sm shadow-md p-6 hover:shadow-lg transition-shadow"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold"
+                    className="w-10 h-10 rounded-sm flex items-center justify-center text-white font-bold"
                     style={{ backgroundColor: TESTIMONIAL_SERVICES[testimonial.service].color }}
                   >
                     {testimonial.author[0]}
@@ -191,7 +191,7 @@ export default function LivreDorPage() {
 
               <div className="flex items-center justify-between">
                 <span
-                  className="px-3 py-1 text-xs font-medium rounded-full"
+                  className="px-3 py-1 text-xs font-medium rounded-sm"
                   style={{
                     backgroundColor: `${TESTIMONIAL_SERVICES[testimonial.service].color}15`,
                     color: TESTIMONIAL_SERVICES[testimonial.service].color,
@@ -219,7 +219,7 @@ export default function LivreDorPage() {
           </div>
         )}
 
-        <div className="mt-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-6 border border-amber-100">
+        <div className="mt-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-sm p-6 border border-amber-100">
           <h3 className="font-bold text-amber-800 mb-3">
             Partagez votre experience
           </h3>
@@ -229,7 +229,7 @@ export default function LivreDorPage() {
           </p>
           <Link
             href="/newsletter"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg font-medium hover:bg-amber-600 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-sm font-medium hover:bg-amber-600 transition-colors"
           >
             S&apos;inscrire a la newsletter
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,19 +241,19 @@ export default function LivreDorPage() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link
             href="/mythologies"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Multi-Mythologies
           </Link>
           <Link
             href="/horoscope"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Horoscopes
           </Link>
           <Link
             href="/bien-etre"
-            className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
+            className="px-6 py-3 bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow text-[var(--color-text-primary)]"
           >
             Bien-etre
           </Link>

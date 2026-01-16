@@ -91,7 +91,7 @@ export function PageHeader({ title, description, backLink }: PageHeaderProps) {
       {backLink && (
         <Link
           href={backLink.href}
-          className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] rounded-lg text-[var(--color-text-primary)] font-medium transition-colors sm:hidden"
+          className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] rounded-sm text-[var(--color-text-primary)] font-medium transition-colors sm:hidden"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -122,7 +122,7 @@ export function BackButton({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-2 px-3 py-2 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] rounded-lg text-[var(--color-text-primary)] text-sm font-medium transition-colors"
+      className="inline-flex items-center gap-2 px-3 py-2 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-border)] rounded-sm text-[var(--color-text-primary)] text-sm font-medium transition-colors"
     >
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

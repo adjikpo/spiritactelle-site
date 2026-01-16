@@ -26,7 +26,7 @@ export function ZodiacCard({
   const content = (
     <div
       className={`
-        relative rounded-2xl p-4 transition-all duration-300
+        relative rounded-sm p-4 transition-all duration-300
         ${variant === 'compact' ? 'text-center' : 'text-left'}
         ${isSelected
           ? 'bg-[var(--color-primary)] text-white shadow-lg scale-105'
@@ -45,7 +45,7 @@ export function ZodiacCard({
       >
         <div
           className={`
-            w-12 h-12 rounded-xl flex items-center justify-center
+            w-12 h-12 rounded-sm flex items-center justify-center
             ${isSelected
               ? 'bg-white/20'
               : 'bg-[var(--color-primary)]/10'
