@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BackButton } from '@/components/layout';
 
 export const metadata = {
-  title: 'Multi-Mythologies | Spiritactelle',
+  title: 'Multi-Mythologies | Astrobien',
   description: 'Explorez les astrologies du monde : chinoise, egyptienne, celte et bien plus encore.',
 };
 

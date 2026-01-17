@@ -1,5 +1,5 @@
 /**
- * Types et interfaces pour le moteur astrologique Spiritactelle
+ * Types et interfaces pour le moteur astrologique Astrobien
  */
 
 // ============================================

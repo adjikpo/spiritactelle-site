@@ -52,7 +52,7 @@ export default function LivreDorPage() {
             Livre d'Or
           </h1>
           <p className="text-[var(--color-text-secondary)] max-w-xl mx-auto mb-6">
-            Decouvrez les temoignages de notre communaute et partagez votre experience avec Spiritactelle.
+            Decouvrez les temoignages de notre communaute et partagez votre experience avec Astrobien.
           </p>
 
           <div className="inline-flex items-center gap-6 bg-white rounded-sm shadow-md px-6 py-4">

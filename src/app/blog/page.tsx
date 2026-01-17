@@ -25,7 +25,7 @@ export default function BlogPage() {
 
         <div className="text-center mb-10">
           <h1 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-3">
-            Blog Spiritactelle
+            Blog Astrobien
           </h1>
           <p className="text-[var(--color-text-secondary)] max-w-xl mx-auto">
             Explorez nos articles sur les mythologies du monde, les pratiques spirituelles,

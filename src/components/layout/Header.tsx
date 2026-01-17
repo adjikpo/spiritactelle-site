@@ -79,7 +79,7 @@ export function Header() {
                   ? 'text-[var(--color-primary)]'
                   : 'text-white'
               }`}>
-                Spiritactelle
+                Astrobien
               </span>
             </Link>
 
@@ -222,7 +222,7 @@ export function Header() {
           {/* Footer */}
           <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[var(--color-border)] bg-[var(--color-bg-tertiary)] safe-area-bottom">
             <p className="text-xs text-center text-[var(--color-text-muted)]">
-              Spiritactelle © 2026
+              Astrobien © 2026
             </p>
           </div>
         </div>

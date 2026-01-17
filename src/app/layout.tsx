@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Spiritactelle - Horoscopes & Astrologie',
-    template: '%s | Spiritactelle',
+    default: 'Astrobien - Horoscopes & Astrologie',
+    template: '%s | Astrobien',
   },
   description:
-    'Horoscopes personnalisés, thèmes astraux et articles inspirants. Découvrez ce que les astres vous réservent avec Spiritactelle.',
+    'Horoscopes personnalisés, thèmes astraux et articles inspirants. Découvrez ce que les astres vous réservent avec Astrobien.',
   keywords: [
     'horoscope',
     'astrologie',
@@ -28,13 +28,14 @@ export const metadata: Metadata = {
     'zodiaque',
     'ascendant',
     'spiritualité',
+    'bien-être',
   ],
-  authors: [{ name: 'Spiritactelle' }],
+  authors: [{ name: 'Astrobien' }],
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    siteName: 'Spiritactelle',
-    title: 'Spiritactelle - Horoscopes & Astrologie',
+    siteName: 'Astrobien',
+    title: 'Astrobien - Horoscopes & Astrologie',
     description:
       'Horoscopes personnalisés, thèmes astraux et articles inspirants pour éclairer votre chemin.',
   },

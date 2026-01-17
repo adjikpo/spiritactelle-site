@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Conditions Generales d\'Utilisation | Spiritactelle',
-  description: 'Conditions generales d\'utilisation du site Spiritactelle.',
+  title: 'Conditions Generales d\'Utilisation | Astrobien',
+  description: 'Conditions generales d\'utilisation du site Astrobien.',
 };
 
 export default function CGUPage() {
@@ -34,7 +34,7 @@ export default function CGUPage() {
               <p className="leading-relaxed">
                 Les presentes Conditions Generales d'Utilisation (CGU) ont pour objet de definir
                 les modalites et conditions d'utilisation des services proposes sur le site
-                Spiritactelle, ainsi que les droits et obligations des utilisateurs.
+                Astrobien, ainsi que les droits et obligations des utilisateurs.
               </p>
               <p className="mt-4 leading-relaxed">
                 L'utilisation du site implique l'acceptation pleine et entiere des presentes CGU.
@@ -46,7 +46,7 @@ export default function CGUPage() {
                 2. Description des services
               </h2>
               <p className="leading-relaxed">
-                Spiritactelle propose les services suivants :
+                Astrobien propose les services suivants :
               </p>
               <ul className="list-disc list-inside mt-4 space-y-2">
                 <li>Horoscopes quotidiens, hebdomadaires et mensuels</li>
@@ -112,7 +112,7 @@ export default function CGUPage() {
               </h2>
               <div className="bg-amber-50 border border-amber-200 rounded-sm p-4 mb-4">
                 <p className="text-amber-800 font-medium">
-                  Important : Les contenus proposes sur Spiritactelle (horoscopes, tarot, numerologie, etc.)
+                  Important : Les contenus proposes sur Astrobien (horoscopes, tarot, numerologie, etc.)
                   sont fournis a titre de divertissement et de reflexion personnelle.
                 </p>
               </div>
@@ -144,7 +144,7 @@ export default function CGUPage() {
                 8. Responsabilite
               </h2>
               <p className="leading-relaxed">
-                Spiritactelle s'efforce d'assurer l'exactitude des informations diffusees mais ne peut
+                Astrobien s'efforce d'assurer l'exactitude des informations diffusees mais ne peut
                 garantir leur exhaustivite. Le site ne saurait etre tenu responsable des dommages directs
                 ou indirects resultant de l'utilisation du site.
               </p>
@@ -155,7 +155,7 @@ export default function CGUPage() {
                 9. Modification des CGU
               </h2>
               <p className="leading-relaxed">
-                Spiritactelle se reserve le droit de modifier les presentes CGU a tout moment.
+                Astrobien se reserve le droit de modifier les presentes CGU a tout moment.
                 Les utilisateurs seront informes des modifications par publication sur le site.
               </p>
             </section>
@@ -176,7 +176,7 @@ export default function CGUPage() {
                 11. Contact
               </h2>
               <p className="leading-relaxed">
-                Pour toute question relative aux presentes CGU : contact@spiritactelle.com
+                Pour toute question relative aux presentes CGU : contact@astrobien.com
               </p>
             </section>
           </div>

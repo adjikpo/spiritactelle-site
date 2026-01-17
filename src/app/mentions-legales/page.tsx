@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Mentions Legales | Spiritactelle',
-  description: 'Mentions legales du site Spiritactelle - Informations sur l\'editeur et l\'hebergeur.',
+  title: 'Mentions Legales | Astrobien',
+  description: 'Mentions legales du site Astrobien - Informations sur l\'editeur et l\'hebergeur.',
 };
 
 export default function MentionsLegalesPage() {
@@ -32,13 +32,13 @@ export default function MentionsLegalesPage() {
                 1. Editeur du site
               </h2>
               <div className="space-y-2">
-                <p><strong>Nom du site :</strong> Spiritactelle</p>
-                <p><strong>URL :</strong> https://spiritactelle.com</p>
+                <p><strong>Nom du site :</strong> Astrobien</p>
+                <p><strong>URL :</strong> https://astrobien.com</p>
                 <p><strong>Statut :</strong> [A completer - Entreprise individuelle / SAS / SARL]</p>
                 <p><strong>Siege social :</strong> [A completer]</p>
                 <p><strong>SIRET :</strong> [A completer]</p>
                 <p><strong>Directeur de la publication :</strong> [A completer]</p>
-                <p><strong>Contact :</strong> contact@spiritactelle.com</p>
+                <p><strong>Contact :</strong> contact@astrobien.com</p>
               </div>
             </section>
 
@@ -59,13 +59,13 @@ export default function MentionsLegalesPage() {
               </h2>
               <p className="leading-relaxed">
                 L'ensemble du contenu de ce site (textes, images, graphismes, logo, icones, sons, logiciels, etc.)
-                est la propriete exclusive de Spiritactelle ou de ses partenaires et est protege par les lois
+                est la propriete exclusive de Astrobien ou de ses partenaires et est protege par les lois
                 francaises et internationales relatives a la propriete intellectuelle.
               </p>
               <p className="mt-4 leading-relaxed">
                 Toute reproduction, representation, modification, publication, adaptation de tout ou partie
                 des elements du site, quel que soit le moyen ou le procede utilise, est interdite, sauf
-                autorisation ecrite prealable de Spiritactelle.
+                autorisation ecrite prealable de Astrobien.
               </p>
             </section>
 
@@ -91,7 +91,7 @@ export default function MentionsLegalesPage() {
                 5. Liens hypertextes
               </h2>
               <p className="leading-relaxed">
-                Le site peut contenir des liens vers d'autres sites internet. Spiritactelle n'exerce
+                Le site peut contenir des liens vers d'autres sites internet. Astrobien n'exerce
                 aucun controle sur ces sites et decline toute responsabilite quant a leur contenu.
               </p>
             </section>
@@ -112,7 +112,7 @@ export default function MentionsLegalesPage() {
               </h2>
               <p className="leading-relaxed">
                 Pour toute question concernant ces mentions legales, vous pouvez nous contacter
-                a l'adresse suivante : contact@spiritactelle.com
+                a l'adresse suivante : contact@astrobien.com
               </p>
             </section>
           </div>

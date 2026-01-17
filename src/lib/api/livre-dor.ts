@@ -47,7 +47,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Lyon',
     rating: 5,
     service: 'horoscope',
-    content: 'Je lis mon horoscope chaque matin depuis 3 mois. Les previsions sont etonnamment justes et m\'aident a aborder ma journee avec plus de serenite. Merci Spiritactelle !',
+    content: 'Je lis mon horoscope chaque matin depuis 3 mois. Les previsions sont etonnamment justes et m\'aident a aborder ma journee avec plus de serenite. Merci Astrobien !',
     createdAt: '2026-01-07',
     featured: true,
   },

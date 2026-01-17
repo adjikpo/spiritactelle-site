@@ -1,5 +1,5 @@
 /**
- * Spiritactelle - Moteur Astrologique
+ * Astrobien - Moteur Astrologique
  *
  * Module principal exportant toutes les fonctionnalités astrologiques
  */

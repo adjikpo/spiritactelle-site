@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Politique de Confidentialite | Spiritactelle',
-  description: 'Politique de confidentialite et protection des donnees personnelles de Spiritactelle.',
+  title: 'Politique de Confidentialite | Astrobien',
+  description: 'Politique de confidentialite et protection des donnees personnelles de Astrobien.',
 };
 
 export default function ConfidentialitePage() {
@@ -32,7 +32,7 @@ export default function ConfidentialitePage() {
                 1. Introduction
               </h2>
               <p className="leading-relaxed">
-                Spiritactelle s'engage a proteger la vie privee de ses utilisateurs. Cette politique
+                Astrobien s'engage a proteger la vie privee de ses utilisateurs. Cette politique
                 de confidentialite explique comment nous collectons, utilisons et protegeons vos
                 donnees personnelles conformement au Reglement General sur la Protection des Donnees (RGPD).
               </p>
@@ -43,8 +43,8 @@ export default function ConfidentialitePage() {
                 2. Responsable du traitement
               </h2>
               <div className="space-y-2">
-                <p><strong>Responsable :</strong> Spiritactelle</p>
-                <p><strong>Email :</strong> dpo@spiritactelle.com</p>
+                <p><strong>Responsable :</strong> Astrobien</p>
+                <p><strong>Email :</strong> dpo@astrobien.com</p>
                 <p><strong>Adresse :</strong> [A completer]</p>
               </div>
             </section>
@@ -153,7 +153,7 @@ export default function ConfidentialitePage() {
                 <li><strong>Droit de limitation :</strong> limiter le traitement de vos donnees</li>
               </ul>
               <p className="mt-4 leading-relaxed">
-                Pour exercer ces droits, contactez-nous a : dpo@spiritactelle.com
+                Pour exercer ces droits, contactez-nous a : dpo@astrobien.com
               </p>
             </section>
 
@@ -222,7 +222,7 @@ export default function ConfidentialitePage() {
                 14. Contact
               </h2>
               <p className="leading-relaxed">
-                Pour toute question concernant cette politique : dpo@spiritactelle.com
+                Pour toute question concernant cette politique : dpo@astrobien.com
               </p>
             </section>
           </div>

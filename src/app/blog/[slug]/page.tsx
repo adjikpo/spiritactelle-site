@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: ArticlePageProps) {
   }
 
   return {
-    title: `${article.title} | Spiritactelle`,
+    title: `${article.title} | Astrobien`,
     description: article.excerpt,
   };
 }

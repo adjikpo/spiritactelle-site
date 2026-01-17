@@ -99,7 +99,7 @@ export default function AffirmationsPage() {
     loadAffirmation();
 
     // Charger les favoris du localStorage
-    const savedFavorites = localStorage.getItem('spiritactelle_affirmation_favorites');
+    const savedFavorites = localStorage.getItem('astrobien_affirmation_favorites');
     if (savedFavorites) {
       setFavorites(JSON.parse(savedFavorites));
     }
@@ -151,7 +151,7 @@ export default function AffirmationsPage() {
       const newFavorites = prev.includes(text)
         ? prev.filter((f) => f !== text)
         : [...prev, text];
-      localStorage.setItem('spiritactelle_affirmation_favorites', JSON.stringify(newFavorites));
+      localStorage.setItem('astrobien_affirmation_favorites', JSON.stringify(newFavorites));
       return newFavorites;
     });
   };
