@@ -481,15 +481,49 @@ export function DragonIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
-// Oeil d'Horus / Egyptien
+// Caracteres Chinois 中国 (Zhongguo - Empire du Milieu)
+export function ChineseCharIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <text x="12" y="17" fontSize="11" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">中国</text>
+    </svg>
+  );
+}
+
+// Oeil d'Horus / Egyptien - Authentique
 export function EgyptianEyeIcon({ size = 24, ...props }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
-      <ellipse cx="12" cy="10" rx="8" ry="5" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="12" cy="10" r="2" fill="currentColor" />
-      <path d="M4 10C4 10 2 12 2 14C2 16 4 18 4 18" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 15V20" strokeLinecap="round" />
-      <path d="M9 17L12 20L15 17" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Sourcil */}
+      <path d="M3 8C6 6 10 6 12 7C14 6 18 6 21 8" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Oeil principal */}
+      <ellipse cx="12" cy="11" rx="6" ry="4" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Pupille */}
+      <circle cx="12" cy="11" r="2" fill="currentColor" />
+      {/* Ligne decorative gauche (larme) */}
+      <path d="M6 11C4 13 3 16 4 19" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Spirale caracteristique de l'oeil d'Horus */}
+      <path d="M6 15C8 14 9 16 8 18" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Oeil d'Horus alternatif (plus stylisé)
+export function EyeOfHorusIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...defaultProps} {...props}>
+      {/* Sourcil epais */}
+      <path d="M2 7C5 5 9 5 12 6C15 5 19 5 22 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+      {/* Forme de l'oeil */}
+      <path d="M4 10C4 10 7 7 12 7C17 7 20 10 20 10C20 10 17 14 12 14C7 14 4 10 4 10Z" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Iris */}
+      <circle cx="12" cy="10" r="2.5" strokeLinecap="round" />
+      {/* Pupille */}
+      <circle cx="12" cy="10" r="1" fill="currentColor" />
+      {/* Marque sous l'oeil (verticale) */}
+      <path d="M8 14L6 20" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Spirale Horus */}
+      <path d="M6 20C6 20 8 19 9 17" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

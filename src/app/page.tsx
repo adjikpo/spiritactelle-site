@@ -24,7 +24,8 @@ import {
   MeditationIcon,
   NumerologyIcon,
   DragonIcon,
-  AnkhIcon,
+  ChineseCharIcon,
+  EyeOfHorusIcon,
   BookOpenIcon,
 } from '@/components/icons';
 
@@ -63,8 +64,8 @@ const bienEtre = [
 ];
 
 const mythologies = [
-  { title: 'Chinoise', Icon: DragonIcon, href: '/mythologies/chinoise' },
-  { title: 'Egyptienne', Icon: AnkhIcon, href: '/mythologies/egyptienne' },
+  { title: 'Chinoise', subtitle: 'Empire du Milieu', Icon: ChineseCharIcon, href: '/mythologies/chinoise' },
+  { title: 'Egyptienne', subtitle: 'Oeil d\'Horus', Icon: EyeOfHorusIcon, href: '/mythologies/egyptienne' },
 ];
 
 const blogArticles = [
@@ -390,13 +391,13 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4">
             {mythologies.map((item) => (
-              <Link key={item.title} href={item.href}>
+              <Link key={item.subtitle} href={item.href}>
                 <div className="service-card p-4 h-full text-center">
                   <div className="w-12 h-12 mx-auto rounded-sm bg-[var(--color-accent-coral)]/10 flex items-center justify-center text-[var(--color-accent-coral)] mb-3">
                     <item.Icon size={24} />
                   </div>
-                  <h3 className="font-semibold text-sm">{item.title}</h3>
-                  <p className="text-xs text-[var(--color-text-muted)] mt-1">Mythologie</p>
+                  <h3 className="font-bold text-lg">{item.title}</h3>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">{item.subtitle}</p>
                 </div>
               </Link>
             ))}
